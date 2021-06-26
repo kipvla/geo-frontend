@@ -23,12 +23,9 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
   const [map, setMap] = useState(initialMapState);
   const [coordinates, setCoordinates] = useState([0, 0]);
 
-  const handleClick = (event): void => {
+  const dropMarker = (event): void => {
     const longitude = event.lngLat[0];
     const latitude = event.lngLat[1];
-    console.log('Longitude is ', longitude);
-    console.log('Latitude is ', latitude);
-    console.log('Cordinates are ', coordinates[0], coordinates[1]);
     if (longitude && latitude) {
       setCoordinates([longitude, latitude]);
     }
@@ -45,7 +42,7 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
         zoom={map.viewport.zoom}
         mapStyle="mapbox://styles/mapbox/outdoors-v11"
         onViewportChange={(viewport) => setMap({ viewport })}
-        onClick={handleClick}
+        onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
         {
@@ -54,6 +51,7 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
               longitude={coordinates[0]}
               latitude={coordinates[1]}
               draggable
+              onDragEnd={dropMarker}
             >
               <FaMapPin />
             </Marker>
