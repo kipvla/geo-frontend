@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ReactElement, useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import { FaMapPin } from 'react-icons/fa';
+
 import '../styles/index.css';
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgybmw0NmZ6ZWpteGUifQ.Hm9JVYrVAImLQjekD4ZNSQ';
@@ -19,9 +21,17 @@ const initialMapState = {
 
 const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
   const [map, setMap] = useState(initialMapState);
+  const [coordinates, setCoordinates] = useState([0, 0]);
 
   const handleClick = (event): void => {
-    console.log(event.lngLat);
+    const longitude = event.lngLat[0];
+    const latitude = event.lngLat[1];
+    console.log('Longitude is ', longitude);
+    console.log('Latitude is ', latitude);
+    console.log('Cordinates are ', coordinates[0], coordinates[1]);
+    if (longitude && latitude) {
+      setCoordinates([longitude, latitude]);
+    }
   };
 
   return (
@@ -38,11 +48,18 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
         onClick={handleClick}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
-        <Marker
-          longitude={-123.33}
-          latitude={42.43}
-          className="map__marker"
-        />
+        {
+          coordinates[0] ? (
+            <Marker
+              longitude={coordinates[0]}
+              latitude={coordinates[1]}
+              draggable
+            >
+              <FaMapPin />
+            </Marker>
+          )
+            : null
+        }
       </ReactMapGL>
 
     </div>
