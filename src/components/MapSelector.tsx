@@ -1,6 +1,9 @@
-import React, { FunctionComponent, ReactElement, useState } from 'react';
+import React, {
+  FunctionComponent, ReactElement, useState, useContext,
+} from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { FaMapPin } from 'react-icons/fa';
+import { GameContext } from '../lib/context/gameContext';
 
 import '../styles/index.css';
 
@@ -9,18 +12,19 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgy
 export interface MapSelectorProps {
 }
 
-const initialMapState = {
-  viewport: {
-    width: '50vw',
-    height: '50vh',
-    latitude: 42.430472,
-    longitude: -123.334102,
-    zoom: 16,
-  },
-};
+// const initialMapState = {
+//   viewport: {
+//     width: '50vw',
+//     height: '50vh',
+//     latitude: 22,
+//     longitude: -65,
+//     zoom: 0.6,
+//   },
+// };
 
 const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
-  const [map, setMap] = useState(initialMapState);
+  // const [map, setMap] = useState(initialMapState);
+  const { map, setMap } = useContext(GameContext);
   const [coordinates, setCoordinates] = useState([0, 0]);
 
   const dropMarker = (event): void => {
@@ -41,7 +45,10 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
         longitude={map.viewport.longitude}
         zoom={map.viewport.zoom}
         mapStyle="mapbox://styles/mapbox/outdoors-v11"
-        onViewportChange={(viewport) => setMap({ viewport })}
+        onViewportChange={(viewport) => {
+          setMap({ viewport });
+          console.log(viewport);
+        }}
         onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
