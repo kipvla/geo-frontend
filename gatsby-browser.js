@@ -1,11 +1,11 @@
 import React from 'react';
-import { GameProvider } from './src/lib/context/gameContext';
+import { MapProvider } from './src/lib/context/mapContext';
 
 export const wrapRootElement = ({ element }) => (
-  // eslint-disable-next-line react/jsx-filename-extension
-  <GameProvider>
+
+  <MapProvider>
     {element}
-  </GameProvider>
+  </MapProvider>
 );
 
 export default wrapRootElement;

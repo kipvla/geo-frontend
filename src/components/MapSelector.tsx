@@ -1,62 +1,40 @@
 import React, {
-  FunctionComponent, ReactElement, useState, useContext,
+  FunctionComponent, ReactElement,
 } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { FaMapPin } from 'react-icons/fa';
-import { GameContext } from '../lib/context/gameContext';
-
 import '../styles/index.css';
+import { useMapContext } from '../lib/context/mapContext';
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgybmw0NmZ6ZWpteGUifQ.Hm9JVYrVAImLQjekD4ZNSQ';
 
 export interface MapSelectorProps {
 }
 
-// const initialMapState = {
-//   viewport: {
-//     width: '50vw',
-//     height: '50vh',
-//     latitude: 22,
-//     longitude: -65,
-//     zoom: 0.6,
-//   },
-// };
-
 const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
-  // const [map, setMap] = useState(initialMapState);
-  const { map, setMap } = useContext(GameContext);
-  const [coordinates, setCoordinates] = useState([0, 0]);
+  const {
+    viewport, setViewport, pinCoordinates, setPinCoordinates,
+  } = useMapContext();
 
-  const dropMarker = (event): void => {
-    const longitude = event.lngLat[0];
-    const latitude = event.lngLat[1];
-    if (longitude && latitude) {
-      setCoordinates([longitude, latitude]);
-    }
+  const dropMarker = ({ lngLat }): void => {
+    const longitude = lngLat[0];
+    const latitude = lngLat[1];
+    setPinCoordinates([longitude, latitude]);
   };
-
   return (
     <div>
-      <p>I am about to be a map!</p>
       <ReactMapGL
-        width={map.viewport.width}
-        height={map.viewport.height}
-        latitude={map.viewport.latitude}
-        longitude={map.viewport.longitude}
-        zoom={map.viewport.zoom}
+        {...viewport}
         mapStyle="mapbox://styles/mapbox/outdoors-v11"
-        onViewportChange={(viewport) => {
-          setMap({ viewport });
-          console.log(viewport);
-        }}
+        onViewportChange={(newViewport) => setViewport(newViewport)}
         onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
         {
-          coordinates[0] ? (
+          pinCoordinates[0] ? (
             <Marker
-              longitude={coordinates[0]}
-              latitude={coordinates[1]}
+              longitude={pinCoordinates[0]}
+              latitude={pinCoordinates[1]}
               draggable
               onDragEnd={dropMarker}
             >
@@ -66,9 +44,7 @@ const MapSelector: FunctionComponent<MapSelectorProps> = (): ReactElement => {
             : null
         }
       </ReactMapGL>
-
     </div>
   );
 };
-
 export default MapSelector;
