@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import '../styles/index.css';
+import '../../styles/index.css';
 
 export interface ModalProps {
   show: boolean;

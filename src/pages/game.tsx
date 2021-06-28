@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import Modal from '../components/Modal';
-import GamePlay from '../components/GamePlay';
-import GameSummary from '../components/GameSummary';
+import Modal from '../components/presentational/Modal';
+import GamePlay from '../components/game/GamePlay';
+import GameSummary from '../components/game/GameSummary';
+import GameScore from '../components/game/GameScore';
 import { useMapContext } from '../lib/context/mapContext';
-import GameScore from '../components/GameScore';
 
 const Game: React.FC = () => {
   const [gameState, setGameState] = useState(1);
@@ -33,7 +33,7 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="game__container">
       Game!
       {
         isPlaying

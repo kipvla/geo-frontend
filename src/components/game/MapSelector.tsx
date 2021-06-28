@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { FaMapPin } from 'react-icons/fa';
-import { useMapContext } from '../lib/context/mapContext';
-import '../styles/index.css';
+import { useMapContext } from '../../lib/context/mapContext';
+import '../../styles/index.css';
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgybmw0NmZ6ZWpteGUifQ.Hm9JVYrVAImLQjekD4ZNSQ';
 

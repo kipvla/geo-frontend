@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useMapContext } from '../lib/context/mapContext';
-import distanceBetweenTwoPoints from '../lib/scoring/distance';
-import calculateScore from '../lib/scoring/score';
+import StaticMap from '../presentational/StaticMap';
+import { useMapContext } from '../../lib/context/mapContext';
+import distanceBetweenTwoPoints from '../../lib/scoring/distance';
+import calculateScore from '../../lib/scoring/score';
 
 const initialScore = {
   distance: 0,
@@ -22,6 +23,7 @@ const GameScore: React.FC = () => {
 
   return (
     <div>
+      <StaticMap />
       <p>{`DISTANCE: ${score.distance} km`}</p>
       <p>{`POINTS: ${score.points}`}</p>
     </div>
