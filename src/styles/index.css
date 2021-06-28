@@ -1,11 +1,66 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
 
-.map__marker {
-  height: 10px;
-  width: 10px;
-  background-color: orange;
+.navbar {
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.links a {
+  margin-left: 0.5rem;
+}
+
+.progress {
+  height: 2rem;
+  background-color: lightblue;
+  width: 100%;
+  border-radius: 20px;
+  box-sizing: border-box;
 }
 
 .progress-bar {
-  height: 1rem;
+  height: 2rem;
   background-color: blue;
+  border-radius: 20px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.carousel img, button {
+  margin: 0;
+  width: 4rem;
+  height: auto;
+}
+
+.carousel button {
+  margin: 1px;
+  border: none;
+  padding: 0;
+}
+
+#img-main {
+  animation: fadeIn 300ms ease-out;
+  width: 80vw;
+  height: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }
