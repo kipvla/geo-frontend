@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StaticMap from '../presentational/StaticMap';
-import { useMapContext } from '../../lib/context/mapContext';
+import { useGameContext } from '../../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../../lib/scoring/distance';
 import calculateScore from '../../lib/scoring/score';
 
@@ -10,16 +10,23 @@ const initialScore = {
 };
 
 const GameScore: React.FC = () => {
-  const { pinCoordinates } = useMapContext();
   const [score, setScore] = useState(initialScore);
+  const { game } = useGameContext();
   const trueLocation = [2, 41];
+  const i = game.guesses.length - 1;
 
   useEffect(() => {
-    console.log(pinCoordinates);
-    const distance = distanceBetweenTwoPoints(...pinCoordinates, trueLocation[0], trueLocation[1]);
-    const points = calculateScore(distance);
-    setScore({ distance, points });
-  }, [pinCoordinates]);
+    if (game.guesses.length) {
+      const distance = distanceBetweenTwoPoints(
+        game.guesses[i].lng,
+        game.guesses[i].lat,
+        trueLocation[0], // change me to game.location[i].lng
+        trueLocation[1], // change me to game.location[i].lat
+      );
+      const points = calculateScore(distance);
+      setScore({ distance, points });
+    }
+  }, [game]);
 
   return (
     <div>

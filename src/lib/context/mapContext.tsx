@@ -7,7 +7,7 @@ interface MapContextInterface {
   setViewport: (value: any) => void;
   pinCoordinates: [number, number];
   setPinCoordinates: (pin: [number, number]) => void;
-  setZoomLevel: (zoom: number) => void;
+  resetMap: () => void;
 }
 
 const initialMapSettings = {
@@ -32,9 +32,14 @@ export const MapProvider = ({ children }): any => {
     });
   };
 
+  const resetMap = () => {
+    setZoomLevel(0.4);
+    setPinCoordinates([0, 0]);
+  };
+
   return (
     <MapContext.Provider value={{
-      viewport, setViewport, pinCoordinates, setPinCoordinates, setZoomLevel,
+      viewport, setViewport, pinCoordinates, setPinCoordinates, resetMap,
     }}
     >
       {children}
