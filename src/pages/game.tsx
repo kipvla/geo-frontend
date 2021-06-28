@@ -1,43 +1,45 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import Modal from '../components/Modal';
-import GamePlay from '../components/GamePlay';
-import GameSummary from '../components/GameSummary';
+import Modal from '../components/presentational/Modal';
+import GamePlay from '../components/game/GamePlay';
+import GameSummary from '../components/game/GameSummary';
+import GameScore from '../components/game/GameScore';
 import { useMapContext } from '../lib/context/mapContext';
-import GameScore from '../components/GameScore';
+import { useGameContext } from '../lib/context/gameContext';
 
 const Game: React.FC = () => {
-  const [gameState, setGameState] = useState(1);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showScore, setShowScore] = useState(false);
-  const { setZoomLevel, setPinCoordinates, pinCoordinates } = useMapContext();
-  const guesses: number[][] = [];
+  const { resetMap, pinCoordinates } = useMapContext();
+  const {
+    addGuess, incrementTurn, game, resetGame,
+  } = useGameContext();
 
   const makeAGuess = () => {
-    guesses.push(pinCoordinates);
-    console.log(pinCoordinates);
+    const [lng, lat] = pinCoordinates;
+    addGuess(lat, lng);
     setShowScore(true);
   };
 
   const startNextRound = () => {
+    console.log(game);
     setShowScore(false);
-    setGameState(gameState + 1);
-    setZoomLevel(0.4);
-    setPinCoordinates([0, 0]);
-    if (gameState === 5) setIsPlaying(false);
+    incrementTurn();
+    resetMap();
+    if (game.currentTurn === 5) setIsPlaying(false);
   };
 
   const handleGameEnd = () => {
     setIsPlaying(true);
-    setGameState(1);
+    resetGame();
   };
 
   return (
-    <div>
+    <div className="game__container">
       Game!
       {
         isPlaying
-          ? <GamePlay gameState={gameState} submitGuess={makeAGuess} />
+          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
           : <GameSummary handleGameEnd={handleGameEnd} />
       }
 

@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
-import { useMapContext } from '../lib/context/mapContext';
 import ImageCarousel from './ImageCarousel';
+import { useMapContext } from '../../lib/context/mapContext';
 
 export interface GamePlayProps {
   gameState: number;
@@ -24,6 +24,9 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }: GamePlayP
   return (
 
     <div>
+      <ProgressBar gameState={gameState} />
+      <ImageCarousel sources={sources} />
+      <MapSelector />
       <button
         type="button"
         onClick={submitGuess}
@@ -31,9 +34,6 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }: GamePlayP
       >
         Make guess
       </button>
-      <ProgressBar gameState={gameState} />
-      <ImageCarousel sources={sources} />
-      <MapSelector />
     </div>
 
   );

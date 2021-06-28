@@ -1,11 +1,11 @@
-import React, { FunctionComponent, ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 
-export interface GameImageProps {
+export interface ImageCarouselProps {
   sources: string[];
 }
 
 // eslint-disable-next-line max-len
-const GameImage: FunctionComponent<GameImageProps> = ({ sources }: GameImageProps): ReactElement => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }: ImageCarouselProps): ReactElement => {
   const [mainImg, setMainImg] = useState(sources[0]);
 
   const changeImg = (event) => {
@@ -22,4 +22,4 @@ const GameImage: FunctionComponent<GameImageProps> = ({ sources }: GameImageProp
   );
 };
 
-export default GameImage;
+export default ImageCarousel;

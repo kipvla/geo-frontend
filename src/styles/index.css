@@ -3,6 +3,13 @@ body {
   box-sizing: border-box;
 }
 
+.game__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 .navbar {
   height: 4rem;
   display: flex;
@@ -53,7 +60,7 @@ body {
 
 #img-main {
   animation: fadeIn 300ms ease-out;
-  width: 80vw;
+  width: 60vw;
   height: auto;
 }
 
@@ -67,6 +74,7 @@ body {
 
 .modal__show {
   display: flex;
+  flex-direction: column;
   top: 0;
   left: 0;
   position: fixed;
