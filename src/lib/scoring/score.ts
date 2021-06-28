@@ -1,13 +1,4 @@
-// import distanceBetweenTwoPoints from './distance';
-
-const calculateScore = (
-  // lat1: number,
-  // lon1: number,
-  // lat2: number,
-  // lon2: number,
-  distance: number,
-) => {
-  // const distance: number = distanceBetweenTwoPoints(lat1, lon1, lat2, lon2);
+const calculateScore = (distance: number) => {
   if (distance <= 0.15) {
     return 5000;
   }

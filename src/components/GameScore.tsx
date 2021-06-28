@@ -22,7 +22,7 @@ const GameScore: React.FC = () => {
 
   return (
     <div>
-      <p>{`DISTANCE: ${score.distance}`}</p>
+      <p>{`DISTANCE: ${score.distance} km`}</p>
       <p>{`POINTS: ${score.points}`}</p>
     </div>
   );
