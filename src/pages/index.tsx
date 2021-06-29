@@ -9,6 +9,10 @@ const Globe = React.lazy(() => (
 const isBrowser = () => typeof window !== 'undefined';
 
 export default function index() {
+  const handleGlobeClick = ({ lat, lng }, event) => {
+    console.log(event, lat, lng);
+  };
+
   return (
     <div>
       <Navbar />
@@ -17,7 +21,7 @@ export default function index() {
       {isBrowser()
         ? (
           <React.Suspense fallback={<div />}>
-            <Globe backgroundColor="white" globeImageUrl="/images/earthlights4k.jpg" showGraticules />
+            <Globe backgroundColor="white" globeImageUrl="/images/earthlights4k.jpg" showGraticules onGlobeClick={handleGlobeClick} />
           </React.Suspense>
         )
         : null }
