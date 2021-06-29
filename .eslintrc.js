@@ -26,5 +26,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 0,
     'react/jsx-props-no-spreading': 0,
+    'no-underscore-dangle': 0,
   },
 };

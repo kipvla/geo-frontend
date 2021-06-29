@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-const BASE_URL = 'http://localhost:3000/';
+const BASE_URL = process.env.GATSBY_BASE_URL;
 
 // const authPost = (route, body) => {
 //   const token = localStorage.getItem('accessToken');
@@ -25,7 +25,6 @@ const noAuthPost = (route, body) => {
 
 const authGet = (route) => {
   const token = localStorage.getItem('accessToken');
-  if (route === '/logout') localStorage.removeItem('accessToken');
   return fetch(BASE_URL + route, {
     headers: {
       Authorization: `Bearer: ${token}`,
@@ -34,6 +33,8 @@ const authGet = (route) => {
 };
 
 const login = (credentials) => {
+  console.log('im here in the api service');
+  console.log(credentials);
   return noAuthPost('auth/login', credentials);
 };
 

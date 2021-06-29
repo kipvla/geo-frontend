@@ -1,4 +1,6 @@
 import React, { FunctionComponent, ReactElement } from 'react';
+import { Link } from 'gatsby';
+import Logout from '../auth/Logout';
 
 export interface NavbarProps {
 }
@@ -8,8 +10,9 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => (
   <div className="navbar">
     <a href="/">nomad</a>
     <div className="links">
-      <a href="/login">Login</a>
-      <a href="/login">Register</a>
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
+      <Logout />
     </div>
   </div>
 );

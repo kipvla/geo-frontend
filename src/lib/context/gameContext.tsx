@@ -7,13 +7,14 @@ interface GameContextInterface {
   addGuess: (lat: number, lng: number, distance: number, score: number) => void;
   incrementTurn: () => void;
   resetGame: () => void;
+  populateGame: (gameData: any) => void;
 }
 
 const initialGameState: Game = {
   id: '',
   guesses: [],
   locations: [],
-  currentTurn: 1, // change back to 0 when backend is connected
+  currentTurn: 0,
   createdAt: '',
   updatedAt: '',
 };
@@ -44,9 +45,29 @@ export const GameProvider = ({ children }): any => {
     setGame(initialGameState);
   };
 
+  const populateGame = (gameData: any) => {
+    const data = gameData.game;
+
+    const formattedLocations = data.locations.map((loc) => ({
+      images: loc.images,
+      lat: loc.latitude,
+      lng: loc.longitude,
+      title: loc.title,
+    }));
+
+    setGame({
+      id: data._id,
+      currentTurn: data.currentTurn,
+      guesses: data.guesses,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
+      locations: formattedLocations,
+    });
+  };
+
   return (
     <GameContext.Provider value={{
-      game, addGuess, incrementTurn, resetGame,
+      game, addGuess, incrementTurn, resetGame, populateGame,
     }}
     >
       {children}

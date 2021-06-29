@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import GamePlay from '../components/game/GamePlay';
 import GameSummary from '../components/game/GameSummary';
 import GameScore from '../components/game/GameScore';
+import Navbar from '../components/presentational/Navbar';
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
+import { useAuthContext } from '../lib/context/authContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
 import apiService from '../services/apiService';
@@ -13,33 +16,41 @@ const Game: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
+  const { isAuthenticated, setAuthenticated } = useAuthContext();
   const {
-    addGuess, incrementTurn, game, resetGame,
+    addGuess, incrementTurn, game, resetGame, populateGame,
   } = useGameContext();
 
   useEffect(() => {
-    const test = async () => {
-      await apiService.login({ email: 'testuser@gmail.com', password: 'testuser' })
-        .then((res) => res.json())
-        .then((res) => {
-          localStorage.setItem('accessToken', res.token);
-        });
-
-      const GAME = await apiService.fetchGame().then((res) => res.json());
-      console.log(GAME);
+    const fetchGame = async () => {
+      const gameData = await apiService.fetchGame().then((res) => res.json());
+      console.log(gameData);
+      populateGame(gameData);
     };
-    test();
+    const checkAuthStatus = () => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        // apiservice check tokens are valid
+        setAuthenticated(true);
+      } else {
+        setAuthenticated(false);
+      }
+    };
+
+    checkAuthStatus();
+    if (isAuthenticated) {
+      fetchGame();
+    } else {
+      navigate('/');
+    }
   }, []);
 
   const makeAGuess = () => {
+    console.log(game);
     const [lng, lat] = pinCoordinates;
-    const trueLocation = [2, 41]; // change me to game.location[currentTurn-1]
-    const distance = distanceBetweenTwoPoints(
-      lng,
-      lat,
-      trueLocation[0],
-      trueLocation[1],
-    );
+    const trueLng = game.locations[game.currentTurn - 1].lng;
+    const trueLat = game.locations[game.currentTurn - 1].lat;
+    const distance = distanceBetweenTwoPoints(lng, lat, trueLng, trueLat);
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
     setShowScore(true);
@@ -59,17 +70,24 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="game__container">
-      Game!
+    <>
       {
-        isPlaying
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
+        isAuthenticated
+          ? (
+            <div className="game__container">
+              <Navbar />
+              {
+                isPlaying
+                  ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+                  : <GameSummary handleGameEnd={handleGameEnd} />
+              }
+              <Modal show={showScore} handleClose={startNextRound}>
+                <GameScore />
+              </Modal>
+            </div>
+          ) : null
       }
-      <Modal show={showScore} handleClose={startNextRound}>
-        <GameScore />
-      </Modal>
-    </div>
+    </>
   );
 };
 
