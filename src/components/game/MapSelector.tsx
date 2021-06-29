@@ -4,7 +4,7 @@ import { FaMapPin } from 'react-icons/fa';
 import { useMapContext } from '../../lib/context/mapContext';
 import '../../styles/index.css';
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgybmw0NmZ6ZWpteGUifQ.Hm9JVYrVAImLQjekD4ZNSQ';
+const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
 const MapSelector: React.FC = (): ReactElement => {
   const {

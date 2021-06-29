@@ -1,51 +1,50 @@
-import React, { ReactNode } from 'react';
-import ReactMapGL from 'react-map-gl';
-// import { GeoJSON } from 'geojson';
-// import Layer and Source from react-map-gl
+import React from 'react';
+import DeckGL from '@deck.gl/react';
+import { LineLayer } from '@deck.gl/layers';
+import ReactMapGL, { StaticMap } from 'react-map-gl';
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2Vvbm9tYWRzIiwiYSI6ImNrcWN3NDhoOTBmeWgybmw0NmZ6ZWpteGUifQ.Hm9JVYrVAImLQjekD4ZNSQ';
+const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
-export interface StaticMapProps {
- children: ReactNode
+export interface ResultsMapProps {
+ sourcePosition: [number, number];
+ targetPosition: [number, number];
 }
 
-// const polygon1: GeoJSON = {
-//   type: 'FeatureCollection',
-//   features: [
-//     {
-//       type: 'Feature',
-//       properties: {},
-//       geometry: {
-//         type: 'LineString',
-//         coordinates: [
-//           [3.989067077636719, 51.10384530764609],
-//           [3.994474411010742, 51.10414172379734],
-//         ],
-//       },
-//     },
-//   ],
-// };
+const INITIAL_VIEW_STATE = {
+  longitude: -40.41669,
+  latitude: 37.7853,
+  zoom: 2,
+  pitch: 0,
+  bearing: 0,
+};
 
-const StaticMap: React.FC<StaticMapProps> = ({ children }: StaticMapProps) => (
-  <ReactMapGL
-    width="40vw"
-    height="30vh"
-    mapStyle="mapbox://styles/mapbox/outdoors-v11"
-    mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-  >
-    {children}
-    { /* <Source type="geojson" data={polygon1}>
-          <Layer
-            id="data"
-            type="line"
-            paint={{
-              'fill-color': '#000',
-              'fill-opacity': 1,
-              'fill-outline-color': '#000',
-            }}
-          />
-        </Source> */ }
-  </ReactMapGL>
-);
+// eslint-disable-next-line arrow-body-style
+// eslint-disable-next-line max-len
+const ResultsMap: React.FC<ResultsMapProps> = ({ sourcePosition, targetPosition }: ResultsMapProps) => {
+  const data = [
+    { sourcePosition, targetPosition },
+  ];
 
-export default StaticMap;
+  const layers = [
+    new LineLayer({ id: 'line-layer', data }),
+  ];
+
+  return (
+    <ReactMapGL
+      width="40vw"
+      height="30vh"
+      mapStyle="mapbox://styles/mapbox/outdoors-v11"
+      mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+    >
+      <DeckGL
+        initialViewState={INITIAL_VIEW_STATE}
+        controller
+        layers={layers}
+      >
+        <StaticMap mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN} />
+      </DeckGL>
+    </ReactMapGL>
+  );
+};
+
+export default ResultsMap;

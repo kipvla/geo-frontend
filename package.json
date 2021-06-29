@@ -17,6 +17,8 @@
     "lint:staged": "lint-staged"
   },
   "dependencies": {
+    "@deck.gl/layers": "^8.4.19",
+    "@deck.gl/react": "^8.4.19",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "dotenv": "^8.6.0",
