@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Game, UserGuess, Location } from '../../interfaces';
+import { Game } from '../../interfaces';
 
 interface GameContextInterface {
   game: Game;

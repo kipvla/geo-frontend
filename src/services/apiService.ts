@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-const BASE_URL = process.env.GATSBY_BASE_URL;
+const BASE_URL = 'http://localhost:3000/';
 
 // const authPost = (route, body) => {
 //   const token = localStorage.getItem('accessToken');
@@ -41,7 +41,7 @@ const register = (credentials) => {
   return noAuthPost('auth/register', credentials);
 };
 
-const fetchGame = () => {
+const fetchGame = (): Promise<Response> => {
   return authGet('game');
 };
 

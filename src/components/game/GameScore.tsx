@@ -11,6 +11,7 @@ const GameScore: React.FC = () => {
       {game.guesses.length
         ? (
           <>
+            {/* this could be nicer */}
             <p>{`DISTANCE: ${game.guesses[game.guesses.length - 1].distance} km`}</p>
             <p>{`POINTS: ${game.guesses[game.guesses.length - 1].score}`}</p>
           </>
