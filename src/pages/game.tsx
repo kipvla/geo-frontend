@@ -19,12 +19,6 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     const test = async () => {
-      await apiService.login({ email: 'testuser@gmail.com', password: 'testuser' })
-        .then((res) => res.json())
-        .then((res) => {
-          localStorage.setItem('accessToken', res.token);
-        });
-
       const GAME = await apiService.fetchGame().then((res) => res.json());
       console.log(GAME);
     };
