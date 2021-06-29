@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import GamePlay from '../components/game/GamePlay';
 import GameSummary from '../components/game/GameSummary';
@@ -20,20 +19,26 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     const test = async () => {
-      const response = await apiService.login({ email: 'testuser@gmail.com', password: 'testuser' });
-      console.log(response.status);
+      await apiService.login({ email: 'testuser@gmail.com', password: 'testuser' })
+        .then((res) => res.json())
+        .then((res) => {
+          localStorage.setItem('accessToken', res.token);
+        });
+
+      const GAME = await apiService.fetchGame().then((res) => res.json());
+      console.log(GAME);
     };
     test();
   }, []);
 
   const makeAGuess = () => {
     const [lng, lat] = pinCoordinates;
-    const trueLocation = [2, 41];
+    const trueLocation = [2, 41]; // change me to game.location[currentTurn-1]
     const distance = distanceBetweenTwoPoints(
       lng,
       lat,
-      trueLocation[0], // change me to game.location[i].lng
-      trueLocation[1], // change me to game.location[i].lat
+      trueLocation[0],
+      trueLocation[1],
     );
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
@@ -45,7 +50,7 @@ const Game: React.FC = () => {
     incrementTurn();
     resetMap();
     console.log(game);
-    if (game.currentTurn === 5) setIsPlaying(false);
+    if (game.currentTurn === 3) setIsPlaying(false);
   };
 
   const handleGameEnd = () => {
@@ -61,12 +66,9 @@ const Game: React.FC = () => {
           ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
           : <GameSummary handleGameEnd={handleGameEnd} />
       }
-
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>
-
-      <Link to="/">To home</Link>
     </div>
   );
 };
