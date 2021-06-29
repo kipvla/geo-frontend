@@ -25,7 +25,6 @@ const noAuthPost = (route, body) => {
 
 const authGet = (route) => {
   const token = localStorage.getItem('accessToken');
-  if (route === '/logout') localStorage.removeItem('accessToken');
   return fetch(BASE_URL + route, {
     headers: {
       Authorization: `Bearer: ${token}`,

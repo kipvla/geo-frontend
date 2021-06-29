@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import apiService from '../services/apiService';
 import { useAuthContext } from '../lib/context/authContext';
-// import { handleAuth } from '../services/authService';
 
 const emptyCredentials = {
   email: '',
@@ -22,7 +21,6 @@ const Login: React.FC = () => {
         const body = await response.json();
         localStorage.setItem('accessToken', body.token);
         setAuthenticated(true);
-        console.log('i am here');
         setCredentials(emptyCredentials);
         navigate('/game');
       } else {

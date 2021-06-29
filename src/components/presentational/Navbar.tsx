@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 import { Link } from 'gatsby';
+import Logout from '../auth/Logout';
 
 export interface NavbarProps {
 }
@@ -11,6 +12,7 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => (
     <div className="links">
       <Link to="/login">Login</Link>
       <Link to="/register">Register</Link>
+      <Logout />
     </div>
   </div>
 );
