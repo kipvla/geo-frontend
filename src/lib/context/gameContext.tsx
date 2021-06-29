@@ -50,8 +50,8 @@ export const GameProvider = ({ children }): any => {
 
     const formattedLocations = data.locations.map((loc) => ({
       images: loc.images,
-      lat: loc.latitude,
-      lng: loc.longitude,
+      lat: parseFloat(loc.latitude),
+      lng: parseFloat(loc.longitude),
       title: loc.title,
     }));
 

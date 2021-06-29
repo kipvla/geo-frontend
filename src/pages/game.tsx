@@ -24,7 +24,6 @@ const Game: React.FC = () => {
   useEffect(() => {
     const fetchGame = async () => {
       const gameData = await apiService.fetchGame().then((res) => res.json());
-      console.log(gameData);
       populateGame(gameData);
     };
     const checkAuthStatus = () => {
