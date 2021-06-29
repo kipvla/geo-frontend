@@ -42,7 +42,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="container">
         <input
           name="email"
           type="email"

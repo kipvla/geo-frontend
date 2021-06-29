@@ -2,28 +2,34 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+* + * {
+  box-sizing: border-box;
+}
 
-.game__container {
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
+  z-index: 999;
 }
-
 .navbar a {
   text-decoration: none;
-}
-
-.links a {
   margin-left: 0.5rem;
+}
+.links a {
+  margin-right: 0.5rem;
 }
 
 .progress {
@@ -36,7 +42,7 @@ body {
 
 .progress-bar {
   height: 2rem;
-  background-color: blue;
+  background-color: rgba(106, 106, 216, 0.651);
   border-radius: 20px;
 }
 
@@ -44,6 +50,11 @@ body {
   display: flex;
   align-items: center;
   margin: 1rem;
+  max-height: 50vh;
+  max-width: 80vw;
+}
+.carousel img {
+  max-height: 100%;
 }
 
 .carousel img, button {
@@ -60,8 +71,8 @@ body {
 
 #img-main {
   animation: fadeIn 300ms ease-out;
-  width: 60vw;
   height: auto;
+  width: 60vw;
 }
 
 @keyframes fadeIn {
@@ -88,3 +99,4 @@ body {
 .modal__hide {
   display:none;
 }
+

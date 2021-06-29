@@ -30,8 +30,10 @@ const Game: React.FC = () => {
       const token = localStorage.getItem('accessToken');
       if (token) {
         // apiservice check tokens are valid
+        console.log('FOUND TOKEN', isAuthenticated);
         setAuthenticated(true);
       } else {
+        console.log('NO TOKEN', isAuthenticated);
         setAuthenticated(false);
       }
     };
@@ -42,7 +44,7 @@ const Game: React.FC = () => {
     } else {
       navigate('/');
     }
-  }, []);
+  }, [isAuthenticated]);
 
   const makeAGuess = () => {
     console.log(game);
@@ -59,7 +61,6 @@ const Game: React.FC = () => {
     setShowScore(false);
     incrementTurn();
     resetMap();
-    console.log(game);
     if (game.currentTurn === 3) setIsPlaying(false);
   };
 
@@ -73,7 +74,7 @@ const Game: React.FC = () => {
       {
         isAuthenticated
           ? (
-            <div className="game__container">
+            <div className="container">
               <Navbar />
               {
                 isPlaying
