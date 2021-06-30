@@ -4,6 +4,7 @@ import { LineLayer } from '@deck.gl/layers';
 import ReactMapGL, { StaticMap, Marker } from 'react-map-gl';
 import { FaMapPin } from 'react-icons/fa';
 import { useGameContext } from '../../lib/context/gameContext';
+import '../../styles/index.css';
 
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
@@ -35,25 +36,52 @@ const GameEndMap: React.FC = () => {
     getPinPositions(locationIndex)
   );
 
-  const layers = [new LineLayer({ id: 'line-layer', data })];
+  const markers = React.useMemo(
+    () =>
+      data.map(({ sourcePosition, targetPosition }) => (
+        <>
+          <Marker
+            key={sourcePosition[0]}
+            longitude={sourcePosition[0]}
+            latitude={sourcePosition[1]}
+            draggable
+          >
+            <FaMapPin />
+          </Marker>
+          <Marker
+            key={targetPosition[0]}
+            longitude={targetPosition[0]}
+            latitude={targetPosition[1]}
+            draggable
+          >
+            <FaMapPin />
+          </Marker>
+        </>
+      )),
+    [game]
+  );
 
+  const layers = [new LineLayer({ id: 'line-layer', data })];
+  const lines = React.useMemo(
+    () => (
+      <DeckGL initialViewState={INITIAL_VIEW_STATE} controller layers={layers}>
+        <StaticMap
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
+        />
+      </DeckGL>
+    ),
+    [game]
+  );
   return (
     <>
       <ReactMapGL
-        width="40vw"
-        height="30vh"
+        width="60vw"
+        height="50vh"
         mapStyle="mapbox://styles/mapbox/satellite-v9"
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
-        <DeckGL
-          initialViewState={INITIAL_VIEW_STATE}
-          controller
-          layers={layers}
-        >
-          <StaticMap
-            mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
-          />
-        </DeckGL>
+        {lines}
+        {markers}
       </ReactMapGL>
       <p style={{ color: 'white' }}>{`POINTS: ${game.currentScore}`}</p>
     </>
