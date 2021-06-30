@@ -20,13 +20,11 @@ const GamePlay: React.FC<GamePlayProps> = ({
   const { game } = useGameContext();
 
   return (
-    <div>
+    <div className="container">
       <ProgressBar gameState={gameState} />
-      {
-        game.locations.length
-          ? <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
-          : null
-      }
+      {game.locations.length ? (
+        <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
+      ) : null}
       <div className="map__selector">
         <MapSelector />
       </div>

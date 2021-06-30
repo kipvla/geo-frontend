@@ -12,7 +12,7 @@ interface MapContextInterface {
 
 const initialMapSettings = {
   width: '50vw',
-  height: '50vh',
+  height: '40vh',
   latitude: 22,
   longitude: -65,
   zoom: 0.6,

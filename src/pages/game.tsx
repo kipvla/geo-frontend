@@ -44,12 +44,12 @@ const Game: React.FC = () => {
   };
 
   const handleGameEnd = () => {
-    resetGame();
     navigate('/home');
+    resetGame();
   };
 
   return (
-    <div className="page__container container">
+    <div className="container">
       {game.currentTurn <= 3 ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
