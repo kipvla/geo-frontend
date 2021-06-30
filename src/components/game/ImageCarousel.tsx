@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 export interface ImageCarouselProps {
   sources: string[];
@@ -10,9 +10,13 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
 }: ImageCarouselProps): ReactElement => {
   const [mainImg, setMainImg] = useState(sources[0]);
 
-  const changeImg = (event) => {
-    setMainImg(event.target.src);
+  const changeImg = ({ target }) => {
+    setMainImg(target.src);
   };
+
+  useEffect(() => {
+    setMainImg(sources[0]);
+  }, [sources]);
 
   return (
     <div className="carousel">

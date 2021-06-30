@@ -4,6 +4,7 @@ import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
 import { useMapContext } from '../../lib/context/mapContext';
 import { useGameContext } from '../../lib/context/gameContext';
+import '../../styles/index.css';
 
 export interface GamePlayProps {
   gameState: number;
@@ -21,10 +22,14 @@ const GamePlay: React.FC<GamePlayProps> = ({
   return (
     <div>
       <ProgressBar gameState={gameState} />
-      {game.locations.length ? (
-        <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
-      ) : null}
-      <MapSelector />
+      {
+        game.locations.length
+          ? <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
+          : null
+      }
+      <div className="map__selector">
+        <MapSelector />
+      </div>
       <button
         type="button"
         onClick={submitGuess}
