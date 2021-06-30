@@ -1,0 +1,36 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  max-height: 50vh;
+  max-width: 80vw;
+}
+.carousel img {
+  max-height: 100%;
+}
+
+.carousel img, button {
+  margin: 0;
+  width: 4rem;
+  height: auto;
+}
+
+.carousel button {
+  margin: 1px;
+  border: none;
+  padding: 0;
+}
+
+#img-main {
+  animation: fadeIn 300ms ease-out;
+  height: auto;
+  width: 60vw;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
