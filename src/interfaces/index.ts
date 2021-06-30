@@ -21,10 +21,13 @@ export interface Location {
 }
 
 export interface Game {
-  id: string;
-  guesses: UserGuess[];
+  active: boolean;
+  currentScore: number;
   locations: Location[];
   currentTurn: number;
+  guesses: UserGuess[];
+  id: string;
+  userID: string;
   createdAt: string;
   updatedAt: string;
 }

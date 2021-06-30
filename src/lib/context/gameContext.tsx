@@ -11,10 +11,13 @@ interface GameContextInterface {
 }
 
 const initialGameState: Game = {
-  id: '',
-  guesses: [],
+  active: true,
+  currentScore: 0,
   locations: [],
   currentTurn: 0,
+  guesses: [],
+  id: '',
+  userID: '',
   createdAt: '',
   updatedAt: '',
 };
@@ -39,6 +42,7 @@ export const GameProvider = ({ children }): any => {
         distance,
         score,
       }),
+      currentScore: oldGame.currentScore + score,
     }));
   };
 
@@ -70,6 +74,9 @@ export const GameProvider = ({ children }): any => {
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
       locations: formattedLocations,
+      active: data.active,
+      currentScore: data.currentScore,
+      userID: data.userID,
     });
   };
 
