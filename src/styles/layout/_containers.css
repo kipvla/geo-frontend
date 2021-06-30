@@ -6,13 +6,7 @@
 }
 
 .page__container {
-  position: relative;
-  top: 4rem;
+  padding-top: 4rem;
   width: 100vw;
-  height: calc(100% - 4rem);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: calc(100%-4rem);
 }

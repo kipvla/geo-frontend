@@ -49,7 +49,7 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="page__container">
+    <div className="page__container container">
       {game.currentTurn <= 3 ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
