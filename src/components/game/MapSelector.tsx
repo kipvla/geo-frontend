@@ -23,7 +23,7 @@ const MapSelector: React.FC = (): ReactElement => {
     <div>
       <ReactMapGL
         {...viewport}
-        mapStyle="mapbox://styles/mapbox/outdoors-v11"
+        mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
         onViewportChange={(newViewport) => setViewport(newViewport)}
         onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}

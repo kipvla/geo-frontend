@@ -16,5 +16,5 @@
   "editor.tabSize": 2,
   "eslint.enable": true,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

@@ -12,6 +12,12 @@
 .navbar a {
   text-decoration: none;
   margin-left: 0.5rem;
+  color: white;
+  transition: color 100ms;
+}
+.navbar a:hover {
+  transition: color 100ms;
+  color: grey;
 }
 .links a {
   margin-right: 0.5rem;

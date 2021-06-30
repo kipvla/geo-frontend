@@ -24,7 +24,10 @@ const ResultsMap: React.FC<ResultsMapProps> = ({
   sourcePosition,
   targetPosition,
 }: ResultsMapProps) => {
-  const data = [{ sourcePosition, targetPosition }];
+  const data = [
+    { sourcePosition, targetPosition },
+    { sourcePosition: [0, 0], targetPosition: [2, 41] },
+  ];
 
   const layers = [new LineLayer({ id: 'line-layer', data })];
 
@@ -32,7 +35,7 @@ const ResultsMap: React.FC<ResultsMapProps> = ({
     <ReactMapGL
       width="40vw"
       height="30vh"
-      mapStyle="mapbox://styles/mapbox/outdoors-v11"
+      mapStyle="mapbox://styles/mapbox/satellite-v9"
       mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
     >
       <DeckGL initialViewState={INITIAL_VIEW_STATE} controller layers={layers}>
