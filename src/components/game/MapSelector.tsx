@@ -25,6 +25,7 @@ const MapSelector: React.FC = (): ReactElement => {
         onViewportChange={(newViewport) => setViewport(newViewport)}
         onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+        className="mapbox"
       >
         {pinCoordinates[0] || pinCoordinates[1] ? (
           <Marker

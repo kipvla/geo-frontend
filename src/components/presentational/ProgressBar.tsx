@@ -9,7 +9,10 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
   gameState,
 }: ProgressBarProps): ReactElement => (
   <div className="progress">
-    <div className="progress-bar" style={{ width: `${gameState * 20}%` }} />
+    <div
+      className="progress-bar"
+      style={{ width: `${((gameState - 1) * 100) / 3}%` }}
+    />
   </div>
 );
 

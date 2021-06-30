@@ -97,6 +97,7 @@ const Register: React.FC = () => {
                   credentials.passwordRepeat
                 )
               }
+              className="button__primary"
             >
               REGISTER
             </button>

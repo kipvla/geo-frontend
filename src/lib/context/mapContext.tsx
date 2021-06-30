@@ -11,8 +11,8 @@ interface MapContextInterface {
 }
 
 const initialMapSettings = {
-  width: '50vw',
-  height: '40vh',
+  width: '20vw',
+  height: '20vh',
   latitude: 22,
   longitude: -65,
   zoom: 0.6,
@@ -24,8 +24,7 @@ export const MapContext = React.createContext<MapContextInterface>(null);
 export const MapProvider = ({ children }): any => {
   const [viewport, setViewport] = useState(initialMapSettings);
   const [pinCoordinates, setPinCoordinates] = useState<[number, number]>([
-    0,
-    0,
+    0, 0,
   ]);
 
   const setZoomLevel = (zoom: number) => {

@@ -6,7 +6,9 @@ import '../styles/index.css';
 const Home: React.FC = () => (
   <div className="page__container container">
     <Navbar auth />
-    <Link to="/game">start game</Link>
+    <Link to="/game" className="button__primary">
+      start game
+    </Link>
   </div>
 );
 

@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   margin: 1rem;
-  height: 50vh;
+  height: 70vh;
   width: 80vw;
   overflow: scroll;
+  flex: 8;
 }
 
-.carousel img, button {
+.carousel img,
+button {
   margin: 0;
   width: 4rem;
   height: auto;
@@ -28,7 +30,8 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-  } to {
+  }
+  to {
     opacity: 1;
   }
 }

@@ -56,7 +56,7 @@ const Login: React.FC = () => {
               type="email"
               value={credentials.email}
               onChange={handleChange}
-              placeholder="Email"
+              placeholder="email"
               className="login__form__input"
               style={{ height: '36px' }}
             />
@@ -65,15 +65,16 @@ const Login: React.FC = () => {
               type="password"
               value={credentials.password}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="password"
               className="login__form__input"
             />
             {error ? <p>{error}</p> : null}
             <button
               type="submit"
               disabled={!(credentials.email && credentials.password)}
+              className="button__primary"
             >
-              LOGIN
+              log in
             </button>
           </form>
         </div>

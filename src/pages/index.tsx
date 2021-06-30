@@ -13,7 +13,7 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 // }));
 const isBrowser = () => typeof window !== 'undefined';
 export default function index() {
-  const [isGlobeShowing, setIsGlobeShowing] = useState(false);
+  const [isGlobeShowing, setIsGlobeShowing] = useState(true);
   const handleGlobeClick = ({ lat, lng }, event) => {
     console.log(event, lat, lng);
     setIsGlobeShowing(!isGlobeShowing);
@@ -26,7 +26,7 @@ export default function index() {
         <React.Suspense fallback={<div />}>
           <Globe
             showGlobe={isGlobeShowing}
-            backgroundColor="black"
+            backgroundColor="white"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
             onGlobeClick={handleGlobeClick}
