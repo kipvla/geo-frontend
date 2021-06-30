@@ -16,12 +16,9 @@ const Game: React.FC = () => {
   const { resetMap, pinCoordinates } = useMapContext();
 
   const {
-    addGuess,
-    incrementTurn,
-    game,
-    resetGame,
-    populateGame,
-  } = useGameContext();
+    addGuess, incrementTurn, game, resetGame, populateGame
+  } =
+    useGameContext();
 
   useEffect(() => {
     const fetchGame = async () => {
@@ -55,18 +52,17 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container container__page">
       <Navbar />
-      {
-        isPlaying
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
+      {isPlaying ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>
     </div>
-
   );
 };
 

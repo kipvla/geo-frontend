@@ -4,3 +4,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.container__page {
+  padding-top: 4rem;
+}

@@ -8,11 +8,9 @@ const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
 const MapSelector: React.FC = (): ReactElement => {
   const {
-    viewport,
-    setViewport,
-    pinCoordinates,
-    setPinCoordinates,
-  } = useMapContext();
+    viewport, setViewport, pinCoordinates, setPinCoordinates
+  } =
+    useMapContext();
 
   const dropMarker = ({ lngLat }): void => {
     const longitude = lngLat[0];
@@ -20,7 +18,7 @@ const MapSelector: React.FC = (): ReactElement => {
     setPinCoordinates([longitude, latitude]);
   };
   return (
-    <div>
+    <>
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
@@ -39,7 +37,7 @@ const MapSelector: React.FC = (): ReactElement => {
           </Marker>
         ) : null}
       </ReactMapGL>
-    </div>
+    </>
   );
 };
 export default MapSelector;
