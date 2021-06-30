@@ -2,8 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import Logout from '../auth/Logout';
 
-export interface NavbarProps {
-}
+export interface NavbarProps {}
 
 // eslint-disable-next-line max-len
 const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => (

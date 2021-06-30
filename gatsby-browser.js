@@ -16,9 +16,7 @@ const HackyFix = ({ element }) => {
   return (
     <AuthProvider>
       <GameProvider>
-        <MapProvider>
-          {element}
-        </MapProvider>
+        <MapProvider>{element}</MapProvider>
       </GameProvider>
     </AuthProvider>
   );

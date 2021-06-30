@@ -5,7 +5,9 @@ export interface ImageCarouselProps {
 }
 
 // eslint-disable-next-line max-len
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }: ImageCarouselProps): ReactElement => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  sources,
+}: ImageCarouselProps): ReactElement => {
   const [mainImg, setMainImg] = useState(sources[0]);
 
   const changeImg = (event) => {
@@ -14,11 +16,15 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }: ImageCarouselP
 
   return (
     <div className="carousel">
-      {sources.map((source, ind) => (
-        source !== mainImg
-          ? <button key={ind.toString()} type="button" onClick={changeImg}><img src={source} alt={source} /></button>
-          : <img key={ind.toString()} src={source} alt={source} id="img-main" />
-      )) }
+      {sources.map((source, ind) =>
+        source !== mainImg ? (
+          <button key={ind.toString()} type="button" onClick={changeImg}>
+            <img src={source} alt={source} />
+          </button>
+        ) : (
+          <img key={ind.toString()} src={source} alt={source} id="img-main" />
+        )
+      )}
     </div>
   );
 };

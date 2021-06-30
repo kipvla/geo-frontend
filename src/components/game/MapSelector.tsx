@@ -28,19 +28,16 @@ const MapSelector: React.FC = (): ReactElement => {
         onClick={dropMarker}
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
       >
-        {
-          pinCoordinates[0] || pinCoordinates[1] ? (
-            <Marker
-              longitude={pinCoordinates[0]}
-              latitude={pinCoordinates[1]}
-              draggable
-              onDragEnd={dropMarker}
-            >
-              <FaMapPin />
-            </Marker>
-          )
-            : null
-        }
+        {pinCoordinates[0] || pinCoordinates[1] ? (
+          <Marker
+            longitude={pinCoordinates[0]}
+            latitude={pinCoordinates[1]}
+            draggable
+            onDragEnd={dropMarker}
+          >
+            <FaMapPin />
+          </Marker>
+        ) : null}
       </ReactMapGL>
     </div>
   );

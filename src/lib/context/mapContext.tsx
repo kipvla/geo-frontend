@@ -23,7 +23,10 @@ export const MapContext = React.createContext<MapContextInterface>(null);
 // eslint-disable-next-line react/prop-types
 export const MapProvider = ({ children }): any => {
   const [viewport, setViewport] = useState(initialMapSettings);
-  const [pinCoordinates, setPinCoordinates] = useState<[number, number]>([0, 0]);
+  const [pinCoordinates, setPinCoordinates] = useState<[number, number]>([
+    0,
+    0,
+  ]);
 
   const setZoomLevel = (zoom: number) => {
     setViewport({
@@ -38,9 +41,14 @@ export const MapProvider = ({ children }): any => {
   };
 
   return (
-    <MapContext.Provider value={{
-      viewport, setViewport, pinCoordinates, setPinCoordinates, resetMap,
-    }}
+    <MapContext.Provider
+      value={{
+        viewport,
+        setViewport,
+        pinCoordinates,
+        setPinCoordinates,
+        resetMap,
+      }}
     >
       {children}
     </MapContext.Provider>

@@ -18,7 +18,11 @@ const Game: React.FC = () => {
   const { resetMap, pinCoordinates } = useMapContext();
   // const { isAuthenticated, setAuthenticated } = useAuthContext();
   const {
-    addGuess, incrementTurn, game, resetGame, populateGame,
+    addGuess,
+    incrementTurn,
+    game,
+    resetGame,
+    populateGame,
   } = useGameContext();
 
   useEffect(() => {
@@ -77,11 +81,11 @@ const Game: React.FC = () => {
           ? ( */}
       <div className="container">
         <Navbar />
-        {
-                isPlaying
-                  ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-                  : <GameSummary handleGameEnd={handleGameEnd} />
-              }
+        {isPlaying ? (
+          <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+        ) : (
+          <GameSummary handleGameEnd={handleGameEnd} />
+        )}
         <Modal show={showScore} handleClose={startNextRound}>
           <GameScore />
         </Modal>

@@ -25,16 +25,17 @@ const GameScore: React.FC = () => {
 
   return (
     <div>
-      {game.guesses.length
-        ? (
-          <>
-            <StaticMap sourcePosition={sourcePosition} targetPosition={targetPosition} />
-            {/* this could be nicer */}
-            <p>{`DISTANCE: ${game.guesses[index].distance} km`}</p>
-            <p>{`POINTS: ${game.guesses[index].score}`}</p>
-          </>
-        )
-        : null}
+      {game.guesses.length ? (
+        <>
+          <StaticMap
+            sourcePosition={sourcePosition}
+            targetPosition={targetPosition}
+          />
+          {/* this could be nicer */}
+          <p>{`DISTANCE: ${game.guesses[index].distance} km`}</p>
+          <p>{`POINTS: ${game.guesses[index].score}`}</p>
+        </>
+      ) : null}
     </div>
   );
 };
