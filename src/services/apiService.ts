@@ -13,7 +13,7 @@ const BASE_URL = process.env.GATSBY_BASE_URL;
 //   });
 // };
 
-const noAuthPost = (route, body) => {
+const notAuthenticatedPost = (route, body) => {
   return fetch(BASE_URL + route, {
     method: 'POST',
     headers: {
@@ -23,7 +23,7 @@ const noAuthPost = (route, body) => {
   });
 };
 
-const authGet = (route) => {
+const authenticatedGet = (route) => {
   const token = localStorage.getItem('accessToken');
   return fetch(BASE_URL + route, {
     headers: {
@@ -35,15 +35,15 @@ const authGet = (route) => {
 const login = (credentials) => {
   console.log('im here in the api service');
   console.log(credentials);
-  return noAuthPost('auth/login', credentials);
+  return notAuthenticatedPost('auth/login', credentials);
 };
 
 const register = (credentials) => {
-  return noAuthPost('auth/register', credentials);
+  return notAuthenticatedPost('auth/register', credentials);
 };
 
 const fetchGame = (): Promise<Response> => {
-  return authGet('game');
+  return authenticatedGet('game');
 };
 
 export default { login, register, fetchGame };
