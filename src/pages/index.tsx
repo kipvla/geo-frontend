@@ -20,7 +20,8 @@ export default function index() {
   };
   return (
     <div>
-      <Navbar />
+      <Navbar auth={false} />
+
       {isBrowser() ? (
         <React.Suspense fallback={<div />}>
           <Globe

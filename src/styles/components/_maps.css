@@ -1,0 +1,7 @@
+.map__selector {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 20vw;
+  height: 50vh;
+}

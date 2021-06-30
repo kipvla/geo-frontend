@@ -14,24 +14,17 @@ import calculateScore from '../lib/scoring/score';
 import apiService from '../services/apiService';
 
 const Game: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
 
   const { addGuess, incrementTurn, game, resetGame, populateGame } =
     useGameContext();
 
-  const fetchGame = async () => {
-    const gameData = await apiService.fetchGame().then((res) => res.json());
-    populateGame(gameData);
-  };
-
   useEffect(() => {
     fetchGame();
   }, []);
 
   const makeAGuess = () => {
-    console.log(game);
     const [lng, lat] = pinCoordinates;
     const trueLng = game.locations[game.currentTurn - 1].lng;
     const trueLat = game.locations[game.currentTurn - 1].lat;
@@ -45,19 +38,17 @@ const Game: React.FC = () => {
     setShowScore(false);
     incrementTurn();
     resetMap();
-    if (game.currentTurn === 3) setIsPlaying(false);
   };
 
   const handleGameEnd = () => {
-    setIsPlaying(true);
     resetGame();
     fetchGame();
   };
 
   return (
-    <div className="container">
-      <Navbar />
-      {isPlaying ? (
+    <div className="page__container">
+      <Navbar auth />
+      {game.currentTurn <= 3 ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
         <GameSummary handleGameEnd={handleGameEnd} />

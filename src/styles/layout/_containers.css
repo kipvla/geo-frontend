@@ -4,3 +4,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.page__container {
+  position: relative;
+  top: 4rem;
+  width: 100vw;
+  height: calc(100% - 4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
