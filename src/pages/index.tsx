@@ -9,12 +9,11 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 //   endLat: (Math.random() - 0.5) * 180,
 //   endLng: (Math.random() - 0.5) * 360,
 //   color: [['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
-// ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]],
+//   ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]],
 // }));
 const isBrowser = () => typeof window !== 'undefined';
 export default function index() {
   const [isGlobeShowing, setIsGlobeShowing] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const handleGlobeClick = ({ lat, lng }, event) => {
     console.log(event, lat, lng);
     setIsGlobeShowing(!isGlobeShowing);
@@ -27,6 +26,9 @@ export default function index() {
           <Globe
             showGlobe={isGlobeShowing}
             backgroundColor="black"
+            globeImageUrl="/images/earthlights4k.jpg"
+            showGraticules
+            onGlobeClick={handleGlobeClick}
             // arcsData={arcsData}
             arcColor="color"
             arcDashLength={() => Math.random()}

@@ -21,6 +21,7 @@
     "@deck.gl/react": "^8.4.19",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@fontsource/darker-grotesque": "^4.4.5",
     "deck.gl": "^8.4.19",
     "dotenv": "^8.6.0",
     "gatsby": "^3.6.2",
