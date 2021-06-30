@@ -54,7 +54,7 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="page__container">
       <Navbar auth />
       {isPlaying ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
