@@ -1,7 +1,7 @@
 
 .progress {
   height: 2rem;
-  background-color: lightblue;
+  background-color: #7F534B;
   width: 80vw;
   border-radius: 20px;
   box-sizing: border-box;
@@ -9,6 +9,6 @@
 
 .progress-bar {
   height: 2rem;
-  background-color: rgba(106, 106, 216, 0.651);
+  background-color: lightblue;
   border-radius: 20px;
 }
