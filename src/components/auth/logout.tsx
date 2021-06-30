@@ -9,7 +9,11 @@ const Logout: React.FC = () => {
     setAuthenticated(false);
   };
 
-  return (<Link to="/" onClick={handleLogout}>Logout</Link>);
+  return (
+    <Link to="/" onClick={handleLogout}>
+      Logout
+    </Link>
+  );
 };
 
 export default Logout;

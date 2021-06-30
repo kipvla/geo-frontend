@@ -6,8 +6,8 @@ import ReactMapGL, { StaticMap } from 'react-map-gl';
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
 export interface ResultsMapProps {
- sourcePosition: [number, number];
- targetPosition: [number, number];
+  sourcePosition: [number, number];
+  targetPosition: [number, number];
 }
 
 const INITIAL_VIEW_STATE = {
@@ -20,14 +20,13 @@ const INITIAL_VIEW_STATE = {
 
 // eslint-disable-next-line arrow-body-style
 // eslint-disable-next-line max-len
-const ResultsMap: React.FC<ResultsMapProps> = ({ sourcePosition, targetPosition }: ResultsMapProps) => {
-  const data = [
-    { sourcePosition, targetPosition },
-  ];
+const ResultsMap: React.FC<ResultsMapProps> = ({
+  sourcePosition,
+  targetPosition,
+}: ResultsMapProps) => {
+  const data = [{ sourcePosition, targetPosition }];
 
-  const layers = [
-    new LineLayer({ id: 'line-layer', data }),
-  ];
+  const layers = [new LineLayer({ id: 'line-layer', data })];
 
   return (
     <ReactMapGL
@@ -36,12 +35,10 @@ const ResultsMap: React.FC<ResultsMapProps> = ({ sourcePosition, targetPosition 
       mapStyle="mapbox://styles/mapbox/outdoors-v11"
       mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
     >
-      <DeckGL
-        initialViewState={INITIAL_VIEW_STATE}
-        controller
-        layers={layers}
-      >
-        <StaticMap mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN} />
+      <DeckGL initialViewState={INITIAL_VIEW_STATE} controller layers={layers}>
+        <StaticMap
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
+        />
       </DeckGL>
     </ReactMapGL>
   );

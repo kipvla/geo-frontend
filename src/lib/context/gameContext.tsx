@@ -25,11 +25,19 @@ export const GameContext = React.createContext<GameContextInterface>(null);
 export const GameProvider = ({ children }): any => {
   const [game, setGame] = useState<Game>(initialGameState);
 
-  const addGuess = (lat: number, lng: number, distance: number, score: number) => {
+  const addGuess = (
+    lat: number,
+    lng: number,
+    distance: number,
+    score: number
+  ) => {
     setGame((oldGame) => ({
       ...oldGame,
       guesses: oldGame.guesses.concat({
-        lat, lng, distance, score,
+        lat,
+        lng,
+        distance,
+        score,
       }),
     }));
   };
@@ -66,9 +74,14 @@ export const GameProvider = ({ children }): any => {
   };
 
   return (
-    <GameContext.Provider value={{
-      game, addGuess, incrementTurn, resetGame, populateGame,
-    }}
+    <GameContext.Provider
+      value={{
+        game,
+        addGuess,
+        incrementTurn,
+        resetGame,
+        populateGame,
+      }}
     >
       {children}
     </GameContext.Provider>

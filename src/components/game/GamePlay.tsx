@@ -11,19 +11,19 @@ export interface GamePlayProps {
 }
 
 // eslint-disable-next-line max-len
-const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }: GamePlayProps): ReactElement => {
+const GamePlay: React.FC<GamePlayProps> = ({
+  gameState,
+  submitGuess,
+}: GamePlayProps): ReactElement => {
   const { pinCoordinates } = useMapContext();
   const { game } = useGameContext();
 
   return (
-
     <div>
       <ProgressBar gameState={gameState} />
-      {
-        game.locations.length
-          ? <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
-          : null
-      }
+      {game.locations.length ? (
+        <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
+      ) : null}
       <MapSelector />
       <button
         type="button"
@@ -33,7 +33,6 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }: GamePlayP
         Make guess
       </button>
     </div>
-
   );
 };
 

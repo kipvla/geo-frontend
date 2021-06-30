@@ -57,15 +57,12 @@ const Login: React.FC = () => {
           onChange={handleChange}
           placeholder="password"
         />
-        {
-          error ? <p>{error}</p> : null
-        }
+        {error ? <p>{error}</p> : null}
         <button
           type="submit"
           disabled={!(credentials.email && credentials.password)}
         >
           LOGIN
-
         </button>
       </form>
     </div>
