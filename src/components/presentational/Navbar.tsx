@@ -1,17 +1,26 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'gatsby';
-import Logout from '../auth/Logout';
+import Logout from '../auth/logout';
 
-export interface NavbarProps {}
+export interface NavbarProps {
+  auth: boolean
+}
 
 // eslint-disable-next-line max-len
-const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => (
+const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps): ReactElement => (
   <div className="navbar">
     <a href="/">nomad</a>
     <div className="links">
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
-      <Logout />
+      {
+        auth
+          ? <Logout />
+          : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )
+      }
     </div>
   </div>
 );

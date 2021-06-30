@@ -2,11 +2,9 @@
   display: flex;
   align-items: center;
   margin: 1rem;
-  max-height: 50vh;
-  max-width: 80vw;
-}
-.carousel img {
-  max-height: 100%;
+  height: 50vh;
+  width: 80vw;
+  overflow: scroll;
 }
 
 .carousel img, button {
@@ -23,8 +21,8 @@
 
 #img-main {
   animation: fadeIn 300ms ease-out;
-  height: auto;
-  width: 60vw;
+  height: 100%;
+  width: auto;
 }
 
 @keyframes fadeIn {
