@@ -20,12 +20,13 @@ export default function index() {
   };
   return (
     <div>
-      <Navbar />
+      <Navbar auth={false} />
+
       {isBrowser() ? (
         <React.Suspense fallback={<div />}>
           <Globe
             showGlobe={isGlobeShowing}
-            backgroundColor="#131313"
+            backgroundColor="black"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
             onGlobeClick={handleGlobeClick}

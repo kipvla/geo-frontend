@@ -42,7 +42,7 @@ const Register: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <Navbar />
+      <Navbar auth={false} />
       <div
         style={{
           display: 'flex',

@@ -55,17 +55,16 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      <Navbar />
-      {
-        isPlaying
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
+      <Navbar auth />
+      {isPlaying ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>
     </div>
-
   );
 };
 

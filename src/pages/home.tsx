@@ -4,7 +4,7 @@ import Navbar from '../components/presentational/Navbar';
 
 const Home: React.FC = () => (
   <div>
-    <Navbar />
+    <Navbar auth />
     <Link to="/game">start game</Link>
   </div>
 );
