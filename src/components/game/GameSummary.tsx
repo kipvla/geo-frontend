@@ -10,7 +10,7 @@ const GameSummary: React.FC<GameSummaryProps> = ({
   <div>
     <p>its me the end of game screen!</p>
     <button type="button" onClick={handleGameEnd}>
-      Play again
+      take me home
     </button>
   </div>
 );
