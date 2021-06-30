@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
@@ -10,7 +11,6 @@ export interface GamePlayProps {
   submitGuess: () => void;
 }
 
-// eslint-disable-next-line max-len
 const GamePlay: React.FC<GamePlayProps> = ({
   gameState,
   submitGuess,

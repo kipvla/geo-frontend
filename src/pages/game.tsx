@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+
 import Modal from '../components/presentational/Modal';
 import GamePlay from '../components/game/GamePlay';
 import GameSummary from '../components/game/GameSummary';
 import GameScore from '../components/game/GameScore';
 import Navbar from '../components/presentational/Navbar';
+
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
+
 import apiService from '../services/apiService';
 
 const Game: React.FC = () => {
@@ -15,19 +18,15 @@ const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
 
-  const {
-    addGuess,
-    incrementTurn,
-    game,
-    resetGame,
-    populateGame,
-  } = useGameContext();
+  const { addGuess, incrementTurn, game, resetGame, populateGame } =
+    useGameContext();
+
+  const fetchGame = async () => {
+    const gameData = await apiService.fetchGame().then((res) => res.json());
+    populateGame(gameData);
+  };
 
   useEffect(() => {
-    const fetchGame = async () => {
-      const gameData = await apiService.fetchGame().then((res) => res.json());
-      populateGame(gameData);
-    };
     fetchGame();
   }, []);
 
@@ -52,21 +51,21 @@ const Game: React.FC = () => {
   const handleGameEnd = () => {
     setIsPlaying(true);
     resetGame();
+    fetchGame();
   };
 
   return (
     <div className="container">
       <Navbar />
-      {
-        isPlaying
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
+      {isPlaying ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>
     </div>
-
   );
 };
 
