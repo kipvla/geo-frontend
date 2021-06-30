@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-
 import '../../styles/index.css';
 
 export interface ModalProps {
