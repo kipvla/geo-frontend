@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import apiService from '../services/apiService';
 import { useAuthContext } from '../lib/context/authContext';
+import Navbar from '../components/presentational/Navbar';
 
 const emptyCredentials = {
   email: '',
@@ -41,30 +42,45 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="container">
-        <input
-          name="email"
-          type="email"
-          value={credentials.email}
-          onChange={handleChange}
-          placeholder="your email"
-        />
-        <input
-          name="password"
-          type="password"
-          value={credentials.password}
-          onChange={handleChange}
-          placeholder="password"
-        />
-        {error ? <p>{error}</p> : null}
-        <button
-          type="submit"
-          disabled={!(credentials.email && credentials.password)}
-        >
-          LOGIN
-        </button>
-      </form>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Navbar />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <div className="login__form__container">
+          <form onSubmit={handleSubmit} className="login__form">
+            <input
+              name="email"
+              type="email"
+              value={credentials.email}
+              onChange={handleChange}
+              placeholder="Email"
+              className="login__form__input"
+              style={{ height: '36px' }}
+            />
+            <input
+              name="password"
+              type="password"
+              value={credentials.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="login__form__input"
+            />
+            {error ? <p>{error}</p> : null}
+            <button
+              type="submit"
+              disabled={!(credentials.email && credentials.password)}
+            >
+              LOGIN
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
