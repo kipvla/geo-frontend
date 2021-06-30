@@ -32,7 +32,6 @@ const Game: React.FC = () => {
   }, []);
 
   const makeAGuess = () => {
-    console.log(game);
     const [lng, lat] = pinCoordinates;
     const trueLng = game.locations[game.currentTurn - 1].lng;
     const trueLat = game.locations[game.currentTurn - 1].lat;

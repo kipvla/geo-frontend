@@ -25,7 +25,7 @@ export default function index() {
         <React.Suspense fallback={<div />}>
           <Globe
             showGlobe={isGlobeShowing}
-            backgroundColor="black"
+            backgroundColor="#131313"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
             onGlobeClick={handleGlobeClick}

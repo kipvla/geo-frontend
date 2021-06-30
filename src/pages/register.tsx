@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import apiService from '../services/apiService';
-import { useAuthContext } from '../lib/context/authContext';
 import Navbar from '../components/presentational/Navbar';
 
 const emptyCredentials = {
@@ -12,7 +11,6 @@ const emptyCredentials = {
 };
 
 const Register: React.FC = () => {
-  const { setAuthenticated } = useAuthContext();
   const [credentials, setCredentials] = useState(emptyCredentials);
   const [error, setError] = useState('');
 
@@ -23,7 +21,6 @@ const Register: React.FC = () => {
       if (response.ok) {
         const body = await response.json();
         localStorage.setItem('accessToken', body.token);
-        setAuthenticated(true);
         setCredentials(emptyCredentials);
         navigate('/login');
       } else {
