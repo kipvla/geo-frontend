@@ -30,10 +30,11 @@ const GamePlay: React.FC<GamePlayProps> = ({
       </div>
       <button
         type="button"
+        className="button__primary"
         onClick={submitGuess}
         disabled={pinCoordinates[0] === 0 && pinCoordinates[1] === 0}
       >
-        Make guess
+        Make a guess
       </button>
     </div>
   );
