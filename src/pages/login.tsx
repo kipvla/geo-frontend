@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import apiService from '../services/apiService';
 import { useAuthContext } from '../lib/context/authContext';
+import Navbar from '../components/presentational/Navbar';
 
 const emptyCredentials = {
   email: '',
@@ -42,13 +43,13 @@ const Login: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <div className="login__navbar" />
+      <Navbar />
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '90vh',
+          height: '100%',
         }}
       >
         <div className="login__form__container">
