@@ -22,7 +22,7 @@ const GamePlay: React.FC<GamePlayProps> = ({
   const { game } = useGameContext();
 
   return (
-    <div>
+    <div className="container">
       <ProgressBar gameState={gameState} />
       {game.locations.length ? (
         <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
@@ -32,10 +32,11 @@ const GamePlay: React.FC<GamePlayProps> = ({
       </div>
       <button
         type="button"
+        className="button__primary"
         onClick={submitGuess}
         disabled={pinCoordinates[0] === 0 && pinCoordinates[1] === 0}
       >
-        Make guess
+        Make a guess
       </button>
     </div>
   );

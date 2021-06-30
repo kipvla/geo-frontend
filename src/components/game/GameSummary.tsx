@@ -1,5 +1,6 @@
 import React from 'react';
 import GameEndMap from './GameEndMap';
+import '../../styles/index.css';
 
 export interface GameSummaryProps {
   handleGameEnd: () => void;
@@ -9,13 +10,10 @@ const GameSummary: React.FC<GameSummaryProps> = ({
   handleGameEnd,
 }: GameSummaryProps) => (
   <div>
-    <p>its me the end of game screen!</p>
-    <div className="">
-      <GameEndMap />
-    </div>
-
+    <p className="text__light">its me the end of game screen!</p>
+    <GameEndMap />
     <button type="button" onClick={handleGameEnd}>
-      Play again
+      take me home
     </button>
   </div>
 );

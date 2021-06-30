@@ -1,7 +1,10 @@
 .map__selector {
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
   right: 0;
   width: 20vw;
-  height: 50vh;
+  height: 50vh; */
+  border-radius: 20px;
+  background-color: lightblue;
+  padding: 5px;
 }

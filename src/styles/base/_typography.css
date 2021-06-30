@@ -2,3 +2,11 @@ body {
   font-family: 'Darker Grotesque';
   font-size: 1.3rem;
 }
+
+.text__light {
+  color: lightblue;
+}
+
+.text__error {
+  color: pink;
+}

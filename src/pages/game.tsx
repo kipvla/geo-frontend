@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import GamePlay from '../components/game/GamePlay';
 import GameSummary from '../components/game/GameSummary';
 import GameScore from '../components/game/GameScore';
-import Navbar from '../components/presentational/Navbar';
-
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
@@ -17,7 +15,9 @@ const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
 
-  const { addGuess, incrementTurn, game, resetGame, populateGame } =
+  const {
+    addGuess, incrementTurn, game, resetGame, populateGame
+  } =
     useGameContext();
 
   const fetchGame = async () => {
@@ -48,12 +48,12 @@ const Game: React.FC = () => {
   };
 
   const handleGameEnd = () => {
+    navigate('/home');
     resetGame();
   };
 
   return (
-    <div className="page__container">
-      <Navbar auth />
+    <div className="container">
       {game.currentTurn <= 3 ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
