@@ -5,9 +5,12 @@ export interface ModalProps {
   handleClose: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ show, handleClose, children }) => (
-  <div className={show ? 'modal__show ' : 'modal__hide'}>
-    <p>im a modal</p>
+const Modal: React.FC<ModalProps> = ({
+  show,
+  handleClose,
+  children,
+}: ModalProps) => (
+  <div className={`${show ? 'modal__show ' : 'modal__hide'} container`}>
     <button type="button" onClick={handleClose}>
       next round
     </button>
