@@ -6,6 +6,7 @@
   width: 80vw;
   overflow: scroll;
   flex: 8;
+  padding: 1rem;
 }
 
 .carousel img {
@@ -21,8 +22,7 @@
 }
 
 .main__img {
-  animation: fadeIn 300ms ease-out;
-  box-shadow: 0 0 20px black;
+  border: 1px solid black;
 }
 
 @keyframes fadeIn {
