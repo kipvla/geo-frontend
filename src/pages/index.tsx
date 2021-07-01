@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../components/presentational/Navbar';
 
 const Globe = React.lazy(() => import('react-globe.gl'));
+const isBrowser = () => typeof window !== 'undefined';
+
 // const N = 20;
 // const arcsData = [...Array(N).keys()].map(() => ({
 //   startLat: (Math.random() - 0.5) * 180,
@@ -11,8 +13,8 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 //   color: [['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
 //   ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]],
 // }));
-const isBrowser = () => typeof window !== 'undefined';
-export default function Index() {
+
+const Index = () => {
   const [isGlobeShowing, setIsGlobeShowing] = useState(true);
   const handleGlobeClick = ({ lat, lng }, event) => {
     console.log(event, lat, lng);
@@ -40,4 +42,6 @@ export default function Index() {
       ) : null}
     </div>
   );
-}
+};
+
+export default Index;
