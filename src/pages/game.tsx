@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 
 import Modal from '../components/presentational/Modal';
-import GamePlay from '../components/game/GamePlay';
-import GameSummary from '../components/game/GameSummary';
-import GameScore from '../components/game/GameScore';
-
+import { GamePlay, GameSummary, GameScore } from '../components/game';
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
@@ -19,12 +16,12 @@ const Game: React.FC = () => {
     useGameContext();
   if (!game) return null;
 
-  const fetchGame = async () => {
-    const gameData = await apiService.fetchGame().then((res) => res.json());
-    populateGame(gameData);
-  };
-
   useEffect(() => {
+    const fetchGame = async () => {
+      const gameData = await apiService.fetchGame().then((res) => res.json());
+      populateGame(gameData);
+    };
+
     fetchGame();
   }, []);
 
@@ -51,11 +48,11 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {
-        game.currentTurn <= 3
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
+      {game.currentTurn <= 3 ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>

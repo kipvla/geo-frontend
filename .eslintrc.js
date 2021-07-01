@@ -32,5 +32,6 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'no-dupe-keys': 'off',
     'object-curly-newline': 'off',
+    'react/prop-types': 'off',
   },
 };

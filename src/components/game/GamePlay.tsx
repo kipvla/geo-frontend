@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
@@ -11,22 +11,16 @@ export interface GamePlayProps {
   submitGuess: () => void;
 }
 
-const GamePlay: React.FC<GamePlayProps> = ({
-  gameState,
-  submitGuess,
-}: GamePlayProps): ReactElement => {
+const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   const { pinCoordinates } = useMapContext();
   const { game } = useGameContext();
+  if (!game.locations.length) return null;
 
   return (
     <div className="container page__container" style={{ flexDirection: 'row' }}>
       <Navbar auth />
       <ProgressBar gameState={gameState} />
-      {
-        game.locations.length
-          ? <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
-          : null
-      }
+      <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
       <div className="map__selector">
         <MapSelector />
       </div>
