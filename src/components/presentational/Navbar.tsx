@@ -12,11 +12,14 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
     <Link to="/">nomad</Link>
     <div className="links">
       {auth ? (
-        <Logout />
+        <>
+          <Link to="/leaderboards">Leaderboard</Link>
+          <Logout />
+        </>
       ) : (
         <>
-          <Link to="/login">login</Link>
-          <Link to="/register">register</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </>
       )}
     </div>
