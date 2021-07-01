@@ -3,7 +3,6 @@ import DeckGL from '@deck.gl/react';
 import { LineLayer, IconLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import { useGameContext } from '../../lib/context/gameContext';
-import '../../styles/index.css';
 
 const INITIAL_VIEW_STATE = {
   longitude: -40.41669,

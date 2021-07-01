@@ -31,5 +31,6 @@ module.exports = {
     'function-paren-newline': 'off',
     'react/jsx-filename-extension': 'off',
     'no-dupe-keys': 'off',
+    'object-curly-newline': 'off',
   },
 };

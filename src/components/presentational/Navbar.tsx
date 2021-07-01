@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import Logout from '../auth/logout';
 
@@ -7,7 +7,7 @@ export interface NavbarProps {
 }
 
 // eslint-disable-next-line max-len
-const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps): ReactElement => (
+const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
   <div className="navbar">
     <a href="/">nomad</a>
     <div className="links">

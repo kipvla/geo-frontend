@@ -10,17 +10,14 @@ import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
-
 import apiService from '../services/apiService';
 
 const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
-
-  const {
-    addGuess, incrementTurn, game, resetGame, populateGame
-  } =
+  const { addGuess, incrementTurn, game, resetGame, populateGame } =
     useGameContext();
+  if (!game) return null;
 
   const fetchGame = async () => {
     const gameData = await apiService.fetchGame().then((res) => res.json());
@@ -54,11 +51,11 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {game.currentTurn <= 3 ? (
-        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-      ) : (
-        <GameSummary handleGameEnd={handleGameEnd} />
-      )}
+      {
+        game.currentTurn <= 3
+          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+          : <GameSummary handleGameEnd={handleGameEnd} />
+      }
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>

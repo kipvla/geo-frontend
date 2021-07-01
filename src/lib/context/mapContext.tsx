@@ -10,22 +10,30 @@ interface MapContextInterface {
   resetMap: () => void;
 }
 
+const defaultValue = {
+  viewport: null,
+  setViewport: () => {},
+  pinCoordinates: null,
+  setPinCoordinates: () => {},
+  resetMap: () => {},
+};
+
 const initialMapSettings = {
-  width: '50vw',
-  height: '40vh',
+  width: '20vw',
+  height: '20vh',
   latitude: 22,
   longitude: -65,
   zoom: 0.6,
 };
 
-export const MapContext = React.createContext<MapContextInterface>(null);
+export const MapContext =
+  React.createContext<MapContextInterface>(defaultValue);
 
 // eslint-disable-next-line react/prop-types
 export const MapProvider = ({ children }): any => {
   const [viewport, setViewport] = useState(initialMapSettings);
   const [pinCoordinates, setPinCoordinates] = useState<[number, number]>([
-    0,
-    0,
+    0, 0,
   ]);
 
   const setZoomLevel = (zoom: number) => {

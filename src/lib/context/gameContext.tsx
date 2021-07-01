@@ -10,6 +10,14 @@ interface GameContextInterface {
   populateGame: (gameData: any) => void;
 }
 
+const defaultValue = {
+  game: null,
+  addGuess: () => {},
+  incrementTurn: () => {},
+  resetGame: () => {},
+  populateGame: () => {},
+};
+
 const initialGameState: Game = {
   active: true,
   currentScore: 0,
@@ -22,7 +30,8 @@ const initialGameState: Game = {
   updatedAt: '',
 };
 
-export const GameContext = React.createContext<GameContextInterface>(null);
+export const GameContext =
+  React.createContext<GameContextInterface>(defaultValue);
 
 // eslint-disable-next-line react/prop-types
 export const GameProvider = ({ children }): any => {
