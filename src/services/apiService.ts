@@ -46,4 +46,13 @@ const fetchGame = (): Promise<Response> => {
   return authenticatedGet('game');
 };
 
-export default { login, register, fetchGame };
+const fetchLeaderboards = (): Promise<Response> => {
+  return authenticatedGet('game/get-leaderboards');
+};
+
+export default {
+  login,
+  register,
+  fetchGame,
+  fetchLeaderboards,
+};

@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import Logout from '../auth/logout';
 
 export interface NavbarProps {
-  auth: boolean
+  auth: boolean;
 }
 
 // eslint-disable-next-line max-len
@@ -11,16 +11,17 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
   <div className="navbar">
     <a href="/">nomad</a>
     <div className="links">
-      {
-        auth
-          ? <Logout />
-          : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )
-      }
+      {auth ? (
+        <>
+          <Link to="/leaderboards">Leaderboard</Link>
+          <Logout />
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
     </div>
   </div>
 );
