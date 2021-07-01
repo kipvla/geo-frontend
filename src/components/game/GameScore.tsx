@@ -1,5 +1,5 @@
 import React from 'react';
-import StaticMap from '../presentational/StaticMap';
+import ResultsMap from '../presentational/ResultsMap';
 import { useGameContext } from '../../lib/context/gameContext';
 
 const GameScore: React.FC = () => {
@@ -19,15 +19,13 @@ const GameScore: React.FC = () => {
     const targetLng = game.locations[index].lng;
     const targetLat = game.locations[index].lat;
     targetPosition = [targetLng, targetLat];
-    console.log('TARGET', targetPosition);
-    console.log('SOURCE', sourcePosition);
   }
 
   return (
-    <div>
+    <div className="container">
       {game.guesses.length ? (
         <>
-          <StaticMap
+          <ResultsMap
             sourcePosition={sourcePosition}
             targetPosition={targetPosition}
           />

@@ -5,18 +5,22 @@
   width: 100vw;
   height: 4rem;
   padding: 15px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
+  z-index: 500;
 }
 .navbar a {
   text-decoration: none;
   margin-left: 0.5rem;
   transition: color 100ms;
 }
-.navbar a:hover {
+.navbar a:visited {
+  text-decoration: none;
+  color: black;
+}
+.navbar a:hover,
+a:visited:hover {
   transition: color 100ms;
   color: grey;
 }

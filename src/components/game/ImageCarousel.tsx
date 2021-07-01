@@ -1,14 +1,12 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface ImageCarouselProps {
   sources: string[];
 }
 
-// eslint-disable-next-line max-len
-const ImageCarousel: React.FC<ImageCarouselProps> = ({
-  sources,
-}: ImageCarouselProps): ReactElement => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => {
   const [mainImg, setMainImg] = useState(sources[0]);
+  if (!sources.length) return null;
 
   const changeImg = ({ target }) => {
     setMainImg(target.src);
@@ -22,11 +20,21 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     <div className="carousel">
       {sources.map((source, ind) =>
         source !== mainImg ? (
-          <button key={ind.toString()} type="button" onClick={changeImg}>
+          <button
+            key={ind.toString()}
+            type="button"
+            onClick={changeImg}
+            className="carousel__button"
+          >
             <img src={source} alt={source} />
           </button>
         ) : (
-          <img key={ind.toString()} src={source} alt={source} id="img-main" />
+          <img
+            key={ind.toString()}
+            src={source}
+            alt={source}
+            className="main__img"
+          />
         )
       )}
     </div>

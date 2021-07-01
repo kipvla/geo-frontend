@@ -1,0 +1,10 @@
+:root {
+  --color-brand-primary: red;
+  --color-brand-secondary: orange;
+
+  --color-text: #333333;
+  --color-text-alt: #444444;
+
+  --color-bg: #ececec;
+  --color-bg-alt: #888888;
+}

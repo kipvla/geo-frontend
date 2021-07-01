@@ -21,8 +21,8 @@ const Register: React.FC = () => {
       if (response.ok) {
         const body = await response.json();
         localStorage.setItem('accessToken', body.token);
-        setCredentials(emptyCredentials);
         navigate('/login');
+        setCredentials(emptyCredentials);
       } else {
         const body = await response.json();
         setError(body.msg);
@@ -32,34 +32,27 @@ const Register: React.FC = () => {
     }
   };
 
-  const handleChange = ({ target }) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setCredentials((old) => ({
       ...old,
-      [target.name]: target.value,
+      [name]: value,
     }));
     setError('');
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div>
       <Navbar auth={false} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
-        <div className="login__form__container">
-          <form onSubmit={handleSubmit} className="login__form">
+      <div className="container page__container">
+        <div className="container form__container">
+          <form onSubmit={handleSubmit} className="container">
             <input
               name="email"
               type="email"
               value={credentials.email}
               onChange={handleChange}
-              placeholder="Email"
-              className="login__form__input"
+              placeholder="email"
               style={{ height: '36px' }}
             />
             <input
@@ -67,24 +60,21 @@ const Register: React.FC = () => {
               type="text"
               value={credentials.username}
               onChange={handleChange}
-              placeholder="Username"
-              className="login__form__input"
+              placeholder="username"
             />
             <input
               name="password"
               type="password"
               value={credentials.password}
               onChange={handleChange}
-              placeholder="Password"
-              className="login__form__input"
+              placeholder="password"
             />
             <input
               name="passwordRepeat"
               type="password"
               value={credentials.passwordRepeat}
               onChange={handleChange}
-              placeholder="Repeat Password"
-              className="login__form__input"
+              placeholder="verify password"
             />
             {error ? <p>{error}</p> : null}
             <button
@@ -99,7 +89,7 @@ const Register: React.FC = () => {
               }
               className="button__primary"
             >
-              REGISTER
+              register
             </button>
           </form>
         </div>

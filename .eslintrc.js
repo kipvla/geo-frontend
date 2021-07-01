@@ -32,5 +32,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'no-dupe-keys': 'off',
     'react/no-array-index-key': 'off',
+    'object-curly-newline': 'off',
+    'react/prop-types': 'off',
   },
 };

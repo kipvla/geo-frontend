@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
-import GamePlay from '../components/game/GamePlay';
-import GameSummary from '../components/game/GameSummary';
-import GameScore from '../components/game/GameScore';
+import { GamePlay, GameSummary, GameScore } from '../components/game';
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
-
 import apiService from '../services/apiService';
 
 const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
-
-  const {
-    addGuess, incrementTurn, game, resetGame, populateGame
-  } =
+  const { addGuess, incrementTurn, game, resetGame, populateGame } =
     useGameContext();
-
-  const fetchGame = async () => {
-    const gameData = await apiService.fetchGame().then((res) => res.json());
-    console.log(gameData);
-
-    populateGame(gameData);
-  };
+  if (!game) return null;
 
   useEffect(() => {
+    const fetchGame = async () => {
+      const gameData = await apiService.fetchGame().then((res) => res.json());
+      populateGame(gameData);
+    };
+
     fetchGame();
   }, []);
 
@@ -59,8 +52,15 @@ const Game: React.FC = () => {
           ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
           : <GameSummary handleGameEnd={handleGameEnd} />
       }
-      <Modal show={showScore} handleClose={startNextRound}>
+      <Modal show={showScore} handleClose={() => setShowScore(false)}>
         <GameScore />
+        <button
+          type="button"
+          onClick={startNextRound}
+          className="button__primary"
+        >
+          next round
+        </button>
       </Modal>
     </div>
   );
