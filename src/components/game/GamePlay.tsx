@@ -47,13 +47,6 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
       <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
       {isMapModal ? (
         <Modal show handleClose={minimizeMap}>
-          <button
-            type="button"
-            className="button__primary"
-            onClick={minimizeMap}
-          >
-            minimize map
-          </button>
           <MapSelector />
         </Modal>
       ) : (
