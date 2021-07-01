@@ -28,12 +28,14 @@ const GameEndMap: React.FC = () => {
     };
   };
 
-  const data = game.locations.map((_, locationIndex) =>
+  const lineData = game.locations.map((_, locationIndex) =>
     getPinPositions(locationIndex)
   );
+
   const sourceLocations = game.locations.map(({ lng, lat }) => ({
     coordinates: [lng, lat],
   }));
+
   const targetLocations = game.guesses.map(({ lng, lat }) => ({
     coordinates: [lng, lat],
   }));
@@ -66,32 +68,29 @@ const GameEndMap: React.FC = () => {
   const lineLayer = [
     new LineLayer({
       id: 'line-layer',
-      data,
+      data: lineData,
       getWidth: 3,
       getColor: [0, 0, 0],
     }),
   ];
-  const linesAndIcons = React.useMemo(
-    () => (
-      <DeckGL
-        width="60vw"
-        height="50vh"
-        initialViewState={INITIAL_VIEW_STATE}
-        controller
-        layers={[iconLayer, lineLayer]}
-      >
-        <StaticMap
-          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
-        />
-      </DeckGL>
-    ),
-    [game]
-  );
+
   return (
-    <>
-      {linesAndIcons}
-      <p style={{ color: 'white' }}>{`POINTS: ${game.currentScore}`}</p>
-    </>
+    <div>
+      <div>
+        <DeckGL
+          width="60vw"
+          height="50vh"
+          initialViewState={INITIAL_VIEW_STATE}
+          controller
+          layers={[iconLayer, lineLayer]}
+        >
+          <StaticMap
+            mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
+          />
+        </DeckGL>
+      </div>
+      <p style={{ color: 'black' }}>{`POINTS: ${game.currentScore}`}</p>
+    </div>
   );
 };
 
