@@ -1,11 +1,8 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
-import { LineLayer } from '@deck.gl/layers';
-import ReactMapGL, { StaticMap, Marker } from 'react-map-gl';
-import { FaMapPin } from 'react-icons/fa';
+import { LineLayer, IconLayer } from '@deck.gl/layers';
+import { StaticMap } from 'react-map-gl';
 import { useGameContext } from '../../lib/context/gameContext';
-
-const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
 const INITIAL_VIEW_STATE = {
   longitude: -40.41669,
@@ -31,59 +28,69 @@ const GameEndMap: React.FC = () => {
     };
   };
 
-  const data = game.locations.map((_, locationIndex) =>
+  const lineData = game.locations.map((_, locationIndex) =>
     getPinPositions(locationIndex)
   );
 
-  const markers = React.useMemo(
-    () =>
-      data.map(({ sourcePosition, targetPosition }) => (
-        <>
-          <Marker
-            key={sourcePosition[0]}
-            longitude={sourcePosition[0]}
-            latitude={sourcePosition[1]}
-            draggable
-          >
-            <FaMapPin />
-          </Marker>
-          <Marker
-            key={targetPosition[0]}
-            longitude={targetPosition[0]}
-            latitude={targetPosition[1]}
-            draggable
-          >
-            <FaMapPin />
-          </Marker>
-        </>
-      )),
-    [game]
-  );
+  const sourceLocations = game.locations.map(({ lng, lat }) => ({
+    coordinates: [lng, lat],
+  }));
 
-  const layers = [new LineLayer({ id: 'line-layer', data })];
-  const lines = React.useMemo(
-    () => (
-      <DeckGL initialViewState={INITIAL_VIEW_STATE} controller layers={layers}>
-        <StaticMap
-          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
-        />
-      </DeckGL>
-    ),
-    [game]
-  );
+  const targetLocations = game.guesses.map(({ lng, lat }) => ({
+    coordinates: [lng, lat],
+  }));
+
+  const iconData = sourceLocations.concat(targetLocations);
+
+  const ICON_MAPPING = {
+    marker: {
+      x: 0,
+      y: 0,
+      width: 128,
+      height: 128,
+      anchorY: 128,
+    },
+  };
+
+  const iconLayer = new IconLayer({
+    id: 'icon-layer',
+    data: iconData,
+    iconAtlas:
+      'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+    iconMapping: ICON_MAPPING,
+    getIcon: () => 'marker',
+    sizeScale: 7,
+    getPosition: (d) => d.coordinates,
+    getSize: () => 5,
+    getColor: [0, 0, 0],
+  });
+
+  const lineLayer = [
+    new LineLayer({
+      id: 'line-layer',
+      data: lineData,
+      getWidth: 3,
+      getColor: [0, 0, 0],
+    }),
+  ];
+
   return (
-    <>
-      <ReactMapGL
-        width="60vw"
-        height="50vh"
-        mapStyle="mapbox://styles/mapbox/satellite-v9"
-        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-      >
-        {lines}
-        {markers}
-      </ReactMapGL>
-      <p style={{ color: 'white' }}>{`POINTS: ${game.currentScore}`}</p>
-    </>
+    <div>
+      <div>
+        <DeckGL
+          width="60vw"
+          height="50vh"
+          initialViewState={INITIAL_VIEW_STATE}
+          controller
+          layers={[iconLayer, lineLayer]}
+        >
+          <StaticMap
+            mapboxApiAccessToken={process.env.GATSBY_MAPBOX_ACCESS_TOKEN}
+          />
+        </DeckGL>
+      </div>
+      <p style={{ color: 'black' }}>{`POINTS: ${game.currentScore}`}</p>
+    </div>
   );
 };
 

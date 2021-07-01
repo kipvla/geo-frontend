@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
+
 import Modal from '../components/presentational/Modal';
 import { GamePlay, GameSummary, GameScore } from '../components/game';
 import { useMapContext } from '../lib/context/mapContext';
@@ -47,11 +48,11 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {
-        game.currentTurn <= 3
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
+      {game.currentTurn <= 3 ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>
