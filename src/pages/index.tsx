@@ -12,7 +12,7 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 //   ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)]],
 // }));
 const isBrowser = () => typeof window !== 'undefined';
-export default function index() {
+export default function Index() {
   const [isGlobeShowing, setIsGlobeShowing] = useState(true);
   const handleGlobeClick = ({ lat, lng }, event) => {
     console.log(event, lat, lng);

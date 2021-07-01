@@ -1,6 +1,5 @@
 import React from 'react';
 import GameEndMap from './GameEndMap';
-import '../../styles/index.css';
 
 export interface GameSummaryProps {
   handleGameEnd: () => void;

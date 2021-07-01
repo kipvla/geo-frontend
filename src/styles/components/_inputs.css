@@ -1,6 +1,6 @@
 input {
   /* border-color: lightgrey; */
-  border: none;
+  border: 2px solid lightgrey;
   padding: 0.5rem;
 }
 

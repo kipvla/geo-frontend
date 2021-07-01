@@ -4,7 +4,6 @@ import { LineLayer } from '@deck.gl/layers';
 import ReactMapGL, { StaticMap, Marker } from 'react-map-gl';
 import { FaMapPin } from 'react-icons/fa';
 import { useGameContext } from '../../lib/context/gameContext';
-import '../../styles/index.css';
 
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
