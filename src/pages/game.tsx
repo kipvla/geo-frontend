@@ -54,11 +54,11 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {game.currentTurn <= 3 ? (
-        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-      ) : (
-        <GameSummary handleGameEnd={handleGameEnd} />
-      )}
+      {
+        game.currentTurn <= 3
+          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+          : <GameSummary handleGameEnd={handleGameEnd} />
+      }
       <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
       </Modal>

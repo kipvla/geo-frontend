@@ -1,13 +1,10 @@
 import React, { ReactElement } from 'react';
-
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
 import Navbar from '../presentational/Navbar';
 import { useMapContext } from '../../lib/context/mapContext';
 import { useGameContext } from '../../lib/context/gameContext';
-
-import '../../styles/index.css';
 
 export interface GamePlayProps {
   gameState: number;

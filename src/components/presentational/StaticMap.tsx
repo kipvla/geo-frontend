@@ -18,16 +18,11 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-// eslint-disable-next-line arrow-body-style
-// eslint-disable-next-line max-len
 const ResultsMap: React.FC<ResultsMapProps> = ({
   sourcePosition,
   targetPosition,
 }: ResultsMapProps) => {
-  const data = [
-    { sourcePosition, targetPosition },
-    { sourcePosition: [0, 0], targetPosition: [2, 41] },
-  ];
+  const data = [{ sourcePosition, targetPosition }];
 
   const layers = [new LineLayer({ id: 'line-layer', data })];
 
