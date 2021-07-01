@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   return (
     <div className="container page__container">
       <Navbar auth />
-      {/* add friends */}
+
       {/* friends bar on the side */}
 
       <button
@@ -31,8 +31,9 @@ const Home: React.FC = () => {
       </button>
 
       <Link to="/game" className="button__primary">
-        start game
+        single player
       </Link>
+      {/* multiplayer game */}
 
       <Modal
         show={showModal}
