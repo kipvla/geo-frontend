@@ -26,7 +26,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
             <img src={source} alt={source} />
           </button>
         ) : (
-          <img key={ind.toString()} src={source} alt={source} id="img-main" />
+          <img
+            key={ind.toString()}
+            src={source}
+            alt={source}
+            className="main__img"
+          />
         )
       )}
     </div>

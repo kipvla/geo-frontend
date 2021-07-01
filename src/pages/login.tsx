@@ -39,26 +39,17 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div>
       <Navbar auth={false} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
-        <div className="login__form__container">
-          <form onSubmit={handleSubmit} className="login__form">
+      <div className="container page__container">
+        <div className="container form__container">
+          <form onSubmit={handleSubmit} className="container">
             <input
               name="email"
               type="email"
               value={credentials.email}
               onChange={handleChange}
               placeholder="email"
-              className="login__form__input"
-              style={{ height: '36px' }}
             />
             <input
               name="password"
@@ -66,7 +57,6 @@ const Login: React.FC = () => {
               value={credentials.password}
               onChange={handleChange}
               placeholder="password"
-              className="login__form__input"
             />
             {error ? <p>{error}</p> : null}
             <button

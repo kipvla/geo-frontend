@@ -8,7 +8,7 @@ const Logout: React.FC = () => {
 
   return (
     <Link to="/" onClick={handleLogout}>
-      Logout
+      log out
     </Link>
   );
 };

@@ -11,8 +11,8 @@
 .carousel img,
 button {
   margin: 0;
-  width: 4rem;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
 .carousel button {
@@ -21,10 +21,9 @@ button {
   padding: 0;
 }
 
-#img-main {
+.main__img {
   animation: fadeIn 300ms ease-out;
-  height: 100%;
-  width: auto;
+  box-shadow: 0 0 20px black;
 }
 
 @keyframes fadeIn {
