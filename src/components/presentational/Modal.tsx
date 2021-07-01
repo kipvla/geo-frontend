@@ -1,16 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 export interface ModalProps {
   show: boolean;
   handleClose: () => void;
-  children: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  show,
-  handleClose,
-  children,
-}: ModalProps) => (
+const Modal: React.FC<ModalProps> = ({ show, handleClose, children }) => (
   <div className={show ? 'modal__show ' : 'modal__hide'}>
     <p>im a modal</p>
     <button type="button" onClick={handleClose}>
