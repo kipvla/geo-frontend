@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
@@ -57,9 +58,18 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           <MapSelector />
         </Modal>
       ) : (
-        <div className="map__selector">
+        <motion.div
+          drag
+          dragConstraints={{
+            top: 0,
+            left: -1015,
+            right: 0,
+            bottom: 0,
+          }}
+          className="map__selector"
+        >
           <MapSelector />
-        </div>
+        </motion.div>
       )}
       <div className="game__right">
         <button
