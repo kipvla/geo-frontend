@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
-const BASE_URL = process.env.GATSBY_BASE_URL;
+// const BASE_URL = process.env.GATSBY_BASE_URL;
+const BASE_URL = 'http://localhost:3000/';
 
 const notAuthenticatedPost = (route, body) => {
   return fetch(BASE_URL + route, {
@@ -39,7 +40,7 @@ const fetchUser = (): Promise<Response> => {
 };
 
 const fetchAllUsers = (): Promise<Response> => {
-  return authenticatedGet('userList');
+  return authenticatedGet('user/getAll');
 };
 
 export default { login, register, fetchGame, fetchUser, fetchAllUsers };
