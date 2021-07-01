@@ -13,11 +13,17 @@
 }
 
 .form__container {
-  height: 50vh;
-  min-height: 400px;
-  width: 30vw;
-  min-width: 400px;
-  background: linear-gradient(217deg, lightblue, #222);
+  height: 400px;
+  width: 400px;
+  background: linear-gradient(217deg, skyblue, #222);
   border-radius: 50%;
-  box-shadow: 0 4px 10px lightblue;
+  box-shadow: 0 4px 15px #888;
+}
+
+@media screen and (max-width: 768px) {
+  .form__container {
+    height: 350px;
+    width: 350px;
+    padding-top: 4rem;
+  }
 }
