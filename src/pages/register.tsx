@@ -32,10 +32,11 @@ const Register: React.FC = () => {
     }
   };
 
-  const handleChange = ({ target }) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setCredentials((old) => ({
       ...old,
-      [target.name]: target.value,
+      [name]: value,
     }));
     setError('');
   };
