@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 export interface ModalProps {
   show: boolean;
   handleClose: () => void;
-  children: ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({

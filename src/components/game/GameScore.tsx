@@ -19,8 +19,6 @@ const GameScore: React.FC = () => {
     const targetLng = game.locations[index].lng;
     const targetLat = game.locations[index].lat;
     targetPosition = [targetLng, targetLat];
-    console.log('TARGET', targetPosition);
-    console.log('SOURCE', sourcePosition);
   }
 
   return (

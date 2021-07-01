@@ -22,4 +22,5 @@ button:active {
 }
 .button__primary:disabled {
   opacity: 0.7;
+  cursor: default;
 }
