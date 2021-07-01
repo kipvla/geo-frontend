@@ -1,0 +1,12 @@
+body {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 1.3rem;
+}
+
+.text__light {
+  color: lightblue;
+}
+
+.text__error {
+  color: pink;
+}

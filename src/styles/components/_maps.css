@@ -1,0 +1,12 @@
+.map__selector {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 20px;
+  background-color: lightblue;
+  padding: 5px;
+}
+
+.mapbox {
+  border-radius: 8px;
+}

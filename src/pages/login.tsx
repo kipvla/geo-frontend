@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import { navigate } from 'gatsby';
+import apiService from '../services/apiService';
+import Navbar from '../components/presentational/Navbar';
+
+const emptyCredentials = {
+  email: '',
+  password: '',
+};
+
+const Login: React.FC = () => {
+  const [credentials, setCredentials] = useState(emptyCredentials);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await apiService.login(credentials);
+      if (response.ok) {
+        const body = await response.json();
+        localStorage.setItem('accessToken', body.token);
+        setCredentials(emptyCredentials);
+        navigate('/home');
+      } else {
+        const body = await response.json();
+        setError(body.msg);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleChange = ({ target }) => {
+    setCredentials((old) => ({
+      ...old,
+      [target.name]: target.value,
+    }));
+    setError('');
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Navbar auth={false} />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <div className="login__form__container">
+          <form onSubmit={handleSubmit} className="login__form">
+            <input
+              name="email"
+              type="email"
+              value={credentials.email}
+              onChange={handleChange}
+              placeholder="email"
+              className="login__form__input"
+              style={{ height: '36px' }}
+            />
+            <input
+              name="password"
+              type="password"
+              value={credentials.password}
+              onChange={handleChange}
+              placeholder="password"
+              className="login__form__input"
+            />
+            {error ? <p>{error}</p> : null}
+            <button
+              type="submit"
+              disabled={!(credentials.email && credentials.password)}
+              className="button__primary"
+            >
+              log in
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

@@ -1,0 +1,37 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  height: 70vh;
+  width: 80vw;
+  overflow: scroll;
+  flex: 8;
+}
+
+.carousel img,
+button {
+  margin: 0;
+  width: 4rem;
+  height: auto;
+}
+
+.carousel button {
+  margin: 1px;
+  border: none;
+  padding: 0;
+}
+
+#img-main {
+  animation: fadeIn 300ms ease-out;
+  height: 100%;
+  width: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,18 @@
+.button__primary {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f7dba7;
+  color: black;
+  width: auto;
+  cursor: pointer;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.button__primary:active {
+  transform: scale(1.1);
+}
+.button__primary:disabled {
+  opacity: 0.7;
+}

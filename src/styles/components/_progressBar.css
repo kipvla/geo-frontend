@@ -1,0 +1,19 @@
+.progress {
+  height: 2rem;
+  background-color: #7f534b;
+  width: 80vw;
+  border-radius: 20px;
+  box-sizing: border-box;
+  transform: rotate(270deg);
+  flex: 1;
+}
+
+.progress-bar {
+  height: 2rem;
+  background-color: lightblue;
+  border-radius: 20px;
+}
+
+.game__right {
+  flex: 1;
+}
