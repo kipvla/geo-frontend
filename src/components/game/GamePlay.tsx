@@ -22,9 +22,11 @@ const GamePlay: React.FC<GamePlayProps> = ({
     <div className="container page__container" style={{ flexDirection: 'row' }}>
       <Navbar auth />
       <ProgressBar gameState={gameState} />
-      {game.locations.length ? (
-        <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
-      ) : null}
+      {
+        game.locations.length
+          ? <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
+          : null
+      }
       <div className="map__selector">
         <MapSelector />
       </div>
