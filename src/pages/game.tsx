@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
-import GamePlay from '../components/game/GamePlay';
-import GameSummary from '../components/game/GameSummary';
-import GameScore from '../components/game/GameScore';
+import { GamePlay, GameSummary, GameScore } from '../components/game';
 import { useMapContext } from '../lib/context/mapContext';
 import { useGameContext } from '../lib/context/gameContext';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
