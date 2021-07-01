@@ -31,3 +31,13 @@ export interface Game {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Leaderboard {
+  exp: number;
+  userEmail: string;
+  username: string;
+  scoreGameRatio: number;
+  currentScore: number;
+  userTotalGameCounter: number;
+  currentLevel: number;
+}

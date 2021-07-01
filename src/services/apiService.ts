@@ -34,6 +34,10 @@ const fetchGame = (): Promise<Response> => {
   return authenticatedGet('game');
 };
 
+const fetchLeaderboards = (): Promise<Response> => {
+  return authenticatedGet('game/get-leaderboards');
+};
+
 const fetchUser = (): Promise<Response> => {
   return authenticatedGet('user');
 };
@@ -42,4 +46,11 @@ const fetchAllUsers = (): Promise<Response> => {
   return authenticatedGet('userList');
 };
 
-export default { login, register, fetchGame, fetchUser, fetchAllUsers };
+export default {
+  login,
+  register,
+  fetchGame,
+  fetchUser,
+  fetchAllUsers,
+  fetchLeaderboards,
+};
