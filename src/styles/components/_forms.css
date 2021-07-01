@@ -2,3 +2,8 @@
   transform: scale(1.1);
   transition: 0.7s;
 }
+
+form button {
+  background: linear-gradient(#f7dba7, #555);
+  box-shadow: 0 0 30px black;
+}

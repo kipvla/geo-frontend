@@ -6,6 +6,7 @@ input {
   outline: none;
   margin-bottom: 0.8rem;
   width: 15rem;
+  box-shadow: 0 0 30px #555;
 }
 
 input:after {
