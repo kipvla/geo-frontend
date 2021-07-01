@@ -2,22 +2,21 @@
   display: flex;
   align-items: center;
   margin: 1rem;
-  height: 70vh;
+  height: 80vh;
   width: 80vw;
   overflow: scroll;
   flex: 8;
 }
 
-.carousel img,
-button {
+.carousel img {
   margin: 0;
   height: 100%;
   width: auto;
 }
 
-.carousel button {
-  margin: 1px;
-  border: none;
+.carousel__button {
+  height: 100%;
+  width: auto;
   padding: 0;
 }
 

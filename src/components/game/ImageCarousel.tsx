@@ -20,7 +20,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => {
     <div className="carousel">
       {sources.map((source, ind) =>
         source !== mainImg ? (
-          <button key={ind.toString()} type="button" onClick={changeImg}>
+          <button
+            key={ind.toString()}
+            type="button"
+            onClick={changeImg}
+            className="carousel__button"
+          >
             <img src={source} alt={source} />
           </button>
         ) : (
