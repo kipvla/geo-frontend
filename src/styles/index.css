@@ -14,3 +14,6 @@
 @import './components/_forms.css';
 @import './components/_buttons.css';
 @import './components/_inputs.css';
+
+/* CONFIG */
+@import './config/_colors.css';
