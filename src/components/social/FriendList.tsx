@@ -18,7 +18,18 @@ const FriendList: React.FC = () => {
       {user && user.friendsList.length ? (
         <div>
           {user.friendsList.map((friend: FriendDetails) => (
-            <div key={friend.id} style={{}}>
+            <div
+              key={friend.id}
+              style={{
+                width: '20vw',
+                border: '1px solid black',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                borderRadius: '1rem',
+                marginBottom: '1rem',
+              }}
+            >
               <p>{friend.username}</p>
             </div>
           ))}

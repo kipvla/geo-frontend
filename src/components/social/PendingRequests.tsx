@@ -1,10 +1,37 @@
 import React from 'react';
+import { HiUserAdd } from 'react-icons/hi';
+import { GiCancel } from 'react-icons/gi';
 import { FriendDetails } from '../../interfaces';
 import { useUserContext } from '../../lib/context/userContext';
+import apiService from '../../services/apiService';
 
 const PendingRequests: React.FC = () => {
-  const { user } = useUserContext();
+  const { user, populateUser } = useUserContext();
+  const addFriend = async (friendRequest: FriendDetails) => {
+    console.log(friendRequest);
 
+    const { id, username } = friendRequest;
+    try {
+      const response = await apiService.acceptFriendRequest(id, username);
+      const body = await response.json();
+      populateUser(body.user);
+      console.log(user, 'after add');
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  const declineRequest = async (friendRequest: FriendDetails) => {
+    console.log(friendRequest);
+    const { id } = friendRequest;
+    try {
+      const response = await apiService.declineFriendRequest(id);
+      const body = await response.json();
+      populateUser(body.user);
+      console.log(user, 'after decline');
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <div
       style={{
@@ -21,9 +48,32 @@ const PendingRequests: React.FC = () => {
             {user.friendRequests.map((friendRequest: FriendDetails) => (
               <div
                 key={friendRequest.id}
-                style={{ width: '50vw', border: '1px solid black' }}
+                style={{
+                  width: '30vw',
+                  border: '1px solid black',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  borderRadius: '1rem',
+                }}
               >
-                <p>{friendRequest.username}</p>
+                <h2 style={{ marginLeft: '1rem' }}>{friendRequest.username}</h2>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    className="button__primary"
+                    onClick={() => addFriend(friendRequest)}
+                  >
+                    <HiUserAdd />
+                  </button>
+                  <button
+                    type="button"
+                    className="button__primary"
+                    onClick={() => declineRequest(friendRequest)}
+                  >
+                    <GiCancel />
+                  </button>
+                </div>
               </div>
             ))}
           </>
