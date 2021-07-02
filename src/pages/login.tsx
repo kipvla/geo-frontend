@@ -44,7 +44,7 @@ const Login: React.FC = () => {
       <Navbar auth={false} />
       <div className="container page__container">
         <div className="container form__container">
-          <form onSubmit={handleSubmit} className="container">
+          <form onSubmit={handleSubmit} className="container auth__container">
             <input
               name="email"
               type="email"
@@ -59,7 +59,6 @@ const Login: React.FC = () => {
               onChange={handleChange}
               placeholder="password"
             />
-            {error ? <p>{error}</p> : null}
             <button
               type="submit"
               disabled={!(credentials.email && credentials.password)}
@@ -69,6 +68,16 @@ const Login: React.FC = () => {
             </button>
           </form>
         </div>
+        {error ? (
+          <p className="container error__container">{error}</p>
+        ) : (
+          <p
+            className="container error__container"
+            style={{ visibility: 'hidden' }}
+          >
+            {}
+          </p>
+        )}
       </div>
     </div>
   );

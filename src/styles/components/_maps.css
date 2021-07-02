@@ -10,3 +10,7 @@
 .mapbox {
   border-radius: 8px;
 }
+
+.map__pin {
+  color: thistle;
+}

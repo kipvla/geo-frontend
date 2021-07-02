@@ -5,7 +5,7 @@ button {
   padding: 1rem;
   margin: 0.8rem;
   text-decoration: none;
-  height: 3rem;
+  height: 4rem;
   width: auto;
   display: flex;
   justify-content: center;
@@ -15,16 +15,21 @@ button {
 }
 button:active {
   transform: scale(1.1);
+  transition: transform 100ms;
 }
 .button__primary {
   background-color: #f7dba7;
   color: black;
+  transition: transform 200ms;
 }
 .button__primary:disabled {
-  opacity: 0.7;
+  opacity: 0.3;
   cursor: default;
 }
-
+.button__primary:hover:not([disabled]) {
+  transform: scale(1.05);
+  transition: transform 100ms;
+}
 
 .link__button {
   cursor: pointer;
@@ -40,7 +45,14 @@ button:active {
   align-items: center;
   background-color: #f7dba7;
   color: black;
+  transition: transform 200ms;
 }
 .link__button:active {
   transform: scale(1.1);
+  transition: transform 100ms;
+}
+
+.link__button:hover {
+  transform: scale(1.05);
+  transition: transform 100ms;
 }
