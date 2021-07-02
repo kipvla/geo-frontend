@@ -1,15 +1,17 @@
-import React from 'react';
-import { useUserContext } from '../../lib/context/userContext';
-// import apiService from '../../services/apiService';
+import React, { useEffect } from 'react';
+import apiService from '../../services/apiService';
 
 const FriendList: React.FC = () => {
-  const { user } = useUserContext();
-  return (
-    <>
-      {user.friendsList.map((friend) => (
-        <p>{friend.username}</p>
-      ))}
-    </>
-  );
+  useEffect(() => {
+    const fetchAllUsers = async () => {
+      const response = await apiService
+        .fetchAllUsers()
+        .then((res) => res.json());
+      console.log(response);
+    };
+
+    fetchAllUsers();
+  }, []);
+  return <p>Friend List</p>;
 };
 export default FriendList;
