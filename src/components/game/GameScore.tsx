@@ -22,14 +22,13 @@ const GameScore: React.FC = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container modal__focus">
       {game.guesses.length ? (
         <>
           <ResultsMap
             sourcePosition={sourcePosition}
             targetPosition={targetPosition}
           />
-          {/* this could be nicer */}
           <p>{`DISTANCE: ${game.guesses[index].distance} km`}</p>
           <p>{`POINTS: ${game.guesses[index].score}`}</p>
         </>

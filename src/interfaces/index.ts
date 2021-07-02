@@ -46,7 +46,7 @@ export interface Game {
   updatedAt: string;
   isMultiplayer?: boolean;
   multiplayerGameID?: string;
-
+  template?: boolean;
 }
 
 export interface Leaderboard {

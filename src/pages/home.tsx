@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import InitMultiplayer from '../components/social/InitMultiplayer';
@@ -21,7 +21,6 @@ const Home: React.FC = () => {
       .then((userData) => populateUser(userData.user))
       .catch((err) => console.log(err));
   };
-
   useEffect(() => {
     fetchUser();
   }, []);
@@ -39,14 +38,32 @@ const Home: React.FC = () => {
     }
   };
 
+  const handleSinglePlayerSetup = async () => {
+    try {
+      await apiService
+        .fetchGame()
+        .then((res) => res.json())
+        .then((gameData) => populateGame(gameData));
+
+      navigate('/game');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="container page__container">
       <Navbar auth />
-      <p>{user.username}</p>
       <img src={backgroundMap} width="60%" alt="hand drawn world" />
-      <Link to="/game" className="link__button">
+
+      <button
+        type="button"
+        onClick={handleSinglePlayerSetup}
+        className="button__primary"
+      >
         single player
-      </Link>
+      </button>
+
       <button
         type="button"
         onClick={handleMultiplayerSetup}
@@ -55,7 +72,7 @@ const Home: React.FC = () => {
         multi player
       </button>
 
-      <Modal show={showModal} handleClose={() => setShowModal(false)}>
+      <Modal show={showModal}>
         <InitMultiplayer />
       </Modal>
     </div>
