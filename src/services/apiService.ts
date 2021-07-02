@@ -1,6 +1,5 @@
 /* eslint-disable arrow-body-style */
-// const BASE_URL = process.env.GATSBY_BASE_URL;
-const BASE_URL = 'http://localhost:3000/';
+const BASE_URL = process.env.GATSBY_BASE_URL;
 
 interface Init {
   headers: Headers;
