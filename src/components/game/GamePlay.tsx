@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
@@ -17,7 +17,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   const { pinCoordinates, setViewport } = useMapContext();
   const { game } = useGameContext();
   const [isMapModal, setIsMapModal] = useState(false);
-  const [mapDraggingBounds, setMapDraggingBounds] = useState(-1015);
+  // const [mapDraggingBounds, setMapDraggingBounds] = useState(-1015);
   if (!game.locations.length) return null;
 
   const expandMap = () => {
@@ -42,13 +42,19 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
     setIsMapModal(false);
   };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', () =>
-        setMapDraggingBounds((window.innerWidth - 265) * -1)
-      );
-    }
-  });
+  // useEffect(() => {
+  //   window.addEventListener('resize', () => {
+  //     // setMapDraggingBounds(800);
+  //     setMapDraggingBounds((window.innerWidth - 265) * -1);
+  //   });
+  //   return () => {
+  //     window.removeEventListener('resize', () => {
+  //       // setMapDraggingBounds(800);
+  //       setMapDraggingBounds((window.innerWidth - 265) * -1);
+  //     });
+  //   };
+  //   // return window.removeEventListener('resize');
+  // }, []);
 
   return (
     <div className="container page__container" style={{ flexDirection: 'row' }}>
@@ -71,7 +77,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           drag
           dragConstraints={{
             top: 0,
-            left: mapDraggingBounds,
+            left: 0,
             right: 0,
             bottom: 0,
           }}

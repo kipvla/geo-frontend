@@ -8,8 +8,7 @@ export interface GameSummaryProps {
 const GameSummary: React.FC<GameSummaryProps> = ({
   handleGameEnd,
 }: GameSummaryProps) => (
-  <div>
-    <p className="text__light">its me the end of game screen!</p>
+  <div style={{ width: '100vw', height: '100vh' }}>
     <GameEndMap />
     <button type="button" onClick={handleGameEnd}>
       take me home
