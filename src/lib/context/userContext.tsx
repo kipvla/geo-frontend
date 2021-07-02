@@ -13,14 +13,17 @@ const defaultValue = {
 };
 
 const initialUserState: User = {
+  username: '',
   friendsList: [],
   friendRequests: [],
   pendingRequests: [],
-  exp: 0,
-  currentLevel: 1,
-  highestScore: 0,
   gameInvites: [],
-  username: '',
+  highestScore: 0,
+  currentLevel: 1,
+  exp: 0,
+  createdAt: '',
+  updatedAt: '',
+  _id: '',
 };
 
 export const UserContext =
@@ -29,6 +32,7 @@ export const UserContext =
 // eslint-disable-next-line react/prop-types
 export const UserProvider = ({ children }): any => {
   const [user, setUser] = useState<User>(initialUserState);
+
 
   const populateUser = (userData: User) => {
     setUser(userData);
