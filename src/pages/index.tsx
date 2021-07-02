@@ -33,10 +33,10 @@ const Index = () => {
             showGraticules
             onGlobeClick={handleGlobeClick}
             // arcsData={arcsData}
-            arcColor="color"
-            arcDashLength={() => Math.random()}
-            arcDashGap={() => Math.random()}
-            arcDashAnimateTime={() => Math.random() * 4000 + 500}
+            // arcColor="color"
+            // arcDashLength={() => Math.random()}
+            // arcDashGap={() => Math.random()}
+            // arcDashAnimateTime={() => Math.random() * 4000 + 500}
           />
         </React.Suspense>
       ) : null}
