@@ -65,7 +65,7 @@ const Game: React.FC = () => {
       ) : (
         <GameSummary handleGameEnd={handleGameEnd} />
       )}
-      <Modal show={showScore} handleClose={startNextRound}>
+      <Modal show={showScore}>
         <GameScore />
         <button
           type="button"

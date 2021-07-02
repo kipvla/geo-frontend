@@ -55,7 +55,7 @@ const Home: React.FC = () => {
         multi player
       </button>
 
-      <Modal show={showModal} handleClose={() => setShowModal(false)}>
+      <Modal show={showModal}>
         <InitMultiplayer />
       </Modal>
     </div>
