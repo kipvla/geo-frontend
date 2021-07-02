@@ -9,12 +9,12 @@ export interface NavbarProps {
 // eslint-disable-next-line max-len
 const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
   <div className="navbar">
-    <Link to="/" className="navbar__link">
-      nomad
-    </Link>
     <div className="links">
       {auth ? (
         <>
+          <Link to="/home" className="navbar__link">
+            nomad
+          </Link>
           <Link to="/social" className="navbar__link">
             Social
           </Link>
@@ -25,6 +25,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
         </>
       ) : (
         <>
+          <Link to="/" className="navbar__link">
+            nomad
+          </Link>
           <Link to="/login" className="navbar__link">
             Login
           </Link>

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 import Select from 'react-select';
 import { useUserContext } from '../../lib/context/userContext';
 import { useGameContext } from '../../lib/context/gameContext';
 import apiService from '../../services/apiService';
-
-// search bar to select friends
-// send invitation button
-// start game
 
 const InitMultiplayer: React.FC = () => {
   const { user } = useUserContext();
@@ -45,7 +42,6 @@ const InitMultiplayer: React.FC = () => {
 
   return (
     <div className="modal__focus">
-
       <Select options={friends} onChange={handleSelect} />
       <button type="button" onClick={sendInvite}>
         send invitation
@@ -55,7 +51,9 @@ const InitMultiplayer: React.FC = () => {
       {successMessage && (
         <>
           <p>{successMessage}</p>
-          <button type="button">proceed to game</button>
+          <Link to="/game" className="link__button">
+            proceed to game
+          </Link>
         </>
       )}
     </div>

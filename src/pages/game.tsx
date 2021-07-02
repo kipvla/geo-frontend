@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import { GamePlay, GameSummary, GameScore } from '../components/game';
@@ -11,21 +11,21 @@ import apiService from '../services/apiService';
 const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
-  const { addGuess, incrementTurn, game, resetGame, populateGame } =
+  const { addGuess, incrementTurn, game, resetGame } =
     useGameContext();
   if (!game) return null;
 
-  const fetchGame = async () => {
-    await apiService
-      .fetchGame()
-      .then((res) => res.json())
-      .then((gameData) => populateGame(gameData))
-      .catch(() => navigate('/'));
-  };
+  // const fetchGame = async () => {
+  //   await apiService
+  //     .fetchGame()
+  //     .then((res) => res.json())
+  //     .then((gameData) => populateGame(gameData))
+  //     .catch(() => navigate('/'));
+  // };
 
-  useEffect(() => {
-    fetchGame();
-  }, []);
+  // useEffect(() => {
+  //   fetchGame();
+  // }, []);
 
   const makeAGuess = async () => {
     const [lng, lat] = pinCoordinates;
