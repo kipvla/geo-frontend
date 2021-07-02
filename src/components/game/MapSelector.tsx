@@ -30,6 +30,8 @@ const MapSelector: React.FC = (): ReactElement => {
             latitude={pinCoordinates[1]}
             draggable
             onDragEnd={dropMarker}
+            offsetLeft={-12}
+            offsetTop={-21}
           >
             <FaMapPin className="map__pin" />
           </Marker>
