@@ -22,7 +22,7 @@ const GameScore: React.FC = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container modal__focus">
       {game.guesses.length ? (
         <>
           <ResultsMap
