@@ -1,17 +1,38 @@
-import React, { useEffect } from 'react';
-import apiService from '../../services/apiService';
+import React from 'react';
+import useFetchMultiplayerGames from '../../lib/hooks/useFetchMultiplayerGames';
 
 const MultiplayerGames: React.FC = () => {
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const response = await apiService
-        .fetchAllUsers()
-        .then((res) => res.json());
-      console.log(response);
-    };
+  const games = useFetchMultiplayerGames();
 
-    fetchAllUsers();
-  }, []);
-  return <p>Multiplayer Games</p>;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {games.length ? (
+        <>
+          {games.map((game) => (
+            <div
+              style={{
+                display: 'flex',
+                width: '30%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <p>{game.score}</p>
+              <p>{game.lastPlayed}</p>
+            </div>
+          ))}
+        </>
+      ) : (
+        <div>No Multiplayer games</div>
+      )}
+    </div>
+  );
 };
 export default MultiplayerGames;

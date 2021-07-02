@@ -1,17 +1,32 @@
-import React, { useEffect } from 'react';
-import apiService from '../../services/apiService';
+import React from 'react';
+import { FriendDetails } from '../../interfaces';
+import { useUserContext } from '../../lib/context/userContext';
 
 const PendingRequests: React.FC = () => {
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const response = await apiService
-        .fetchAllUsers()
-        .then((res) => res.json());
-      console.log(response);
-    };
+  const { user } = useUserContext();
 
-    fetchAllUsers();
-  }, []);
-  return <p>Pending Requests</p>;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {user.pendingRequests.length ? (
+        <>
+          {user.pendingRequests.map((pendingRequest: FriendDetails) => (
+            <div key={pendingRequest.id} style={{}}>
+              <p>{pendingRequest.username}</p>
+            </div>
+          ))}
+        </>
+      ) : (
+        <div>No Pending requests</div>
+      )}
+    </div>
+  );
 };
 export default PendingRequests;
