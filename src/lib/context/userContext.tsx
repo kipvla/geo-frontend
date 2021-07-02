@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { AnyPointerEvent } from 'framer-motion/types/gestures/PanSession';
 import React, { useState } from 'react';
 import { User } from '../../interfaces';
 
@@ -21,6 +22,9 @@ const initialUserState: User = {
   highestScore: 0,
   gameInvites: [],
   username: '',
+  _id: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const UserContext =
