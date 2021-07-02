@@ -15,7 +15,7 @@ const FriendList: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      {user.friendsList.length ? (
+      {user && user.friendsList.length ? (
         <div>
           {user.friendsList.map((friend: FriendDetails) => (
             <div key={friend.id} style={{}}>

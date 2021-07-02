@@ -15,17 +15,22 @@ const PendingRequests: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      {user.pendingRequests.length ? (
-        <>
-          {user.pendingRequests.map((pendingRequest: FriendDetails) => (
-            <div key={pendingRequest.id} style={{}}>
-              <p>{pendingRequest.username}</p>
-            </div>
-          ))}
-        </>
-      ) : (
-        <div>No Pending requests</div>
-      )}
+      <div>
+        {user && user.friendRequests.length ? (
+          <>
+            {user.friendRequests.map((friendRequest: FriendDetails) => (
+              <div
+                key={friendRequest.id}
+                style={{ width: '50vw', border: '1px solid black' }}
+              >
+                <p>{friendRequest.username}</p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div>No friend requests</div>
+        )}
+      </div>
     </div>
   );
 };
