@@ -11,6 +11,7 @@
   z-index: 500;
 }
 .navbar__link {
+  color: black;
   text-decoration: none;
   margin-left: 0.5rem;
   transition: color 100ms;

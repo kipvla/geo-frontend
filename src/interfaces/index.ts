@@ -6,6 +6,17 @@ export interface MapSettings {
   zoom: number;
 }
 
+export interface User {
+  username: string;
+  friendsList: any[];
+  friendRequests: any[];
+  gameInvites: any[];
+  pendingRequests: any[];
+  highestScore: number;
+  exp: number;
+  currentLevel: number;
+}
+
 export interface UserGuess {
   lat: number;
   lng: number;
@@ -40,4 +51,8 @@ export interface Leaderboard {
   currentScore: number;
   userTotalGameCounter: number;
   currentLevel: number;
+}
+export interface FriendDetails {
+  id: string;
+  username: string;
 }

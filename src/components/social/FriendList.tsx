@@ -1,17 +1,32 @@
-import React, { useEffect } from 'react';
-import apiService from '../../services/apiService';
+import React from 'react';
+import { FriendDetails } from '../../interfaces';
+import useFetchUser from '../../lib/hooks/useFetchUser';
 
 const FriendList: React.FC = () => {
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const response = await apiService
-        .fetchAllUsers()
-        .then((res) => res.json());
-      console.log(response);
-    };
+  const user = useFetchUser();
 
-    fetchAllUsers();
-  }, []);
-  return <p>Friend List</p>;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {user.friendsList.length ? (
+        <div>
+          {user.friendsList.map((friend: FriendDetails) => (
+            <div key={friend.id} style={{}}>
+              <p>{friend.username}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>No friends yet</div>
+      )}
+    </div>
+  );
 };
 export default FriendList;

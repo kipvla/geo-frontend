@@ -4,12 +4,12 @@ import { User } from '../../interfaces';
 
 interface UserContextInterface {
   user: User;
-  populateUserData: (userData: User) => void;
+  populateUser: (userData: User) => void;
 }
 
 const defaultValue = {
   user: null,
-  populateUserData: () => {},
+  populateUser: () => {},
 };
 
 const initialUserState: User = {
@@ -20,11 +20,7 @@ const initialUserState: User = {
   currentLevel: 1,
   highestScore: 0,
   gameInvites: [],
-  _id: '',
   username: '',
-  email: '',
-  createdAt: '',
-  updatedAt: '',
 };
 
 export const UserContext =
@@ -34,14 +30,14 @@ export const UserContext =
 export const UserProvider = ({ children }): any => {
   const [user, setUser] = useState<User>(initialUserState);
 
-  const populateUserData = (userData: User) => {
+  const populateUser = (userData: User) => {
     console.log(userData, ' in cont');
     setUser(userData);
     console.log(user, ' in cont');
   };
 
   return (
-    <UserContext.Provider value={{ user, populateUserData }}>
+    <UserContext.Provider value={{ user, populateUser }}>
       {children}
     </UserContext.Provider>
   );

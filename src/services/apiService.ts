@@ -25,6 +25,7 @@ const fetchFactory = (route, method = 'GET', body = '') => {
 };
 const fetchGet = (route) => fetchFactory(route);
 const fetchPost = (route, body) => fetchFactory(route, 'POST', body);
+const fetchPut = (route, body) => fetchFactory(route, 'PUT', body);
 
 const login = (credentials): Promise<Response> => {
   return fetchPost('auth/login', credentials);
@@ -38,6 +39,13 @@ const fetchGame = (): Promise<Response> => {
   return fetchGet('game');
 };
 
+const fetchAllMultiplayerGames = (): Promise<Response> => {
+  return fetchGet('game/all-multiplayer-games');
+};
+
+const fetchMultiplayerGamesByGameId = (gameID: string): Promise<Response> => {
+  return fetchGet(`/multiplayer/results/${gameID}`);
+};
 const fetchLeaderboards = (): Promise<Response> => {
   return fetchGet('game/get-leaderboards');
 };
@@ -50,11 +58,31 @@ const fetchAllUsers = (): Promise<Response> => {
   return fetchGet('user/getAll');
 };
 
+const sendFriendRequest = (username: string): Promise<Response> => {
+  return fetchPut('user/add-friend', { friendName: username });
+};
+const addFriend = (friendId: string, friendName: string): Promise<Response> => {
+  return fetchPut('user/add-friend', { friendId, friendName });
+};
+const declineFriendRequest = (friendId: string): Promise<Response> => {
+  return fetchPut('user/decline-request', { friendId });
+};
+
+const updateGame = (turnDetails): Promise<Response> => {
+  return fetchPut('game/update', turnDetails);
+};
+
 export default {
   login,
   register,
   fetchGame,
+  updateGame,
   fetchUser,
   fetchAllUsers,
   fetchLeaderboards,
+  sendFriendRequest,
+  fetchAllMultiplayerGames,
+  fetchMultiplayerGamesByGameId,
+  addFriend,
+  declineFriendRequest,
 };
