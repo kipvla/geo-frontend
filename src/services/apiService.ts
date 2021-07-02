@@ -27,6 +27,7 @@ const fetchGet = (route) => fetchFactory(route);
 const fetchPost = (route, body) => fetchFactory(route, 'POST', body);
 const fetchPut = (route, body) => fetchFactory(route, 'PUT', body);
 
+// AUTH
 const login = (credentials): Promise<Response> => {
   return fetchPost('auth/login', credentials);
 };
@@ -35,8 +36,17 @@ const register = (credentials): Promise<Response> => {
   return fetchPost('auth/register', credentials);
 };
 
+// GAME
 const fetchGame = (): Promise<Response> => {
   return fetchGet('game');
+};
+
+const updateGame = (turnDetails): Promise<Response> => {
+  return fetchPut('game/update', turnDetails);
+};
+
+const startMultiplayerGame = () => {
+  return fetchGet('game/multiplayer');
 };
 
 const fetchAllMultiplayerGames = (): Promise<Response> => {
@@ -46,10 +56,8 @@ const fetchAllMultiplayerGames = (): Promise<Response> => {
 const fetchMultiplayerGamesByGameId = (gameID: string): Promise<Response> => {
   return fetchGet(`/multiplayer/results/${gameID}`);
 };
-const fetchLeaderboards = (): Promise<Response> => {
-  return fetchGet('game/get-leaderboards');
-};
 
+// USER
 const fetchUser = (): Promise<Response> => {
   return fetchGet('user');
 };
@@ -58,26 +66,20 @@ const fetchAllUsers = (): Promise<Response> => {
   return fetchGet('user/getAll');
 };
 
+// INVITATIONS
 const sendFriendRequest = (username: string): Promise<Response> => {
   return fetchPut('user/add-friend', { friendName: username });
 };
+
 const acceptFriendRequest = (
   friendId: string,
   friendName: string
 ): Promise<Response> => {
   return fetchPut('user/accept-request', { friendId, friendName });
 };
+
 const declineFriendRequest = (friendId: string): Promise<Response> => {
   return fetchPut('user/decline-request', { friendId });
-};
-
-const updateGame = (turnDetails): Promise<Response> => {
-  return fetchPut('game/update', turnDetails);
-};
-
-//
-const startMultiplayerGame = () => {
-  return fetchGet('game/multiplayer');
 };
 
 const sendGameInvite = (
@@ -85,6 +87,10 @@ const sendGameInvite = (
   userToInviteID: string
 ): Promise<Response> => {
   return fetchPost('game/multiplayer/send-invite', { gameID, userToInviteID });
+};
+
+const fetchLeaderboards = (): Promise<Response> => {
+  return fetchGet('game/get-leaderboards');
 };
 
 export default {
