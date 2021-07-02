@@ -4,14 +4,16 @@ import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import AddFriends from '../components/friends/AddFriends';
 import apiService from '../services/apiService';
+import { useUserContext } from '../lib/context/userContext';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { populateUserData } = useUserContext();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await apiService.fetchUser().then((res) => res.json());
-      console.log(user);
+      const userData = await apiService.fetchUser().then((res) => res.json());
+      populateUserData(userData.user);
     };
     fetchUser();
   }, []);
