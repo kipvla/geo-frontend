@@ -14,7 +14,7 @@ const PendingRequests: React.FC = () => {
     try {
       const response = await apiService.acceptFriendRequest(id, username);
       const body = await response.json();
-      populateUser(body);
+      populateUser(body.user);
       console.log(user, 'after add');
     } catch (err) {
       console.log(err.message);
@@ -26,7 +26,7 @@ const PendingRequests: React.FC = () => {
     try {
       const response = await apiService.declineFriendRequest(id);
       const body = await response.json();
-      populateUser(body);
+      populateUser(body.user);
       console.log(user, 'after decline');
     } catch (err) {
       console.log(err.message);

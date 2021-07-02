@@ -13,17 +13,14 @@ const defaultValue = {
 };
 
 const initialUserState: User = {
-  username: '',
   friendsList: [],
   friendRequests: [],
   pendingRequests: [],
-  gameInvites: [],
-  highestScore: 0,
-  currentLevel: 1,
   exp: 0,
-  createdAt: '',
-  updatedAt: '',
-  _id: '',
+  currentLevel: 1,
+  highestScore: 0,
+  gameInvites: [],
+  username: '',
 };
 
 export const UserContext =
@@ -33,10 +30,10 @@ export const UserContext =
 export const UserProvider = ({ children }): any => {
   const [user, setUser] = useState<User>(initialUserState);
 
-  const populateUser = (userData: any) => {
-    setUser(userData.user);
-    console.log(userData.user);
+  const populateUser = (userData: User) => {
+    setUser(userData);
   };
+
   return (
     <UserContext.Provider value={{ user, populateUser }}>
       {children}

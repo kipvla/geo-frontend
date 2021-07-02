@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     await apiService
       .fetchUser()
       .then((res) => res.json())
-      .then((userData) => populateUser(userData))
+      .then((userData) => populateUser(userData.user))
       .catch((err) => console.log(err));
   };
 
