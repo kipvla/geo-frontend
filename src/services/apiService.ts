@@ -25,6 +25,7 @@ const fetchFactory = (route, method = 'GET', body = '') => {
 };
 const fetchGet = (route) => fetchFactory(route);
 const fetchPost = (route, body) => fetchFactory(route, 'POST', body);
+const fetchPut = (route, body) => fetchFactory(route, 'PUT', body);
 
 const login = (credentials): Promise<Response> => {
   return fetchPost('auth/login', credentials);
@@ -50,6 +51,10 @@ const fetchAllUsers = (): Promise<Response> => {
   return fetchGet('user/getAll');
 };
 
+const sendFriendRequest = (username): Promise<Response> => {
+  return fetchPut('user/add-friend', { friendName: username });
+};
+
 export default {
   login,
   register,
@@ -57,4 +62,5 @@ export default {
   fetchUser,
   fetchAllUsers,
   fetchLeaderboards,
+  sendFriendRequest,
 };
