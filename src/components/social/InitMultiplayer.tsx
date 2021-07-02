@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
+import { useUserContext } from '../../lib/context/userContext';
+import { useGameContext } from '../../lib/context/gameContext';
 import apiService from '../../services/apiService';
 
 // search bar to select friends
@@ -6,14 +9,29 @@ import apiService from '../../services/apiService';
 // start game
 
 const InitMultiplayer: React.FC = () => {
-  // const [selected, setSelected] = useState();
+  const { user } = useUserContext();
+  const { game } = useGameContext();
+  const [friends, setFriends] = useState([]);
+  const [selectedFriend, setSelectedFriend] = useState({ value: '', label: '' });
   const [successMessage, setSuccessMessage] = useState('');
   const [error, setError] = useState('');
-  // const [startGame, setStartGame] = useState(false);
 
+  useEffect(() => {
+    const options = user.friendsList.map((friend) => ({
+      value: friend.id, label: friend.username
+    }));
+    setFriends(options);
+  }, [user]);
+
+  const handleSelect = (selected) => {
+    setSelectedFriend(selected);
+  };
   const sendInvite = async () => {
     try {
-      const response = await apiService.sendGameInvite('an_id', 'username');
+      const response = await apiService.sendGameInvite(
+        game.multiplayerGameID,
+        selectedFriend.value
+      );
       if (response.ok) {
         setSuccessMessage('Game invite sent!');
       } else {
@@ -27,7 +45,7 @@ const InitMultiplayer: React.FC = () => {
 
   return (
     <div className="modal__focus">
-      <p>im a search bar</p>
+      <Select options={friends} onChange={handleSelect} />
       <button type="button" onClick={sendInvite}>
         send invitation
       </button>

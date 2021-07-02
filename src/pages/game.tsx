@@ -38,7 +38,7 @@ const Game: React.FC = () => {
 
     const response = await apiService
       .updateGame({
-        gameID: game.id,
+        gameID: game._id,
         userGuess: { lat, lng, distance, score },
         turnScore: score,
       })

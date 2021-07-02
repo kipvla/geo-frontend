@@ -78,10 +78,10 @@ const startMultiplayerGame = () => {
 };
 
 const sendGameInvite = (
-  friendId: string,
-  friendName: string
+  gameID: string,
+  userToInviteID: string
 ): Promise<Response> => {
-  return fetchPost('game/multiplayer/send-invite', { friendId, friendName });
+  return fetchPost('game/multiplayer/send-invite', { gameID, userToInviteID });
 };
 
 export default {
