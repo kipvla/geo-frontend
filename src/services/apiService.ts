@@ -44,7 +44,7 @@ const fetchAllMultiplayerGames = (): Promise<Response> => {
 };
 
 const fetchMultiplayerGamesByGameId = (gameID: string): Promise<Response> => {
-  return fetchGet(`/multiplayer/results/${gameID}`);
+  return fetchGet(`game/multiplayer/results/${gameID}`);
 };
 const fetchLeaderboards = (): Promise<Response> => {
   return fetchGet('game/get-leaderboards');
@@ -52,6 +52,9 @@ const fetchLeaderboards = (): Promise<Response> => {
 
 const fetchUser = (): Promise<Response> => {
   return fetchGet('user');
+};
+const fetchUserById = (userId: string): Promise<Response> => {
+  return fetchGet(`user/by-id/${userId}`);
 };
 
 const fetchAllUsers = (): Promise<Response> => {
@@ -102,4 +105,5 @@ export default {
   fetchMultiplayerGamesByGameId,
   acceptFriendRequest,
   declineFriendRequest,
+  fetchUserById,
 };
