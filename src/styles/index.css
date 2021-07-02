@@ -17,6 +17,7 @@
 @import './components/_leaderboards.css';
 @import './components/_social.css';
 @import './components/_addFriend.css';
+@import './components/_gameRequests.css';
 
 /* CONFIG */
 @import './config/_colors.css';
