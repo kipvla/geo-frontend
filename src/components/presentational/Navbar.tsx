@@ -13,6 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
     <div className="links">
       {auth ? (
         <>
+          <Link to="/social">Social</Link>
           <Link to="/leaderboards">Leaderboard</Link>
           <Logout />
         </>
