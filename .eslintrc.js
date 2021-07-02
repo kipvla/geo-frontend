@@ -16,7 +16,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [
       1,
-      { extensions: ['.tsx', '.ts', '.css'] },
+      { extensions: ['.tsx', '.ts', '.css', '.png'] },
     ],
     'no-use-before-define': 'off',
     'no-console': 0,

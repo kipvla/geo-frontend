@@ -68,10 +68,15 @@ const declineFriendRequest = (friendId: string): Promise<Response> => {
   return fetchPut('user/decline-request', { friendId });
 };
 
+const updateGame = (turnDetails): Promise<Response> => {
+  return fetchPut('game/update', turnDetails);
+};
+
 export default {
   login,
   register,
   fetchGame,
+  updateGame,
   fetchUser,
   fetchAllUsers,
   fetchLeaderboards,
