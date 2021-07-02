@@ -1,0 +1,18 @@
+.gameRequest__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+}
+
+.gameRequest__block {
+  width: 400px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
