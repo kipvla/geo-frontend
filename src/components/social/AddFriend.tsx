@@ -1,17 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import apiService from '../../services/apiService';
 
 const AddFriend: React.FC = () => {
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const response = await apiService
-        .fetchAllUsers()
-        .then((res) => res.json());
-      console.log(response);
-    };
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [username, setUsername] = useState('');
 
-    fetchAllUsers();
-  }, []);
-  return <p>its me add friends</p>;
+  const handleAddFriend = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await apiService.sendFriendRequest(username);
+      if (response.ok) {
+        setSuccessMessage('Friend request sent!');
+        setError('');
+        setUsername('');
+      } else {
+        const body = await response.json();
+        setSuccessMessage('');
+        setError(body.msg);
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  return (
+    <div className="addFriend__container">
+      <div className="addFriend__text">Add a friend with their username </div>
+      <form style={{ display: 'flex' }} onSubmit={handleAddFriend}>
+        <input
+          name="username"
+          type="text"
+          value={username}
+          style={{ marginBottom: '0px', marginRight: '20px' }}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+        <button
+          style={{ width: '180px', height: '30px' }}
+          type="submit"
+          disabled={!username}
+          className="button__primary"
+        >
+          Send Friend Request
+        </button>
+      </form>
+      {error ? <p>{error}</p> : null}
+      {successMessage ? <p>{successMessage}</p> : null}
+    </div>
+  );
 };
 export default AddFriend;

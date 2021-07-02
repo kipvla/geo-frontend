@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-around;
   align-self: center;
+  margin-bottom: 30px;
 }
 
 .tab__container div {
