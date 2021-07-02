@@ -14,7 +14,7 @@ const MultiplayerGames: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      {games.length ? (
+      {games && games.length ? (
         <>
           {games.map((game) => (
             <div

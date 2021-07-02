@@ -61,8 +61,11 @@ const fetchAllUsers = (): Promise<Response> => {
 const sendFriendRequest = (username: string): Promise<Response> => {
   return fetchPut('user/add-friend', { friendName: username });
 };
-const addFriend = (friendId: string, friendName: string): Promise<Response> => {
-  return fetchPut('user/add-friend', { friendId, friendName });
+const acceptFriendRequest = (
+  friendId: string,
+  friendName: string
+): Promise<Response> => {
+  return fetchPut('user/accept-request', { friendId, friendName });
 };
 const declineFriendRequest = (friendId: string): Promise<Response> => {
   return fetchPut('user/decline-request', { friendId });
@@ -70,6 +73,18 @@ const declineFriendRequest = (friendId: string): Promise<Response> => {
 
 const updateGame = (turnDetails): Promise<Response> => {
   return fetchPut('game/update', turnDetails);
+};
+
+//
+const startMultiplayerGame = () => {
+  return fetchGet('game/multiplayer');
+};
+
+const sendGameInvite = (
+  gameID: string,
+  userToInviteID: string
+): Promise<Response> => {
+  return fetchPost('game/multiplayer/send-invite', { gameID, userToInviteID });
 };
 
 export default {
@@ -81,8 +96,10 @@ export default {
   fetchAllUsers,
   fetchLeaderboards,
   sendFriendRequest,
+  startMultiplayerGame,
+  sendGameInvite,
   fetchAllMultiplayerGames,
   fetchMultiplayerGamesByGameId,
-  addFriend,
+  acceptFriendRequest,
   declineFriendRequest,
 };

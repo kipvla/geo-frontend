@@ -24,7 +24,7 @@ const initialGameState: Game = {
   locations: [],
   currentTurn: 0,
   guesses: [],
-  id: '',
+  _id: '',
   userID: '',
   createdAt: '',
   updatedAt: '',
@@ -77,15 +77,12 @@ export const GameProvider = ({ children }): any => {
     }));
 
     setGame({
-      id: data._id,
-      currentTurn: data.currentTurn,
-      guesses: data.guesses,
-      createdAt: data.createdAt,
-      updatedAt: data.updatedAt,
+      ...data,
       locations: formattedLocations,
-      active: data.active,
-      currentScore: data.currentScore,
-      userID: data.userID,
+    });
+    console.log('GAME', {
+      ...data,
+      locations: formattedLocations,
     });
   };
 
