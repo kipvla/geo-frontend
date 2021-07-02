@@ -4,6 +4,10 @@
 }
 
 form button {
-  background: linear-gradient(#f7dba7, #555);
+  background: linear-gradient(#e7ddcb, #555);
   box-shadow: 0 0 30px black;
+}
+
+form button:disabled {
+  opacity: 0.5;
 }

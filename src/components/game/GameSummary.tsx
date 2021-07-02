@@ -46,7 +46,11 @@ const GameSummary: React.FC<GameSummaryProps> = ({
       ) : null}
       <div className="score__container">
         <p style={{ padding: '0.8rem' }}>{`POINTS: ${game.currentScore}`}</p>
-        <button type="button" onClick={handleGameEnd}>
+        <button
+          type="button"
+          className="button__primary"
+          onClick={handleGameEnd}
+        >
           back to games
         </button>
         {arcsData.map(({ startLat, startLng, endLat, endLng }) => (

@@ -80,10 +80,10 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           onClick={submitGuess}
           disabled={pinCoordinates[0] === 0 && pinCoordinates[1] === 0}
         >
-          make guess
+          place guess
         </button>
         <button type="button" className="button__primary" onClick={expandMap}>
-          expand map
+          open map
         </button>
       </div>
     </div>

@@ -6,9 +6,7 @@ import { useMapContext } from '../../lib/context/mapContext';
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
 const MapSelector: React.FC = (): ReactElement => {
-  const {
-    viewport, setViewport, pinCoordinates, setPinCoordinates
-  } =
+  const { viewport, setViewport, pinCoordinates, setPinCoordinates } =
     useMapContext();
 
   const dropMarker = ({ lngLat }): void => {
@@ -33,7 +31,7 @@ const MapSelector: React.FC = (): ReactElement => {
             draggable
             onDragEnd={dropMarker}
           >
-            <FaMapPin />
+            <FaMapPin className="map__pin" />
           </Marker>
         ) : null}
       </ReactMapGL>
