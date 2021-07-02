@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link, navigate } from 'gatsby';
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
-import apiService from '../services/apiService';
 // import backgroundMap from '../images/globe.png';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-
-  const fetchUser = async () => {
-    const user = await apiService
-      .fetchUser()
-      .then((res) => res.json())
-      .catch(() => navigate('/'));
-    console.log(user);
-  };
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   return (
     <div className="container page__container">

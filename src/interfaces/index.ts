@@ -41,3 +41,7 @@ export interface Leaderboard {
   userTotalGameCounter: number;
   currentLevel: number;
 }
+export interface FriendDetails {
+  id: string;
+  username: string;
+}

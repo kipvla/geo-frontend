@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
@@ -16,6 +17,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   const { pinCoordinates, setViewport } = useMapContext();
   const { game } = useGameContext();
   const [isMapModal, setIsMapModal] = useState(false);
+  // const [mapDraggingBounds, setMapDraggingBounds] = useState(-1015);
   if (!game.locations.length) return null;
 
   const expandMap = () => {
@@ -40,6 +42,14 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
     setIsMapModal(false);
   };
 
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('resize', () =>
+  //       setMapDraggingBounds((window.innerWidth - 265) * -1)
+  //     );
+  //   }
+  // });
+
   return (
     <div className="container page__container" style={{ flexDirection: 'row' }}>
       <Navbar auth />
@@ -50,9 +60,18 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           <MapSelector />
         </Modal>
       ) : (
-        <div className="map__selector">
+        <motion.div
+          drag
+          dragConstraints={{
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          }}
+          className="map__selector"
+        >
           <MapSelector />
-        </div>
+        </motion.div>
       )}
       <div className="game__right">
         <button
