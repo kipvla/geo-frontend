@@ -61,8 +61,11 @@ const fetchAllUsers = (): Promise<Response> => {
 const sendFriendRequest = (username: string): Promise<Response> => {
   return fetchPut('user/add-friend', { friendName: username });
 };
-const addFriend = (friendId: string, friendName: string): Promise<Response> => {
-  return fetchPut('user/add-friend', { friendId, friendName });
+const acceptFriendRequest = (
+  friendId: string,
+  friendName: string
+): Promise<Response> => {
+  return fetchPut('user/accept-request', { friendId, friendName });
 };
 const declineFriendRequest = (friendId: string): Promise<Response> => {
   return fetchPut('user/decline-request', { friendId });
@@ -97,6 +100,6 @@ export default {
   sendGameInvite,
   fetchAllMultiplayerGames,
   fetchMultiplayerGamesByGameId,
-  addFriend,
+  acceptFriendRequest,
   declineFriendRequest,
 };

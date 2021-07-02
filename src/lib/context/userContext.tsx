@@ -33,9 +33,9 @@ export const UserContext =
 export const UserProvider = ({ children }): any => {
   const [user, setUser] = useState<User>(initialUserState);
 
-  const populateUser = (userData: any) => {
-    setUser(userData.user);
-    console.log(userData.user);
+
+  const populateUser = (userData: User) => {
+    setUser(userData);
   };
 
   return (
