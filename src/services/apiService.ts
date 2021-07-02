@@ -55,10 +55,15 @@ const sendFriendRequest = (username): Promise<Response> => {
   return fetchPut('user/add-friend', { friendName: username });
 };
 
+const updateGame = (turnDetails): Promise<Response> => {
+  return fetchPut('game/update', turnDetails);
+};
+
 export default {
   login,
   register,
   fetchGame,
+  updateGame,
   fetchUser,
   fetchAllUsers,
   fetchLeaderboards,

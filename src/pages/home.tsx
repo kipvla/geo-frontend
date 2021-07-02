@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import apiService from '../services/apiService';
-import backgroundMap from '../images/globe.png';
+// import backgroundMap from '../images/globe.png';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
+  const fetchUser = async () => {
+    const user = await apiService
+      .fetchUser()
+      .then((res) => res.json())
+      .catch(() => navigate('/'));
+    console.log(user);
+  };
   useEffect(() => {
-    const fetchUser = async () => {
-      const user = await apiService.fetchUser().then((res) => res.json());
-      console.log(user);
-    };
     fetchUser();
   }, []);
 
@@ -20,7 +23,7 @@ const Home: React.FC = () => {
     <div className="container page__container">
       <Navbar auth />
 
-      <img src={backgroundMap} width="60%" alt="hand drawn world" />
+      {/* <img src={backgroundMap} width="60%" alt="hand drawn world" /> */}
 
       <Link to="/game" className="link__button">
         single player

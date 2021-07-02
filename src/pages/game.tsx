@@ -19,14 +19,15 @@ const Game: React.FC = () => {
     await apiService
       .fetchGame()
       .then((res) => res.json())
-      .then((gameData) => populateGame(gameData));
+      .then((gameData) => populateGame(gameData))
+      .catch(() => navigate('/'));
   };
 
   useEffect(() => {
     fetchGame();
   }, []);
 
-  const makeAGuess = () => {
+  const makeAGuess = async () => {
     const [lng, lat] = pinCoordinates;
     const trueLng = game.locations[game.currentTurn - 1].lng;
     const trueLat = game.locations[game.currentTurn - 1].lat;
@@ -34,6 +35,16 @@ const Game: React.FC = () => {
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
     setShowScore(true);
+
+    const response = await apiService
+      .updateGame({
+        gameID: game.id,
+        userGuess: { lat, lng, distance, score },
+        turnScore: score,
+      })
+      .then((res) => res.json())
+      .catch((e) => console.log(e));
+    console.log(response);
   };
 
   const startNextRound = () => {
@@ -49,12 +60,12 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {
-        game.currentTurn <= 3
-          ? <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
-          : <GameSummary handleGameEnd={handleGameEnd} />
-      }
-      <Modal show={showScore} handleClose={() => setShowScore(false)}>
+      {game.currentTurn <= 3 ? (
+        <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
+      ) : (
+        <GameSummary handleGameEnd={handleGameEnd} />
+      )}
+      <Modal show={showScore} handleClose={startNextRound}>
         <GameScore />
         <button
           type="button"
