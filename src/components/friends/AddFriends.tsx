@@ -6,14 +6,14 @@ export interface AddFriendsProps {
 }
 
 const AddFriends: React.FC<AddFriendsProps> = ({ showModal }) => {
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const response = await apiService
-        .fetchAllUsers()
-        .then((res) => res.json());
-      console.log(response);
-    };
+  const fetchAllUsers = async () => {
+    const response = await apiService
+      .fetchAllUsers()
+      .then((res) => res.json());
+    console.log(response);
+  };
 
+  useEffect(() => {
     if (showModal) {
       fetchAllUsers();
     }
