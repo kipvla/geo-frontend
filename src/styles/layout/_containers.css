@@ -10,6 +10,7 @@
   padding-top: 4rem;
   width: 100vw;
   height: calc(100vh - 4rem);
+  display: flex;
 }
 
 .form__container {

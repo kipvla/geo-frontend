@@ -34,10 +34,7 @@ const Home: React.FC = () => {
         start game
       </Link>
 
-      <Modal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-      >
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
         <AddFriends showModal={showModal} />
       </Modal>
     </div>
