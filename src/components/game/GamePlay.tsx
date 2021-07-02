@@ -43,18 +43,12 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   };
 
   // useEffect(() => {
-  //   window.addEventListener('resize', () => {
-  //     // setMapDraggingBounds(800);
-  //     setMapDraggingBounds((window.innerWidth - 265) * -1);
-  //   });
-  //   return () => {
-  //     window.removeEventListener('resize', () => {
-  //       // setMapDraggingBounds(800);
-  //       setMapDraggingBounds((window.innerWidth - 265) * -1);
-  //     });
-  //   };
-  //   // return window.removeEventListener('resize');
-  // }, []);
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('resize', () =>
+  //       setMapDraggingBounds((window.innerWidth - 265) * -1)
+  //     );
+  //   }
+  // });
 
   return (
     <div className="container page__container" style={{ flexDirection: 'row' }}>
@@ -63,13 +57,6 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
       <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
       {isMapModal ? (
         <Modal show handleClose={minimizeMap}>
-          <button
-            type="button"
-            className="button__primary"
-            onClick={minimizeMap}
-          >
-            minimize map
-          </button>
           <MapSelector />
         </Modal>
       ) : (

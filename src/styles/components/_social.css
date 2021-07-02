@@ -1,0 +1,23 @@
+.tab__container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+}
+
+.tab__container div {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.tab__container div:hover {
+  cursor: pointer;
+}
+.social__tab__component__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

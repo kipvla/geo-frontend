@@ -1,49 +1,60 @@
 /* eslint-disable arrow-body-style */
 const BASE_URL = process.env.GATSBY_BASE_URL;
 
-// const authPost = (route, body) => {
-//   const token = localStorage.getItem('accessToken');
-//   return fetch(BASE_URL + route, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer: ${token}`,
-//     },
-//     body: JSON.stringify(body),
-//   });
-// };
+interface Init {
+  headers: Headers;
+  method: string;
+  body?: any;
+}
 
-const notAuthenticatedPost = (route, body) => {
-  return fetch(BASE_URL + route, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-};
-
-const authenticatedGet = (route) => {
+const fetchFactory = (route, method = 'GET', body = '') => {
+  const url = BASE_URL + route;
+  const init: Init = {
+    headers: new Headers(),
+    method,
+  };
   const token = localStorage.getItem('accessToken');
-  return fetch(BASE_URL + route, {
-    headers: {
-      Authorization: `Bearer: ${token}`,
-    },
-  });
+  if (token) {
+    init.headers.set('Authorization', `Bearer: ${token}`);
+  }
+  if (body) {
+    init.body = JSON.stringify(body);
+    init.headers.set('Content-Type', 'application/json');
+  }
+  return fetch(url, init);
+};
+const fetchGet = (route) => fetchFactory(route);
+const fetchPost = (route, body) => fetchFactory(route, 'POST', body);
+
+const login = (credentials): Promise<Response> => {
+  return fetchPost('auth/login', credentials);
 };
 
-const login = (credentials) => {
-  console.log('im here in the api service');
-  console.log(credentials);
-  return notAuthenticatedPost('auth/login', credentials);
-};
-
-const register = (credentials) => {
-  return notAuthenticatedPost('auth/register', credentials);
+const register = (credentials): Promise<Response> => {
+  return fetchPost('auth/register', credentials);
 };
 
 const fetchGame = (): Promise<Response> => {
-  return authenticatedGet('game');
+  return fetchGet('game');
 };
 
-export default { login, register, fetchGame };
+const fetchLeaderboards = (): Promise<Response> => {
+  return fetchGet('game/get-leaderboards');
+};
+
+const fetchUser = (): Promise<Response> => {
+  return fetchGet('user');
+};
+
+const fetchAllUsers = (): Promise<Response> => {
+  return fetchGet('user/getAll');
+};
+
+export default {
+  login,
+  register,
+  fetchGame,
+  fetchUser,
+  fetchAllUsers,
+  fetchLeaderboards,
+};

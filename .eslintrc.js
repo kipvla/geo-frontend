@@ -31,7 +31,11 @@ module.exports = {
     'function-paren-newline': 'off',
     'react/jsx-filename-extension': 'off',
     'no-dupe-keys': 'off',
+    'react/no-array-index-key': 'off',
     'object-curly-newline': 'off',
     'react/prop-types': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'no-plusplus': 'off',
   },
 };
