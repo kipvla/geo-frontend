@@ -1,19 +1,19 @@
 .progress {
-  height: 2rem;
-  background-color: #7f534b;
-  width: 80vw;
+  height: 80%;
+  background-color: lightblue;
+  width: 1rem;
   border-radius: 20px;
   box-sizing: border-box;
-  transform: rotate(270deg);
+  transform: rotate(180deg);
   flex: 1;
 }
 
 .progress-bar {
   height: 2rem;
-  background-color: lightblue;
   border-radius: 20px;
 }
 
-.game__right {
-  flex: 1;
+.progress__globe {
+  font-size: 2.5rem;
+  transform: translate(-11px);
 }

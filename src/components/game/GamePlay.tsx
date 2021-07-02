@@ -73,7 +73,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           <MapSelector />
         </motion.div>
       )}
-      <div className="game__right">
+      <div className="game__side__container">
         <button
           type="button"
           className="button__primary"
