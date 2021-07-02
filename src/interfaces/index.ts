@@ -35,15 +35,18 @@ export interface Location {
 }
 
 export interface Game {
+  _id: string;
   active: boolean;
-  currentScore: number;
-  locations: Location[];
   currentTurn: number;
+  locations: Location[];
   guesses: UserGuess[];
-  id: string;
   userID: string;
+  currentScore: number;
   createdAt: string;
   updatedAt: string;
+  isMultiplayer?: boolean;
+  multiplayerGameID?: string;
+
 }
 
 export interface Leaderboard {

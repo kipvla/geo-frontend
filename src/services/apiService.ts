@@ -72,6 +72,18 @@ const updateGame = (turnDetails): Promise<Response> => {
   return fetchPut('game/update', turnDetails);
 };
 
+//
+const startMultiplayerGame = () => {
+  return fetchGet('game/multiplayer');
+};
+
+const sendGameInvite = (
+  friendId: string,
+  friendName: string
+): Promise<Response> => {
+  return fetchPost('game/multiplayer/send-invite', { friendId, friendName });
+};
+
 export default {
   login,
   register,
@@ -81,6 +93,8 @@ export default {
   fetchAllUsers,
   fetchLeaderboards,
   sendFriendRequest,
+  startMultiplayerGame,
+  sendGameInvite,
   fetchAllMultiplayerGames,
   fetchMultiplayerGamesByGameId,
   addFriend,
