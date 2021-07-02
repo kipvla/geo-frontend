@@ -4,7 +4,7 @@ import { User } from '../../interfaces';
 
 interface UserContextInterface {
   user: User;
-  populateUser: (userData: any) => void;
+  populateUser: (userData: User) => void;
 }
 
 const defaultValue = {
@@ -12,13 +12,29 @@ const defaultValue = {
   populateUser: () => {},
 };
 
+const initialUserState: User = {
+  friendsList: [],
+  friendRequests: [],
+  pendingRequests: [],
+  exp: 0,
+  currentLevel: 1,
+  highestScore: 0,
+  gameInvites: [],
+  username: '',
+};
+
 export const UserContext =
   React.createContext<UserContextInterface>(defaultValue);
 
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+// eslint-disable-next-line react/prop-types
+export const UserProvider = ({ children }): any => {
+  const [user, setUser] = useState<User>(initialUserState);
 
-  const populateUser = (userData: any) => {};
+  const populateUser = (userData: User) => {
+    console.log(userData, ' in cont');
+    setUser(userData);
+    console.log(user, ' in cont');
+  };
 
   return (
     <UserContext.Provider value={{ user, populateUser }}>
