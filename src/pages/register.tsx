@@ -95,7 +95,12 @@ const Register: React.FC = () => {
         {error ? (
           <p className="container error__container">{error}</p>
         ) : (
-          <p className="container error__container"> </p>
+          <p
+            className="container error__container"
+            style={{ visibility: 'hidden' }}
+          >
+            {}
+          </p>
         )}
       </div>
     </div>
