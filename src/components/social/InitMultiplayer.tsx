@@ -45,10 +45,12 @@ const InitMultiplayer: React.FC = () => {
 
   return (
     <div className="modal__focus">
+
       <Select options={friends} onChange={handleSelect} />
       <button type="button" onClick={sendInvite}>
         send invitation
       </button>
+
       {error && <p>{error}</p>}
       {successMessage && (
         <>

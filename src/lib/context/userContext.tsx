@@ -7,12 +7,10 @@ interface UserContextInterface {
   user: User;
   populateUser: (userData: User) => void;
 }
-
 const defaultValue = {
   user: null,
   populateUser: () => {},
 };
-
 const initialUserState: User = {
   friendsList: [],
   friendRequests: [],
@@ -30,7 +28,6 @@ const initialUserState: User = {
 export const UserContext =
   React.createContext<UserContextInterface>(defaultValue);
 
-// eslint-disable-next-line react/prop-types
 export const UserProvider = ({ children }): any => {
   const [user, setUser] = useState<User>(initialUserState);
 
