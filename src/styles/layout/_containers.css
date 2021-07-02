@@ -29,6 +29,10 @@
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.auth__container input {
+  box-shadow: 0 0 30px #555;
+}
+
 @media screen and (max-width: 768px) {
   .form__container {
     height: 350px;
