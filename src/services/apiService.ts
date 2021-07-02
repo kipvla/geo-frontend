@@ -89,6 +89,17 @@ const sendGameInvite = (
   return fetchPost('game/multiplayer/send-invite', { gameID, userToInviteID });
 };
 
+const acceptGameInvite = (gameID: string): Promise<Response> => {
+  return fetchPost('game/multiplayer/accept-invite', {
+    gameID,
+  });
+};
+
+const declineGameInvite = (gameID: string): Promise<Response> => {
+  return fetchPost('game/multiplayer/decline-invite', {
+    gameID,
+  });
+};
 const fetchLeaderboards = (): Promise<Response> => {
   return fetchGet('game/get-leaderboards');
 };
@@ -108,4 +119,6 @@ export default {
   fetchMultiplayerGamesByGameId,
   acceptFriendRequest,
   declineFriendRequest,
+  acceptGameInvite,
+  declineGameInvite,
 };

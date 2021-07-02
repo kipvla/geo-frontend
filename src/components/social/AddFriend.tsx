@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import apiService from '../../services/apiService';
+import { useUserContext } from '../../lib/context/userContext';
 
 const AddFriend: React.FC = () => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [username, setUsername] = useState('');
+  const { populateUser } = useUserContext();
 
   const handleAddFriend = async (e) => {
     e.preventDefault();
     try {
       const response = await apiService.sendFriendRequest(username);
       if (response.ok) {
-        setSuccessMessage('Friend request sent!');
+        setSuccessMessage('Friend request sent!!');
+        const body = await response.json();
+        populateUser(body.user);
         setError('');
         setUsername('');
       } else {

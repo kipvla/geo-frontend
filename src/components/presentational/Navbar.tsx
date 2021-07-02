@@ -15,6 +15,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
           nomad
         </Link>
         <div className="links">
+          <Link to="/gameRequests" className="navbar__link">
+            Game Requests
+          </Link>
           <Link to="/social" className="navbar__link">
             Social
           </Link>
