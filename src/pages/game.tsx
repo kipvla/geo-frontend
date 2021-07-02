@@ -16,8 +16,10 @@ const Game: React.FC = () => {
   if (!game) return null;
 
   const fetchGame = async () => {
-    const gameData = await apiService.fetchGame().then((res) => res.json());
-    populateGame(gameData);
+    await apiService
+      .fetchGame()
+      .then((res) => res.json())
+      .then((gameData) => populateGame(gameData));
   };
 
   useEffect(() => {
