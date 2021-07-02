@@ -29,7 +29,6 @@ const GameScore: React.FC = () => {
             sourcePosition={sourcePosition}
             targetPosition={targetPosition}
           />
-          {/* this could be nicer */}
           <p>{`DISTANCE: ${game.guesses[index].distance} km`}</p>
           <p>{`POINTS: ${game.guesses[index].score}`}</p>
         </>
