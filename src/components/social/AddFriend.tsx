@@ -30,22 +30,16 @@ const AddFriend: React.FC = () => {
 
   return (
     <div className="addFriend__container">
-      <div className="addFriend__text">Add a friend with their username </div>
-      <form style={{ display: 'flex' }} onSubmit={handleAddFriend}>
+      <form className="container" onSubmit={handleAddFriend}>
+        <p>Add a friend with their username </p>
         <input
           name="username"
           type="text"
           value={username}
-          style={{ marginBottom: '0px', marginRight: '20px' }}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
         />
-        <button
-          style={{ width: '180px', height: '30px' }}
-          type="submit"
-          disabled={!username}
-          className="button__primary"
-        >
+        <button type="submit" disabled={!username} className="button__primary">
           Send Friend Request
         </button>
       </form>
