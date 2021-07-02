@@ -20,5 +20,6 @@ export default function useFetchMultiplayerGames() {
   return multiplayerGames.map((game) => ({
     score: game.currentScore,
     lastPlayed: moment(game.updatedAt).calendar(),
+    multiplayerGameID: game.multiplayerGameID,
   }));
 }

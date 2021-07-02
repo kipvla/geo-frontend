@@ -8,14 +8,18 @@ interface GameContextInterface {
   incrementTurn: () => void;
   resetGame: () => void;
   populateGame: (gameData: any) => void;
+  populateMultiplayerScoreId: (multiplayerId: string) => void;
+  multiplayerScoreId: string;
 }
 
 const defaultValue = {
   game: null,
+  multiplayerScoreId: '',
   addGuess: () => {},
   incrementTurn: () => {},
   resetGame: () => {},
   populateGame: () => {},
+  populateMultiplayerScoreId: () => {},
 };
 
 const initialGameState: Game = {
@@ -36,6 +40,7 @@ export const GameContext =
 // eslint-disable-next-line react/prop-types
 export const GameProvider = ({ children }): any => {
   const [game, setGame] = useState<Game>(initialGameState);
+  const [multiplayerScoreId, setMultiplayerScoreId] = useState('');
 
   const addGuess = (
     lat: number,
@@ -66,6 +71,12 @@ export const GameProvider = ({ children }): any => {
     setGame(initialGameState);
   };
 
+  const populateMultiplayerScoreId = (multiplayerId: string) => {
+    console.log(multiplayerId, 'from context');
+
+    setMultiplayerScoreId(multiplayerId);
+  };
+
   const populateGame = (gameData: any) => {
     const data = gameData.game;
 
@@ -94,6 +105,8 @@ export const GameProvider = ({ children }): any => {
         incrementTurn,
         resetGame,
         populateGame,
+        populateMultiplayerScoreId,
+        multiplayerScoreId,
       }}
     >
       {children}

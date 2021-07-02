@@ -54,12 +54,15 @@ const fetchAllMultiplayerGames = (): Promise<Response> => {
 };
 
 const fetchMultiplayerGamesByGameId = (gameID: string): Promise<Response> => {
-  return fetchGet(`/multiplayer/results/${gameID}`);
+  return fetchGet(`game/multiplayer/results/${gameID}`);
 };
 
 // USER
 const fetchUser = (): Promise<Response> => {
   return fetchGet('user');
+};
+const fetchUserById = (userId: string): Promise<Response> => {
+  return fetchGet(`user/by-id/${userId}`);
 };
 
 const fetchAllUsers = (): Promise<Response> => {
@@ -119,6 +122,7 @@ export default {
   fetchMultiplayerGamesByGameId,
   acceptFriendRequest,
   declineFriendRequest,
+  fetchUserById,
   acceptGameInvite,
   declineGameInvite,
 };
