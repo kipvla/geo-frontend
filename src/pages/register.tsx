@@ -76,7 +76,6 @@ const Register: React.FC = () => {
               onChange={handleChange}
               placeholder="verify password"
             />
-            {error ? <p>{error}</p> : null}
             <button
               type="submit"
               disabled={
@@ -93,6 +92,16 @@ const Register: React.FC = () => {
             </button>
           </form>
         </div>
+        {error ? (
+          <p className="container error__container">{error}</p>
+        ) : (
+          <p
+            className="container error__container"
+            style={{ visibility: 'hidden' }}
+          >
+            {}
+          </p>
+        )}
       </div>
     </div>
   );

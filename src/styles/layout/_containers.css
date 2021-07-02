@@ -29,6 +29,13 @@
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.error__container {
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background: rgba(158, 96, 96, 0.712);
+}
+
 .auth__container input {
   box-shadow: 0 0 30px #555;
 }
