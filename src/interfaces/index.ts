@@ -15,6 +15,9 @@ export interface User {
   highestScore: number;
   exp: number;
   currentLevel: number;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface UserGuess {
