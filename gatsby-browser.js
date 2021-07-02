@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
 import { MapProvider } from './src/lib/context/mapContext';
 import { GameProvider } from './src/lib/context/gameContext';
+import { UserProvider } from './src/lib/context/userContext';
 import './src/styles/index.css';
 import '@fontsource/darker-grotesque';
 
@@ -16,9 +17,11 @@ const HackyFix = ({ element }) => {
   }, []);
 
   return (
-    <GameProvider>
-      <MapProvider>{element}</MapProvider>
-    </GameProvider>
+    <UserProvider>
+      <GameProvider>
+        <MapProvider>{element}</MapProvider>
+      </GameProvider>
+    </UserProvider>
   );
 };
 

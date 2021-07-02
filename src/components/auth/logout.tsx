@@ -7,7 +7,7 @@ const Logout: React.FC = () => {
   };
 
   return (
-    <Link to="/" onClick={handleLogout}>
+    <Link to="/" onClick={handleLogout} className="navbar__link">
       log out
     </Link>
   );
