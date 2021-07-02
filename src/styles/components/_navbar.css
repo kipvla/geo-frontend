@@ -10,17 +10,18 @@
   align-items: center;
   z-index: 500;
 }
-.navbar a {
+.navbar__link {
+  color: black;
   text-decoration: none;
   margin-left: 0.5rem;
   transition: color 100ms;
 }
-.navbar a:visited {
+.navbar__link:visited {
   text-decoration: none;
   color: black;
 }
-.navbar a:hover,
-a:visited:hover {
+.navbar__link:hover,
+.navbar__link:visited:hover {
   transition: color 100ms;
   color: grey;
 }

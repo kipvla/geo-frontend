@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
-import AddFriends from '../components/friends/AddFriends';
 import apiService from '../services/apiService';
+import backgroundMap from '../images/globe.png';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,23 +20,22 @@ const Home: React.FC = () => {
     <div className="container page__container">
       <Navbar auth />
 
-      {/* friends bar on the side */}
+      <img src={backgroundMap} width="60%" alt="hand drawn world" />
+
+      <Link to="/game" className="link__button">
+        single player
+      </Link>
 
       <button
         type="button"
         onClick={() => setShowModal(true)}
         className="button__primary"
       >
-        Add Friends!!!
+        multi player
       </button>
 
-      <Link to="/game" className="button__primary">
-        single player
-      </Link>
-      {/* multiplayer game */}
-
       <Modal show={showModal} handleClose={() => setShowModal(false)}>
-        <AddFriends showModal={showModal} />
+        <p>i will be the multi player modal</p>
       </Modal>
     </div>
   );
