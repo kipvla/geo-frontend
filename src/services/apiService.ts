@@ -54,7 +54,7 @@ const fetchAllMultiplayerGames = (): Promise<Response> => {
 };
 
 const fetchMultiplayerGamesByGameId = (gameID: string): Promise<Response> => {
-  return fetchGet(`/multiplayer/results/${gameID}`);
+  return fetchGet(`game/multiplayer/results/${gameID}`);
 };
 
 // USER

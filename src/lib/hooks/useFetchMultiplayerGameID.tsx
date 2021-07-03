@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import * as moment from 'moment';
 import apiService from '../../services/apiService';
 
-export default function useFetchMultiplayerGames() {
+export default function useFetchMultiplayerGameID(gameID: string) {
   const [multiplayerGames, setMultiplayerGames] = useState([]);
   const fetchGames = async () => {
     const allGames = await apiService
-      .fetchAllMultiplayerGames()
+      .fetchMultiplayerGamesByGameId(gameID)
       .then((res) => res.json());
     setMultiplayerGames(allGames.results);
-    console.log(allGames);
     // TODO played with
   };
 
@@ -17,9 +15,5 @@ export default function useFetchMultiplayerGames() {
     fetchGames();
   }, []);
 
-  return multiplayerGames.map((game) => ({
-    ...game,
-    score: game.currentScore,
-    lastPlayed: moment(game.updatedAt).calendar(),
-  }));
+  return multiplayerGames;
 }
