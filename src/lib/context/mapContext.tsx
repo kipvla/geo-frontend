@@ -22,6 +22,7 @@ const initialMapSettings = {
   latitude: 25,
   longitude: 10,
   zoom: 0,
+  bearing: 0
 };
 
 export const MapContext =

@@ -2,6 +2,7 @@ export interface MapSettings {
   latitude: number;
   longitude: number;
   zoom: number;
+  bearing: number;
 }
 
 export interface User {
