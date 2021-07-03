@@ -22,6 +22,7 @@ const Home: React.FC = () => {
   };
   useEffect(() => {
     fetchUser();
+    console.log(user);
   }, []);
 
   const handleMultiplayerSetup = async () => {
@@ -48,6 +49,13 @@ const Home: React.FC = () => {
     }
   };
 
+  const handleResumeGame = async () => {
+    // am assuming we will get their most recent active game?
+    // fetch game by id
+    // populate game context
+    // navigate to game
+  };
+
   return (
     <div className="container page__container">
       <Navbar auth />
@@ -67,6 +75,15 @@ const Home: React.FC = () => {
         className="button__primary"
       >
         multi player
+      </button>
+
+      {/* conditionally render this */}
+      <button
+        type="button"
+        onClick={handleResumeGame}
+        className="button__primary"
+      >
+        resume game
       </button>
 
       <Modal show={showModal} handleClose={() => setShowModal(false)}>
