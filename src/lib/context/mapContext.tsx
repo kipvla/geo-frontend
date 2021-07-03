@@ -19,11 +19,11 @@ const defaultValue = {
 };
 
 const initialMapSettings = {
-  width: '20vw',
-  height: '20vh',
+  width: '50px',
+  height: '50px',
   latitude: 22,
   longitude: -65,
-  zoom: 0.6,
+  zoom: 0,
 };
 
 export const MapContext =

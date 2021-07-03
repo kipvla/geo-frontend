@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { GrClose } from 'react-icons/gr';
+import { CgArrowsExpandLeft } from 'react-icons/cg';
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
@@ -17,7 +19,10 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   const { pinCoordinates, setViewport } = useMapContext();
   const { game } = useGameContext();
   const [isMapModal, setIsMapModal] = useState(false);
-  // const [mapDraggingBounds, setMapDraggingBounds] = useState(-1015);
+  const [mapDimensions, setMapDimensions] = useState({
+    width: '100px',
+    height: '100px',
+  });
   if (!game.locations.length) return null;
 
   const expandMap = () => {
@@ -31,24 +36,29 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
     setIsMapModal(true);
   };
 
-  const minimizeMap = () => {
-    setViewport({
-      width: '20vw',
-      height: '20vh',
-      latitude: 22,
-      longitude: -65,
-      zoom: 0.6,
-    });
+  const toggleMapSize = () => {
+    console.log(isMapModal, mapDimensions.width);
+    if (mapDimensions.width === '520px' || isMapModal) {
+      setMapDimensions({ width: '100px', height: '100px' });
+      setViewport({
+        width: '100px',
+        height: '100px',
+        latitude: 22,
+        longitude: -65,
+        zoom: 0.6,
+      });
+    } else {
+      setMapDimensions({ width: '520px', height: '300px' });
+      setViewport({
+        width: '520px',
+        height: '300px',
+        latitude: 22,
+        longitude: -65,
+        zoom: 0.6,
+      });
+    }
     setIsMapModal(false);
   };
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener('resize', () =>
-  //       setMapDraggingBounds((window.innerWidth - 265) * -1)
-  //     );
-  //   }
-  // });
 
   return (
     <div className="container page__container" style={{ flexDirection: 'row' }}>
@@ -56,7 +66,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
       <ProgressBar gameState={gameState} />
       <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
       {isMapModal ? (
-        <Modal show handleClose={minimizeMap}>
+        <Modal show handleClose={toggleMapSize}>
           <MapSelector />
         </Modal>
       ) : (
@@ -68,8 +78,27 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
             right: 0,
             bottom: 0,
           }}
-          className="map__selector"
+          className={`map__selector ${
+            mapDimensions.width === '520px' ? 'map__md' : 'map__sm'
+          }`}
         >
+          {mapDimensions.height === '100px' ? (
+            <button
+              className="map__toggle"
+              type="button"
+              onClick={toggleMapSize}
+            >
+              <CgArrowsExpandLeft />
+            </button>
+          ) : (
+            <button
+              className="map__toggle"
+              type="button"
+              onClick={toggleMapSize}
+            >
+              <GrClose />
+            </button>
+          )}
           <MapSelector />
         </motion.div>
       )}
@@ -83,7 +112,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
           place guess
         </button>
         <button type="button" className="button__primary" onClick={expandMap}>
-          open map
+          full map
         </button>
       </div>
     </div>
