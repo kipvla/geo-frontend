@@ -3,6 +3,7 @@ export interface MapSettings {
   longitude: number;
   zoom: number;
   bearing: number;
+  pitch: number;
 }
 
 export interface User {

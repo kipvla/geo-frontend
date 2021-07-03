@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import { useGameContext } from '../../lib/context/gameContext';
 import Navbar from '../presentational/Navbar';
 
@@ -15,6 +16,12 @@ const GameSummary: React.FC<GameSummaryProps> = ({
 }: GameSummaryProps) => {
   const { game } = useGameContext();
   // const [arcShowing, setArcShowing] = useState();
+
+  const navToHighscores = () => {
+    navigate('/multiplayerResults', {
+      state: { gameID: game.multiplayerGameID },
+    });
+  };
 
   const arcsData = game.guesses.map(({ lng, lat }, index) => ({
     startLat: lat,
@@ -53,6 +60,16 @@ const GameSummary: React.FC<GameSummaryProps> = ({
         >
           back to games
         </button>
+        {game.isMultiplayer && (
+        <button
+          type="button"
+          onClick={navToHighscores}
+          className="button__primary"
+        >
+          see friend results
+        </button>
+        )}
+
         {arcsData.map(({ startLat, startLng, endLat, endLng }) => (
           <p style={{ padding: '0.8rem' }}>
             <div>
@@ -60,7 +77,6 @@ const GameSummary: React.FC<GameSummaryProps> = ({
               {' '}
               {startLat.toFixed(2)}
               ,
-              {' '}
               {startLng.toFixed(2)}
             </div>
             <div>

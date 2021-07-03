@@ -22,6 +22,7 @@ const InitMultiplayer: React.FC = () => {
 
   const handleSelect = (selected) => {
     setSelectedFriend(selected);
+    setSuccessMessage('');
   };
   const sendInvite = async () => {
     try {
