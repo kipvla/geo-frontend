@@ -42,8 +42,14 @@
   padding: 0;
 }
 
-.main__img {
+/* .main__img {
   border: 1px solid black;
+  padding: 1rem;
+} */
+/* https://www.npmjs.com/package/react-magnifier */
+.magnifier {
+  border: 1px solid black;
+  padding: 1rem;
 }
 
 @keyframes fadeIn {

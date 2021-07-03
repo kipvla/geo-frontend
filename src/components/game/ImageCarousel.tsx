@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Magnifier from 'react-magnifier';
 
 export interface ImageCarouselProps {
   sources: string[];
@@ -30,20 +31,29 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => {
     <div className="carousel">
       {sources.map((source, ind) =>
         source !== mainImg ? (
-          <button
-            key={ind.toString()}
-            type="button"
-            onClick={changeImg}
-            className="carousel__button"
-          >
-            <img src={source} alt={source} />
-          </button>
+          <div className="">
+            <button
+              key={ind.toString()}
+              type="button"
+              onClick={changeImg}
+              className="carousel__button"
+            >
+              Next
+            </button>
+            <Magnifier
+              src={source}
+              zoomFactor={1.3}
+              mgWidth={250}
+              mgHeight={250}
+            />
+          </div>
         ) : (
-          <img
+          <Magnifier
             key={ind.toString()}
             src={source}
-            alt={source}
-            className="main__img"
+            zoomFactor={1.3}
+            mgWidth={250}
+            mgHeight={250}
           />
         )
       )}

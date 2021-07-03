@@ -15,7 +15,7 @@ const ResultsMap: React.FC<ResultsMapProps> = ({
   sourcePosition,
   targetPosition,
 }: ResultsMapProps) => {
-  const { viewport } = useMapContext();
+  const { viewport, setViewport } = useMapContext();
   const lineData = [{ sourcePosition, targetPosition }];
   const iconData = [
     { coordinates: sourcePosition },
@@ -64,6 +64,7 @@ const ResultsMap: React.FC<ResultsMapProps> = ({
     >
       <DeckGL
         initialViewState={viewport}
+        onViewportChange={(newViewport) => setViewport(newViewport)}
         controller
         layers={[iconLayer, lineLayer]}
       >
