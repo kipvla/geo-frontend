@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
+import { AiOutlineTrophy } from 'react-icons/ai';
 import Logout from '../auth/logout';
 
 export interface NavbarProps {
@@ -23,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
             <FaUserFriends />
           </Link>
           <Link to="/leaderboards" className="navbar__link">
-            Leaderboard
+            <AiOutlineTrophy />
           </Link>
           <Logout />
         </div>

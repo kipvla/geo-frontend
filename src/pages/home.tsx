@@ -61,30 +61,32 @@ const Home: React.FC = () => {
       <Navbar auth />
       <img src={backgroundMap} width="50%" alt="hand drawn world" />
 
-      <button
-        type="button"
-        onClick={handleSinglePlayerSetup}
-        className="button__primary"
-      >
-        single player
-      </button>
+      <div className="shift__up">
+        <button
+          type="button"
+          onClick={handleSinglePlayerSetup}
+          className="button__primary"
+        >
+          single player
+        </button>
 
-      <button
-        type="button"
-        onClick={handleMultiplayerSetup}
-        className="button__primary"
-      >
-        multi player
-      </button>
+        <button
+          type="button"
+          onClick={handleMultiplayerSetup}
+          className="button__primary"
+        >
+          multi player
+        </button>
 
-      {/* conditionally render this */}
-      <button
-        type="button"
-        onClick={handleResumeGame}
-        className="button__primary"
-      >
-        resume game
-      </button>
+        {/* conditionally render this */}
+        <button
+          type="button"
+          onClick={handleResumeGame}
+          className="button__primary"
+        >
+          resume game
+        </button>
+      </div>
 
       <Modal show={showModal} handleClose={() => setShowModal(false)}>
         <InitMultiplayer />

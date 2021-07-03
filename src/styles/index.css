@@ -19,6 +19,8 @@
 @import './components/_addFriend.css';
 @import './components/_gameRequests.css';
 @import './components/_multiplayerGames.css';
+@import './components/_home.css';
+
 /* CONFIG */
 @import './config/_colors.css';
 

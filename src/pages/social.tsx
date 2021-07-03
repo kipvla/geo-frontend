@@ -6,10 +6,10 @@ import PendingRequests from '../components/social/PendingRequests';
 import MultiplayerGames from '../components/social/MultiplayerGames';
 
 const tabBarNames = [
-  { label: 'Friends', selected: true },
-  { label: 'Send Request', selected: false },
-  { label: 'Pending Request', selected: false },
-  { label: 'Multiplayer Games', selected: false },
+  { label: 'friends', selected: true },
+  { label: 'send request', selected: false },
+  { label: 'pending request', selected: false },
+  { label: 'multiplayer games', selected: false },
 ];
 
 const componentsList = [

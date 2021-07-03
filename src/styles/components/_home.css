@@ -1,0 +1,6 @@
+.shift__up {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -10%;
+}
