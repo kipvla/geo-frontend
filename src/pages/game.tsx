@@ -24,6 +24,7 @@ const Game: React.FC = () => {
     const distance = distanceBetweenTwoPoints(lng, lat, trueLng, trueLat);
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
+    resetMap();
     setShowScore(true);
 
     await apiService
@@ -44,6 +45,7 @@ const Game: React.FC = () => {
 
   const handleGameEnd = () => {
     navigate('/home');
+    resetMap();
     resetGame();
   };
 

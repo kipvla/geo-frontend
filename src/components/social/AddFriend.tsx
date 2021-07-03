@@ -35,6 +35,7 @@ const AddFriend: React.FC = () => {
         <input
           name="username"
           type="text"
+          autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"

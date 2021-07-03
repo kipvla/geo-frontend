@@ -2,6 +2,7 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { LineLayer, IconLayer } from '@deck.gl/layers';
 import ReactMapGL, { StaticMap } from 'react-map-gl';
+import { useMapContext } from '../../lib/context';
 
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 
@@ -10,18 +11,11 @@ export interface ResultsMapProps {
   targetPosition: [number, number];
 }
 
-const INITIAL_VIEW_STATE = {
-  longitude: -40.41669,
-  latitude: 37.7853,
-  zoom: 2,
-  pitch: 0,
-  bearing: 0,
-};
-
 const ResultsMap: React.FC<ResultsMapProps> = ({
   sourcePosition,
   targetPosition,
 }: ResultsMapProps) => {
+  const { viewport, setViewport } = useMapContext();
   const lineData = [{ sourcePosition, targetPosition }];
   const iconData = [
     { coordinates: sourcePosition },
@@ -62,13 +56,15 @@ const ResultsMap: React.FC<ResultsMapProps> = ({
 
   return (
     <ReactMapGL
+      {...viewport}
       width="40vw"
-      height="30vh"
+      height="40vh"
       mapStyle="mapbox://styles/mapbox/satellite-v9"
       mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
     >
       <DeckGL
-        initialViewState={INITIAL_VIEW_STATE}
+        initialViewState={viewport}
+        onViewportChange={(newViewport) => setViewport(newViewport)}
         controller
         layers={[iconLayer, lineLayer]}
       >
