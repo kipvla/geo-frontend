@@ -14,6 +14,7 @@
 }
 
 .form__container {
+  min-height: 400px;
   height: 400px;
   width: 400px;
   background: linear-gradient(217deg, skyblue, #222);

@@ -43,9 +43,9 @@ const AddFriend: React.FC = () => {
         <button type="submit" disabled={!username} className="button__primary">
           Send Friend Request
         </button>
+        {error ? <p>{error}</p> : null}
+        {successMessage ? <p>{successMessage}</p> : null}
       </form>
-      {error ? <p>{error}</p> : null}
-      {successMessage ? <p>{successMessage}</p> : null}
     </div>
   );
 };
