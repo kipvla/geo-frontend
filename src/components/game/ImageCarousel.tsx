@@ -12,9 +12,19 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => {
     setMainImg(target.src);
   };
 
+  const updateMainImg = (e) => {
+    console.log(e);
+  };
+
   useEffect(() => {
     setMainImg(sources[0]);
   }, [sources]);
+
+  useEffect(() => {
+    document
+      .getElementsByClassName('carousel')[0]
+      .addEventListener('scroll', updateMainImg);
+  });
 
   return (
     <div className="carousel">

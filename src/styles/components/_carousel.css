@@ -4,16 +4,36 @@
   margin: 1rem;
   height: 80vh;
   width: 80vw;
-  overflow: scroll;
+  /* overflow: scroll; */
   overflow-y: hidden;
   flex: 8;
   padding: 1rem;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .carousel img {
   margin: 0;
   height: 100%;
   width: auto;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  /* width: 300px;
+  height: 300px; */
+  /* margin-right: 50px;
+  border-radius: 10px; */
+  /* background: #eee; */
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 100px; */
 }
 
 .carousel__button {
