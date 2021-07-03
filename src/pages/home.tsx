@@ -3,8 +3,7 @@ import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import InitMultiplayer from '../components/social/InitMultiplayer';
-import { useUserContext } from '../lib/context/userContext';
-import { useGameContext } from '../lib/context/gameContext';
+import { useUserContext, useGameContext } from '../lib/context';
 import apiService from '../services/apiService';
 import backgroundMap from '../images/globe.png';
 
@@ -31,7 +30,6 @@ const Home: React.FC = () => {
         .startMultiplayerGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       setShowModal(true);
     } catch (e) {
       console.log(e);
@@ -44,7 +42,6 @@ const Home: React.FC = () => {
         .fetchGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       navigate('/game');
     } catch (e) {
       console.log(e);
@@ -72,7 +69,7 @@ const Home: React.FC = () => {
         multi player
       </button>
 
-      <Modal show={showModal}>
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
         <InitMultiplayer />
       </Modal>
     </div>

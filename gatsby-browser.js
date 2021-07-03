@@ -6,6 +6,7 @@ import { UserProvider } from './src/lib/context/userContext';
 import './src/styles/index.css';
 import '@fontsource/darker-grotesque';
 import Layout from './src/components/presentational/Layout';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // eslint-disable-next-line react/prop-types
 const HackyFix = ({ element }) => {

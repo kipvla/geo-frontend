@@ -2,8 +2,8 @@ import React from 'react';
 import Navbar from '../components/presentational/Navbar';
 import useFetchMultiplayerGameID from '../lib/hooks/useFetchMultiplayerGameID';
 
-const MultiplayerResults: React.FC = ({ location }) => {
-  const gameResults = useFetchMultiplayerGameID(location.state.gameID);
+const MultiplayerResults: React.FC = ({ location }: any) => {
+  const gameResults = useFetchMultiplayerGameID(location?.state?.gameID);
   console.log(gameResults);
   return (
     <div className="page__container container">

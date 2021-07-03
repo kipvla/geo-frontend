@@ -1,3 +1,3 @@
 export { useUserContext } from './userContext';
-export { useGameContext } from './GameContext';
+export { useGameContext } from './gameContext';
 export { useMapContext } from './mapContext';

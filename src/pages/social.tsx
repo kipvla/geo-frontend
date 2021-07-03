@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from '../components/presentational/Navbar';
-// import apiService from '../services/apiService';
 import FriendList from '../components/social/FriendList';
 import AddFriend from '../components/social/AddFriend';
 import PendingRequests from '../components/social/PendingRequests';
