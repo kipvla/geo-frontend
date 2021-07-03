@@ -3,8 +3,7 @@ import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import InitMultiplayer from '../components/social/InitMultiplayer';
-import { useUserContext } from '../lib/context/userContext';
-import { useGameContext } from '../lib/context/gameContext';
+import { useUserContext, useGameContext } from '../lib/context';
 import apiService from '../services/apiService';
 import backgroundMap from '../images/globe.png';
 
