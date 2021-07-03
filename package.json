@@ -17,7 +17,6 @@
     "lint:staged": "lint-staged"
   },
   "dependencies": {
-    "@brainhubeu/react-carousel": "^2.0.4",
     "@deck.gl/layers": "^8.4.19",
     "@deck.gl/react": "^8.4.19",
     "@emotion/react": "^11.4.0",
