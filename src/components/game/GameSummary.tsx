@@ -39,7 +39,9 @@ const GameSummary: React.FC<GameSummaryProps> = ({
     <div>
       <Navbar auth />
       {isBrowser() ? (
-        <React.Suspense fallback={<div />}>
+        <React.Suspense
+          fallback={<div className="page__container container">Loading</div>}
+        >
           <Globe
             backgroundColor="white"
             globeImageUrl="/images/earthlights4k.jpg"
@@ -61,13 +63,13 @@ const GameSummary: React.FC<GameSummaryProps> = ({
           back to games
         </button>
         {game.isMultiplayer && (
-        <button
-          type="button"
-          onClick={navToHighscores}
-          className="button__primary"
-        >
-          see friend results
-        </button>
+          <button
+            type="button"
+            onClick={navToHighscores}
+            className="button__primary"
+          >
+            see friend results
+          </button>
         )}
 
         {arcsData.map(({ startLat, startLng, endLat, endLng }) => (
