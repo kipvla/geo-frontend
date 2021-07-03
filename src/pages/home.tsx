@@ -9,6 +9,8 @@ import backgroundMap from '../images/globe.png';
 
 const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [hasGameToResume, setHasGameToResume] = useState(false);
+  const [gameToResume, setGameToResume] = useState(null);
   const { user, populateUser } = useUserContext();
   const { populateGame } = useGameContext();
   if (!user) return null;
@@ -17,12 +19,17 @@ const Home: React.FC = () => {
     await apiService
       .fetchUser()
       .then((res) => res.json())
-      .then((userData) => populateUser(userData.user))
+      .then((userData) => {
+        if (userData.gameToResume) {
+          setHasGameToResume(true);
+          setGameToResume(userData.gameToResume);
+        }
+        populateUser(userData.user);
+      })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     fetchUser();
-    console.log(user);
   }, []);
 
   const handleMultiplayerSetup = async () => {
@@ -50,10 +57,8 @@ const Home: React.FC = () => {
   };
 
   const handleResumeGame = async () => {
-    // am assuming we will get their most recent active game?
-    // fetch game by id
-    // populate game context
-    // navigate to game
+    populateGame({ game: gameToResume });
+    navigate('/game');
   };
 
   return (
@@ -64,10 +69,12 @@ const Home: React.FC = () => {
       <div className="shift__up">
         <button
           type="button"
-          onClick={handleSinglePlayerSetup}
+          onClick={
+            !hasGameToResume ? handleSinglePlayerSetup : handleResumeGame
+          }
           className="button__primary"
         >
-          single player
+          {hasGameToResume === false ? 'single player' : 'resume game'}
         </button>
 
         <button
@@ -76,15 +83,6 @@ const Home: React.FC = () => {
           className="button__primary"
         >
           multi player
-        </button>
-
-        {/* conditionally render this */}
-        <button
-          type="button"
-          onClick={handleResumeGame}
-          className="button__primary"
-        >
-          resume game
         </button>
       </div>
 
