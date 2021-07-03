@@ -1,5 +1,5 @@
-import React from 'react';
 import { navigate } from 'gatsby';
+import React from 'react';
 import useFetchMultiplayerGames from '../../lib/hooks/useFetchMultiplayerGames';
 import { useGameContext } from '../../lib/context/gameContext';
 

@@ -54,7 +54,7 @@ const Home: React.FC = () => {
   return (
     <div className="container page__container">
       <Navbar auth />
-      <img src={backgroundMap} width="60%" alt="hand drawn world" />
+      <img src={backgroundMap} width="50%" alt="hand drawn world" />
 
       <button
         type="button"
