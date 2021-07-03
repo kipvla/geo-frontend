@@ -31,7 +31,6 @@ const Home: React.FC = () => {
         .startMultiplayerGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       setShowModal(true);
     } catch (e) {
       console.log(e);
@@ -44,7 +43,6 @@ const Home: React.FC = () => {
         .fetchGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       navigate('/game');
     } catch (e) {
       console.log(e);
@@ -72,7 +70,7 @@ const Home: React.FC = () => {
         multi player
       </button>
 
-      <Modal show={showModal}>
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
         <InitMultiplayer />
       </Modal>
     </div>
