@@ -18,6 +18,6 @@
 @import './components/_social.css';
 @import './components/_addFriend.css';
 @import './components/_gameRequests.css';
-
+@import './components/_multiplayerGames.css';
 /* CONFIG */
 @import './config/_colors.css';
