@@ -15,29 +15,29 @@ const MapSelector: React.FC = (): ReactElement => {
     setPinCoordinates([longitude, latitude]);
   };
   return (
-    <>
-      <ReactMapGL
-        {...viewport}
-        mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
-        onViewportChange={(newViewport) => setViewport(newViewport)}
-        onClick={dropMarker}
-        mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-        className="mapbox"
-      >
-        {pinCoordinates[0] || pinCoordinates[1] ? (
-          <Marker
-            longitude={pinCoordinates[0]}
-            latitude={pinCoordinates[1]}
-            draggable
-            onDragEnd={dropMarker}
-            offsetLeft={-12}
-            offsetTop={-21}
-          >
-            <FaMapPin className="map__pin" />
-          </Marker>
-        ) : null}
-      </ReactMapGL>
-    </>
+    <ReactMapGL
+      {...viewport}
+      mapStyle="mapbox://styles/mapbox/satellite-streets-v11"
+      onViewportChange={(newViewport) => setViewport(newViewport)}
+      onClick={dropMarker}
+      mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+      className="mapbox"
+      width="100%"
+      height="100%"
+    >
+      {pinCoordinates[0] || pinCoordinates[1] ? (
+        <Marker
+          longitude={pinCoordinates[0]}
+          latitude={pinCoordinates[1]}
+          draggable
+          onDragEnd={dropMarker}
+          offsetLeft={-12}
+          offsetTop={-21}
+        >
+          <FaMapPin className="map__pin" />
+        </Marker>
+      ) : null}
+    </ReactMapGL>
   );
 };
 export default MapSelector;

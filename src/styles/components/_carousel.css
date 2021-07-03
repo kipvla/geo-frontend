@@ -5,6 +5,7 @@
   height: 80vh;
   width: 80vw;
   overflow: scroll;
+  overflow-y: hidden;
   flex: 8;
   padding: 1rem;
 }
