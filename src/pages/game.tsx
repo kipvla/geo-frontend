@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import { GamePlay, GameSummary, GameScore } from '../components/game';
-import { useMapContext } from '../lib/context/mapContext';
-import { useGameContext } from '../lib/context/gameContext';
+import { useMapContext, useGameContext } from '../lib/context';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
 import apiService from '../services/apiService';
@@ -11,21 +10,12 @@ import apiService from '../services/apiService';
 const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
   const { resetMap, pinCoordinates } = useMapContext();
-  const { addGuess, incrementTurn, game, resetGame } =
-    useGameContext();
+  const { addGuess, incrementTurn, game, resetGame } = useGameContext();
   if (!game) return null;
 
-  // const fetchGame = async () => {
-  //   await apiService
-  //     .fetchGame()
-  //     .then((res) => res.json())
-  //     .then((gameData) => populateGame(gameData))
-  //     .catch(() => navigate('/'));
-  // };
-
-  // useEffect(() => {
-  //   fetchGame();
-  // }, []);
+  useEffect(() => {
+    if (!game.locations.length) navigate('/home');
+  }, []);
 
   const makeAGuess = async () => {
     const [lng, lat] = pinCoordinates;
@@ -36,7 +26,7 @@ const Game: React.FC = () => {
     addGuess(lat, lng, distance, score);
     setShowScore(true);
 
-    const response = await apiService
+    await apiService
       .updateGame({
         gameID: game._id,
         userGuess: { lat, lng, distance, score },
@@ -44,7 +34,6 @@ const Game: React.FC = () => {
       })
       .then((res) => res.json())
       .catch((e) => console.log(e));
-    console.log(response);
   };
 
   const startNextRound = () => {

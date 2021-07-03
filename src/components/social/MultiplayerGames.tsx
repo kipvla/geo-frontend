@@ -1,51 +1,32 @@
 import { navigate } from 'gatsby';
 import React from 'react';
-import { HiUserAdd } from 'react-icons/hi';
-import { useGameContext } from '../../lib/context/gameContext';
 import useFetchMultiplayerGames from '../../lib/hooks/useFetchMultiplayerGames';
+import { useGameContext } from '../../lib/context/gameContext';
 
 const MultiplayerGames: React.FC = () => {
   const games = useFetchMultiplayerGames();
-  const { populateMultiplayerScoreId } = useGameContext();
-
-  const goToScores = (game) => {
-    console.log(game, 'game');
-    console.log(game.multiplayerGameID);
-
-    populateMultiplayerScoreId(game.multiplayerGameID);
-    navigate('/scores');
+  const { populateGame } = useGameContext();
+  const handleRouting = (game: any) => {
+    if (game.active) {
+      populateGame({ game });
+      navigate('/game');
+    } else {
+      navigate('/multiplayerResults', {
+        state: { gameID: game.multiplayerGameID },
+      });
+    }
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100vw',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <div className="container">
       {games && games.length ? (
         <>
           {games.map((game) => (
-            <div
-              style={{
-                display: 'flex',
-                width: '30%',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div>
-                <p>{game.score}</p>
-                <p>{game.lastPlayed}</p>
-              </div>
-              <button
-                type="button"
-                className="button__primary"
-                onClick={() => goToScores(game)}
-              >
-                <HiUserAdd />
+            <div className="multiplayer__game__container">
+              <p>{game.score}</p>
+              <p>{game.lastPlayed}</p>
+              <button onClick={() => handleRouting(game)} type="button">
+                {game.active ? 'Play' : 'See Results'}
               </button>
             </div>
           ))}

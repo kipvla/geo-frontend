@@ -3,8 +3,7 @@ import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
 import Navbar from '../components/presentational/Navbar';
 import InitMultiplayer from '../components/social/InitMultiplayer';
-import { useUserContext } from '../lib/context/userContext';
-import { useGameContext } from '../lib/context/gameContext';
+import { useUserContext, useGameContext } from '../lib/context';
 import apiService from '../services/apiService';
 import backgroundMap from '../images/globe.png';
 
@@ -23,6 +22,7 @@ const Home: React.FC = () => {
   };
   useEffect(() => {
     fetchUser();
+    console.log(user);
   }, []);
 
   const handleMultiplayerSetup = async () => {
@@ -31,7 +31,6 @@ const Home: React.FC = () => {
         .startMultiplayerGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       setShowModal(true);
     } catch (e) {
       console.log(e);
@@ -44,11 +43,17 @@ const Home: React.FC = () => {
         .fetchGame()
         .then((res) => res.json())
         .then((gameData) => populateGame(gameData));
-
       navigate('/game');
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleResumeGame = async () => {
+    // am assuming we will get their most recent active game?
+    // fetch game by id
+    // populate game context
+    // navigate to game
   };
 
   return (
@@ -56,23 +61,34 @@ const Home: React.FC = () => {
       <Navbar auth />
       <img src={backgroundMap} width="50%" alt="hand drawn world" />
 
-      <button
-        type="button"
-        onClick={handleSinglePlayerSetup}
-        className="button__primary"
-      >
-        single player
-      </button>
+      <div className="shift__up">
+        <button
+          type="button"
+          onClick={handleSinglePlayerSetup}
+          className="button__primary"
+        >
+          single player
+        </button>
 
-      <button
-        type="button"
-        onClick={handleMultiplayerSetup}
-        className="button__primary"
-      >
-        multi player
-      </button>
+        <button
+          type="button"
+          onClick={handleMultiplayerSetup}
+          className="button__primary"
+        >
+          multi player
+        </button>
 
-      <Modal show={showModal}>
+        {/* conditionally render this */}
+        <button
+          type="button"
+          onClick={handleResumeGame}
+          className="button__primary"
+        >
+          resume game
+        </button>
+      </div>
+
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
         <InitMultiplayer />
       </Modal>
     </div>

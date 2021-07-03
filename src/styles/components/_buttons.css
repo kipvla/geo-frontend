@@ -30,9 +30,9 @@ button {
   transform: scale(1.05);
   transition: transform 100ms;
 }
-.button__modal__close {
+/* .button__modal__close {
   align-self: flex-end;
-}
+} */
 
 .link__button {
   cursor: pointer;

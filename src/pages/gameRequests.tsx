@@ -7,6 +7,7 @@ import apiService from '../services/apiService';
 
 const GameRequests: React.FC = () => {
   const { user, populateUser } = useUserContext();
+  if (!user) return null;
 
   const acceptRequest = async (gameID: string) => {
     try {
