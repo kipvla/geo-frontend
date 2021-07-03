@@ -12,7 +12,7 @@ const Modal: React.FC<ModalProps> = ({ show, handleClose, children }) => (
       <button
         type="button"
         onClick={handleClose}
-        className="button__primary button__modal__close"
+        className="button__primary" // charley removed the other class
       >
         <GrClose />
       </button>
