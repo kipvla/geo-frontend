@@ -19,10 +19,8 @@ const defaultValue = {
 };
 
 const initialMapSettings = {
-  width: '50px',
-  height: '50px',
-  latitude: 22,
-  longitude: -65,
+  latitude: 25,
+  longitude: 10,
   zoom: 0,
 };
 
@@ -36,15 +34,15 @@ export const MapProvider = ({ children }): any => {
     0, 0,
   ]);
 
-  const setZoomLevel = (zoom: number) => {
-    setViewport({
-      ...viewport,
-      zoom,
-    });
-  };
+  // const setZoomLevel = (zoom: number) => {
+  //   setViewport({
+  //     ...viewport,
+  //     zoom,
+  //   });
+  // };
 
   const resetMap = () => {
-    setZoomLevel(0.4);
+    setViewport(initialMapSettings);
     setPinCoordinates([0, 0]);
   };
 
