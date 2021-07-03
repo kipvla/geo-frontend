@@ -11,20 +11,6 @@ export interface ResultsMapProps {
   targetPosition: [number, number];
 }
 
-// const INITIAL_VIEW_STATE = {
-//   latitude: 25,
-//   longitude: 10,
-//   zoom: 0,
-// };
-
-// const viewport = {
-//   width: '40vw',
-//   height: '40vh',
-//   latitude: 22,
-//   longitude: -65,
-//   zoom: 0,
-// };
-
 const ResultsMap: React.FC<ResultsMapProps> = ({
   sourcePosition,
   targetPosition,

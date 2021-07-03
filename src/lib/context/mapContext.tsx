@@ -34,13 +34,6 @@ export const MapProvider = ({ children }): any => {
     0, 0,
   ]);
 
-  // const setZoomLevel = (zoom: number) => {
-  //   setViewport({
-  //     ...viewport,
-  //     zoom,
-  //   });
-  // };
-
   const resetMap = () => {
     setViewport(initialMapSettings);
     setPinCoordinates([0, 0]);
