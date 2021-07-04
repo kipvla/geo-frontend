@@ -54,7 +54,9 @@ const GameSummary: React.FC<GameSummaryProps> = ({
         </React.Suspense>
       ) : null}
       <div className="summary__container__left">
-        <p>{`POINTS: ${game.currentScore}`}</p>
+        <h3>
+          <strong>{`POINTS: ${game.currentScore}`}</strong>
+        </h3>
         {arcsData.map(({ startLat, startLng, endLat, endLng }, index) => (
           <p>
             <div style={{ borderBottom: `solid ${arcColors[index]}` }}>

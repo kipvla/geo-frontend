@@ -58,8 +58,6 @@ const Game: React.FC = () => {
       )}
       <Modal show={showScore}>
         <GameScore />
-        {game.locations.length}
-        {game.currentTurn}
         <button
           type="button"
           onClick={startNextRound}
