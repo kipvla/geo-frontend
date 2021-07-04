@@ -6,7 +6,7 @@
   height: 100%;
   background: rgb(239 248 254 / 0.8);
   z-index: 999;
-/*
+  /*
   display: flex;
   justify-content: center;
   align-items: center; */
@@ -20,4 +20,9 @@
   background-color: white;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 8px #444;
+}
+
+.modal__show button {
+  box-shadow: 0 0 5px #444;
 }

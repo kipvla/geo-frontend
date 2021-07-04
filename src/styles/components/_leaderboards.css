@@ -1,17 +1,13 @@
 .leaderboards {
-  width: 100%;
-  text-align: center;
+  width: 90%;
   border-collapse: collapse;
-  border: 1px solid black;
-  margin-top: 30px;
 }
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid white;
   text-align: left;
   padding: 8px;
-  border: 1px solid black;
   text-align: center;
 }
 

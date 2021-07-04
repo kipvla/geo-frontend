@@ -29,8 +29,8 @@ const GameScore: React.FC = () => {
             sourcePosition={sourcePosition}
             targetPosition={targetPosition}
           />
-          <p>{`DISTANCE: ${game.guesses[index].distance} km`}</p>
-          <p>{`POINTS: ${game.guesses[index].score}`}</p>
+          <div>{`DISTANCE: ${game.guesses[index].distance} km`}</div>
+          <div>{`POINTS: ${game.guesses[index].score}`}</div>
         </>
       ) : null}
     </div>

@@ -33,10 +33,12 @@ const Leaderboards: React.FC = () => {
           leaderboardStats.map((user, index) => (
             <>
               <tr key={index}>
-                <td>{user.username}</td>
+                <td>
+                  <strong>{user.username}</strong>
+                </td>
                 <td>{user.userTotalGameCounter}</td>
                 <td>{user.currentScore}</td>
-                <td>{user.scoreGameRatio}</td>
+                <td>{user.scoreGameRatio.toFixed(2)}</td>
                 <td>{user.exp}</td>
                 <td>{user.currentLevel}</td>
               </tr>
