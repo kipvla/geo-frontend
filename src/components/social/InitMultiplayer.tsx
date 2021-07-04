@@ -9,13 +9,17 @@ const InitMultiplayer: React.FC = () => {
   const { user } = useUserContext();
   const { game } = useGameContext();
   const [friends, setFriends] = useState([]);
-  const [selectedFriend, setSelectedFriend] = useState({ value: '', label: '' });
+  const [selectedFriend, setSelectedFriend] = useState({
+    value: '',
+    label: '',
+  });
   const [successMessage, setSuccessMessage] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     const options = user.friendsList.map((friend) => ({
-      value: friend.id, label: friend.username
+      value: friend.id,
+      label: friend.username,
     }));
     setFriends(options);
   }, [user]);
@@ -44,7 +48,12 @@ const InitMultiplayer: React.FC = () => {
   return (
     <div className="modal__focus">
       <Select options={friends} onChange={handleSelect} />
-      <button type="button" onClick={sendInvite}>
+      <button
+        type="button"
+        className="button__primary"
+        onClick={sendInvite}
+        disabled={!selectedFriend.value}
+      >
         send invitation
       </button>
 

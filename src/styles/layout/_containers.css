@@ -15,18 +15,28 @@
 
 .form__container {
   min-height: 400px;
+  min-width: 400px;
   height: 400px;
   width: 400px;
-  background: linear-gradient(217deg, skyblue, #222);
+  background: linear-gradient(217deg, skyblue, #444);
   border-radius: 50%;
   box-shadow: 0 4px 15px #888;
 }
 
-.score__container {
+.summary__container__left {
   position: fixed;
-  top: 20vh;
+  top: 100px;
   left: 0;
   margin: 1rem;
+  background-color: rgb(255 255 255 / 0.5);
+}
+
+.summary__container__right {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  margin: 1rem;
+  margin-top: 4rem;
   background-color: rgb(255 255 255 / 0.5);
 }
 

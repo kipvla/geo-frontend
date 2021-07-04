@@ -1,6 +1,7 @@
 body {
   font-family: 'Darker Grotesque', sans-serif;
   font-size: 1.3rem;
+  text-transform: lowercase;
 }
 
 .text__light {

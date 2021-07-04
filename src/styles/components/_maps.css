@@ -31,9 +31,13 @@
 .map__toggle {
   position: absolute;
   z-index: 999;
-  transform: translate(-23px, -23px);
-  padding: 0.5rem;
+  /* transform: translate(-23px, -23px); */
+  padding: 1rem;
   border-radius: 50%;
-  height: 2.5rem;
+  /* height: 2.5rem; */
   box-shadow: 0 0 5px #333;
+}
+
+.map__toggle:hover:not([disabled]) {
+  transform: none;
 }

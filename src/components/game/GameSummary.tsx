@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { navigate } from 'gatsby';
 import { useGameContext } from '../../lib/context/gameContext';
@@ -23,16 +24,14 @@ const GameSummary: React.FC<GameSummaryProps> = ({
     });
   };
 
+  const arcColors = ['salmon', 'green', 'lightblue'];
+
   const arcsData = game.guesses.map(({ lng, lat }, index) => ({
     startLat: lat,
     startLng: lng,
     endLat: game.locations[index].lat,
     endLng: game.locations[index].lng,
-    // color: [
-    //   ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
-    //   ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
-    // ],
-    color: 'red',
+    color: arcColors[index],
   }));
 
   return (
@@ -40,7 +39,9 @@ const GameSummary: React.FC<GameSummaryProps> = ({
       <Navbar auth />
       {isBrowser() ? (
         <React.Suspense
-          fallback={<div className="page__container container">Loading</div>}
+          fallback={
+            <div className="page__container container spinner">...</div>
+          }
         >
           <Globe
             backgroundColor="white"
@@ -49,12 +50,26 @@ const GameSummary: React.FC<GameSummaryProps> = ({
             arcsData={arcsData}
             arcColor="color"
             arcStroke={2}
-            // onArcHover={setArcShowing}
           />
         </React.Suspense>
       ) : null}
-      <div className="score__container">
-        <p style={{ padding: '0.8rem' }}>{`POINTS: ${game.currentScore}`}</p>
+      <div className="summary__container__left">
+        <p>{`POINTS: ${game.currentScore}`}</p>
+        {arcsData.map(({ startLat, startLng, endLat, endLng }, index) => (
+          <p>
+            <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
+              round # {index + 1}
+            </div>
+            <div>
+              guess: {startLat.toFixed(2)}, {startLng.toFixed(2)}
+            </div>
+            <div>
+              actual: {endLat.toFixed(2)}, {endLng.toFixed(2)}
+            </div>
+          </p>
+        ))}
+      </div>
+      <div className="summary__container__right">
         <button
           type="button"
           className="button__primary"
@@ -71,27 +86,6 @@ const GameSummary: React.FC<GameSummaryProps> = ({
             see friend results
           </button>
         )}
-
-        {arcsData.map(({ startLat, startLng, endLat, endLng }) => (
-          <p style={{ padding: '0.8rem' }}>
-            <div>
-              guess:
-              {' '}
-              {startLat.toFixed(2)}
-              ,
-              {startLng.toFixed(2)}
-            </div>
-            <div>
-              actual:
-              {' '}
-              {endLat.toFixed(2)}
-              ,
-              {' '}
-              {endLng.toFixed(2)}
-            </div>
-          </p>
-        ))}
-        {/* {arcShowing && <p>{arcShowing?.startLat}</p>} */}
       </div>
     </div>
   );

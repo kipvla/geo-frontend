@@ -59,14 +59,14 @@ const GameRequests: React.FC = () => {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <button
                     type="button"
-                    className="button__primary"
+                    className="button__success"
                     onClick={() => acceptRequest(gameRequest.gameID)}
                   >
                     <AiOutlineCheckCircle />
                   </button>
                   <button
                     type="button"
-                    className="button__primary"
+                    className="button__warning"
                     onClick={() => declineRequest(gameRequest.gameID)}
                   >
                     <GiCancel />

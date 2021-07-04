@@ -25,6 +25,13 @@
   transition: color 100ms;
   color: grey;
 }
+.links {
+  display: flex;
+}
 .links a {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+}
+
+.navbar__icon {
+  margin-top: 0.3rem;
 }
