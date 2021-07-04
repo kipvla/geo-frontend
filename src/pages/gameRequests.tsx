@@ -48,9 +48,9 @@ const GameRequests: React.FC = () => {
   }, []);
 
   return (
-    <div className="page__container">
+    <div className="gameRequest__container container column">
       <Navbar auth />
-      <div className="gameRequest__container">
+      <div className="container column">
         {user.gameInvites.length > 0 ? (
           <>
             {user.gameInvites.map((gameRequest) => (
