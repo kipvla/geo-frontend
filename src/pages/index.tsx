@@ -17,7 +17,9 @@ const Index = () => {
 
       {isBrowser() ? (
         <React.Suspense
-          fallback={<div className="page__container container">Loading</div>}
+          fallback={
+            <div className="page__container container spinner">...</div>
+          }
         >
           <Globe
             showGlobe={isGlobeShowing}

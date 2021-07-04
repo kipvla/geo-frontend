@@ -21,10 +21,10 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
             Game Requests
           </Link>
           <Link to="/social" className="navbar__link">
-            <FaUserFriends />
+            <FaUserFriends className="navbar__icon" />
           </Link>
           <Link to="/leaderboards" className="navbar__link">
-            <AiOutlineTrophy />
+            <AiOutlineTrophy className="navbar__icon" />
           </Link>
           <Logout />
         </div>
