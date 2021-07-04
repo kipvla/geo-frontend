@@ -1,6 +1,16 @@
-.shift__up {
+/* .shift__up {
   display: flex;
   flex-direction: column;
   position: relative;
   top: -10%;
+} */
+
+.world__icon {
+  width: 500px;
+}
+
+@media screen and (max-width: 550px) {
+  .world__icon {
+    width: 200px;
+  }
 }

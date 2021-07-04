@@ -2,16 +2,18 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 0.8rem;
   text-decoration: none;
-  height: 4rem;
+  /* height: 4rem; */
   width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.3rem;
   font-family: 'Darker Grotesque', sans-serif;
+  text-transform: lowercase;
+  transition: transform 200ms;
 }
 /* button:active {
   transform: scale(1.1);
@@ -20,19 +22,29 @@ button {
 .button__primary {
   background-color: #f7dba7;
   color: black;
-  transition: transform 200ms;
 }
-.button__primary:disabled {
+button:disabled {
   opacity: 0.3;
   cursor: default;
 }
-.button__primary:hover:not([disabled]) {
+button:hover:not([disabled]) {
   transform: scale(1.05);
   transition: transform 100ms;
 }
 /* .button__modal__close {
   align-self: flex-end;
 } */
+.button__success {
+  background-color: white;
+  color: green;
+  font-size: 2rem;
+}
+
+.button__warning {
+  background-color: white;
+  color: red;
+  font-size: 2rem;
+}
 
 .link__button {
   cursor: pointer;

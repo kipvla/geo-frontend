@@ -64,9 +64,9 @@ const Home: React.FC = () => {
   return (
     <div className="container page__container">
       <Navbar auth />
-      <img src={backgroundMap} width="50%" alt="hand drawn world" />
+      <img src={backgroundMap} alt="hand drawn world" className="world__icon" />
 
-      <div className="shift__up">
+      <div className="container">
         <button
           type="button"
           onClick={

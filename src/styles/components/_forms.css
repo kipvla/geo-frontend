@@ -1,13 +1,4 @@
-.form button:hover:enabled {
-  transform: scale(1.1);
-  transition: 0.7s;
-}
-
-form button {
+.auth__container button {
   background: linear-gradient(#e7ddcb, #555);
   box-shadow: 0 0 30px black;
-}
-
-form button:disabled {
-  opacity: 0.5;
 }

@@ -46,7 +46,7 @@ const Register: React.FC = () => {
       <Navbar auth={false} />
       <div className="container page__container">
         <div className="container form__container">
-          <form onSubmit={handleSubmit} className="container">
+          <form onSubmit={handleSubmit} className="container auth__container">
             <input
               name="email"
               type="email"

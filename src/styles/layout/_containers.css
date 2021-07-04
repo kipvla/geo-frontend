@@ -15,9 +15,10 @@
 
 .form__container {
   min-height: 400px;
+  min-width: 400px;
   height: 400px;
   width: 400px;
-  background: linear-gradient(217deg, skyblue, #222);
+  background: linear-gradient(217deg, skyblue, #444);
   border-radius: 50%;
   box-shadow: 0 4px 15px #888;
 }
