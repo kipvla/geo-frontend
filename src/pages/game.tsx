@@ -51,19 +51,23 @@ const Game: React.FC = () => {
 
   return (
     <div className="container">
-      {game.currentTurn <= 3 ? (
+      {game.currentTurn <= game.locations.length ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
         <GameSummary handleGameEnd={handleGameEnd} />
       )}
       <Modal show={showScore}>
         <GameScore />
+        {game.locations.length}
+        {game.currentTurn}
         <button
           type="button"
           onClick={startNextRound}
           className="button__primary"
         >
-          next round
+          {game.currentTurn === game.locations.length
+            ? 'game summary'
+            : 'next round'}
         </button>
       </Modal>
     </div>
