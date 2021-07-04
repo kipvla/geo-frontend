@@ -23,7 +23,7 @@ const Index = () => {
         >
           <Globe
             showGlobe={isGlobeShowing}
-            backgroundColor="white"
+            backgroundColor="#fbf3ea"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
             onGlobeClick={handleGlobeClick}

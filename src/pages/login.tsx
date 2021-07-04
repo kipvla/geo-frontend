@@ -11,9 +11,11 @@ const emptyCredentials = {
 const Login: React.FC = () => {
   const [credentials, setCredentials] = useState(emptyCredentials);
   const [error, setError] = useState('');
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsAuthenticating(true);
     try {
       const response = await apiService.login(credentials);
       if (response.ok) {
@@ -22,6 +24,7 @@ const Login: React.FC = () => {
         navigate('/home');
         setCredentials(emptyCredentials);
       } else {
+        setIsAuthenticating(false);
         const body = await response.json();
         setError(body.msg);
       }
@@ -44,29 +47,33 @@ const Login: React.FC = () => {
       <Navbar auth={false} />
       <div className="container page__container">
         <div className="container form__container">
-          <form onSubmit={handleSubmit} className="container auth__container">
-            <input
-              name="email"
-              type="email"
-              value={credentials.email}
-              onChange={handleChange}
-              placeholder="email"
-            />
-            <input
-              name="password"
-              type="password"
-              value={credentials.password}
-              onChange={handleChange}
-              placeholder="password"
-            />
-            <button
-              type="submit"
-              disabled={!(credentials.email && credentials.password)}
-              className="button__primary"
-            >
-              log in
-            </button>
-          </form>
+          {isAuthenticating ? (
+            <div>Authenticating...</div>
+          ) : (
+            <form onSubmit={handleSubmit} className="container auth__container">
+              <input
+                name="email"
+                type="email"
+                value={credentials.email}
+                onChange={handleChange}
+                placeholder="email"
+              />
+              <input
+                name="password"
+                type="password"
+                value={credentials.password}
+                onChange={handleChange}
+                placeholder="password"
+              />
+              <button
+                type="submit"
+                disabled={!(credentials.email && credentials.password)}
+                className="button__primary"
+              >
+                log in
+              </button>
+            </form>
+          )}
         </div>
         {error ? (
           <p className="container error__container">{error}</p>
