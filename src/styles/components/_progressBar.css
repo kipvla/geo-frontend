@@ -17,3 +17,34 @@
   font-size: 2.5rem;
   transform: translate(-11px);
 }
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    justify-content: flex-end;
+    width: 80vw;
+  }
+
+  .progress__mobile {
+    transform: rotate(0deg);
+    width: 100%;
+    height: 1rem;
+    display: flex;
+  }
+
+  .progress__globe {
+    transform: translate(0, -11px);
+  }
+}
