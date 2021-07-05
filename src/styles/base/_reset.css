@@ -5,6 +5,7 @@ body {
   background: rgb(250, 252, 241);
   background: rgb(230, 239, 202);
   background: #fbf3ea;
+  background: var(--color-bg);
   /* background: rgb(245, 217, 182); */
 }
 * {

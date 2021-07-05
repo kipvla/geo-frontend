@@ -7,7 +7,7 @@
   padding: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   z-index: 500;
 }
 .navbar__link {

@@ -5,6 +5,7 @@
   border-radius: 20px;
   border: thick solid #32a1ce;
   box-shadow: 0 0 6px black;
+  z-index: 10;
 }
 
 .map__sm {
