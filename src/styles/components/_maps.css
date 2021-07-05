@@ -9,14 +9,14 @@
 }
 
 .map__sm {
-  width: 100px;
-  height: 100px;
+  width: 26rem;
+  height: 15rem;
   transition: all 300ms;
 }
 
 .map__md {
-  width: 520px;
-  height: 300px;
+  width: 85rem;
+  height: 40rem;
   transition: all 300ms;
 }
 
@@ -25,7 +25,8 @@
 }
 
 .map__pin {
-  color: thistle;
+  /* font-size: 2rem; */
+  color: rgb(172, 168, 172);
   filter: drop-shadow(0 0 40px white);
 }
 
@@ -41,4 +42,13 @@
 
 .map__toggle:hover:not([disabled]) {
   transform: none;
+}
+
+.map__guess {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+}
+.map__arrows {
+  padding: 0.3rem;
 }

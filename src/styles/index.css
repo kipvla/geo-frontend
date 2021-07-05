@@ -22,6 +22,7 @@
 @import './components/_spinner.css';
 @import './components/_gameSummary.css';
 @import './components/_crowdsource.css';
+@import './components/_gamePlay.css';
 
 /* CONFIG */
 @import './config/_colors.css';
