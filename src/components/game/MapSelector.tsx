@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
-import { RiMapPin3Line } from 'react-icons/ri';
+import { ImLocation } from 'react-icons/im';
 import { useMapContext } from '../../lib/context/mapContext';
 
 const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
@@ -34,7 +34,7 @@ const MapSelector: React.FC = (): ReactElement => {
           offsetLeft={-12}
           offsetTop={-21}
         >
-          <RiMapPin3Line className="map__pin" />
+          <ImLocation className="map__pin" />
         </Marker>
       ) : null}
     </ReactMapGL>
