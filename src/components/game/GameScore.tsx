@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultsMap from '../presentational/ResultsMap';
+import ResultsMap from './ResultsMap';
 import { useGameContext } from '../../lib/context/gameContext';
 
 const GameScore: React.FC = () => {
