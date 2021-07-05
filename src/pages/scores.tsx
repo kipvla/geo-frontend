@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Logout from '../components/auth/logout';
-import MultiPlayerScores from '../components/social/MultiPlayerScores';
+import { MultiPlayerScores } from '../components/social';
 
 const Scores: React.FC = () => (
   <div className="links">
@@ -20,9 +20,7 @@ const Scores: React.FC = () => (
       <Logout />
     </div>
 
-    {/* Multiplayer scores go here */}
     <MultiPlayerScores />
-    {/* Probably store the game in the context wihile switching pages */}
   </div>
 );
 

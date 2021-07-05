@@ -1,0 +1,16 @@
+.image-uploader {
+  margin-top: 30px;
+  background-color: #fbf3ea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fileContainer {
+  background-color: #fbf3ea !important;
+  box-shadow: none !important;
+}
+
+.deleteImage {
+  /* Kip fix this please */
+  background-color: black !important;
+}
