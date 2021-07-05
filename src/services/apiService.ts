@@ -107,6 +107,12 @@ const fetchLeaderboards = (): Promise<Response> => {
   return fetchGet('game/get-leaderboards');
 };
 
+const submitCrowdsourceImages = (placeImages): Promise<Response> => {
+  return fetchPost('places/crowdsource', {
+    placeImages,
+  });
+};
+
 export default {
   login,
   register,
@@ -125,4 +131,5 @@ export default {
   fetchUserById,
   acceptGameInvite,
   declineGameInvite,
+  submitCrowdsourceImages,
 };

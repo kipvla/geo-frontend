@@ -39,6 +39,7 @@
     "react-globe.gl": "^2.18.7",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
+    "react-images-upload": "^1.2.8",
     "react-magnifier": "^3.0.4",
     "react-map-gl": "^5.3.16",
     "react-select": "^4.3.1"
