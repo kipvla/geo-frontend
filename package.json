@@ -41,6 +41,7 @@
     "react-icons": "^4.2.0",
     "react-magnifier": "^3.0.4",
     "react-map-gl": "^6.1.16",
+    "react-mapbox-gl": "^4.8.6",
     "react-select": "^4.3.1"
   },
   "devDependencies": {
