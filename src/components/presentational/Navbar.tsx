@@ -29,6 +29,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Link to="/gameRequests" className="navbar__link">
             Game Requests
           </Link>
+          <Link to="/crowdsource" className="navbar__link">
+            Crowd Source
+          </Link>
           <Link to="/social" className="navbar__link">
             <FaUserFriends className="navbar__icon" />
           </Link>

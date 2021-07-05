@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from '../components/presentational/Navbar';
-import FriendList from '../components/social/FriendList';
-import AddFriend from '../components/social/AddFriend';
-import PendingRequests from '../components/social/PendingRequests';
-import MultiplayerGames from '../components/social/MultiplayerGames';
+import {
+  FriendList,
+  AddFriend,
+  PendingRequests,
+  MultiPlayerGames,
+} from '../components/social';
 
 const tabBarNames = [
   { label: 'friends', selected: true },
@@ -16,7 +18,7 @@ const componentsList = [
   <FriendList />,
   <AddFriend />,
   <PendingRequests />,
-  <MultiplayerGames />,
+  <MultiPlayerGames />,
 ];
 
 const Social: React.FC = () => {

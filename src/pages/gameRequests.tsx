@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import Navbar from '../components/presentational/Navbar';
-import { useUserContext } from '../lib/context/userContext';
+import { useUserContext } from '../lib/context';
 import apiService from '../services/apiService';
 
 const GameRequests: React.FC = () => {
