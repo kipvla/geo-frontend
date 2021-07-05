@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
 import { AiOutlineTrophy } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import Logout from '../auth/logout';
 
 export interface NavbarProps {
@@ -9,14 +10,22 @@ export interface NavbarProps {
 }
 
 // eslint-disable-next-line max-len
-const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
-  <div className="navbar">
-    {auth ? (
-      <>
-        <Link to="/home" className="navbar__link">
-          nomad
-        </Link>
-        <div className="links">
+const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
+  const toggleLinks = () => {
+    const links = document.querySelector('.links');
+    links.style.display = links.style.display ? '' : 'flex';
+  };
+
+  return (
+    <div className="navbar">
+      <Link to={auth ? '/home' : '/login'} className="navbar__link">
+        nomad
+      </Link>
+      <button type="button" className="hamburger" onClick={toggleLinks}>
+        <GiHamburgerMenu />
+      </button>
+      {auth ? (
+        <div className="links" onClick={toggleLinks}>
           <Link to="/gameRequests" className="navbar__link">
             Game Requests
           </Link>
@@ -28,12 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
           </Link>
           <Logout />
         </div>
-      </>
-    ) : (
-      <>
-        <Link to="/" className="navbar__link">
-          nomad
-        </Link>
+      ) : (
         <div className="links">
           <Link to="/login" className="navbar__link">
             Login
@@ -42,9 +46,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => (
             Register
           </Link>
         </div>
-      </>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};
 
 export default Navbar;

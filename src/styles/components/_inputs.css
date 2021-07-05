@@ -3,7 +3,7 @@ input {
   cursor: pointer;
   border-radius: 1rem;
   padding: 0.8rem;
-  background-color: #eee;
+  background-color: #ccc;
   outline: none;
   margin-bottom: 0.8rem;
   width: 15rem;
@@ -22,4 +22,8 @@ input::placeholder {
   font-family: 'Darker Grotesque', sans-serif;
   text-transform: lowercase;
   font-size: 1.3rem;
+}
+
+input:not([type='submit']):hover {
+  background-color: #eee;
 }

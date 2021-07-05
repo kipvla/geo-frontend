@@ -2,7 +2,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 1rem;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1.3rem 2rem;
   margin: 0.8rem;
   text-decoration: none;
   /* height: 4rem; */
@@ -35,13 +35,13 @@ button:hover:not([disabled]) {
   align-self: flex-end;
 } */
 .button__success {
-  background-color: white;
+  background-color: var(--color-bg);
   color: green;
   font-size: 2rem;
 }
 
 .button__warning {
-  background-color: white;
+  background-color: var(--color-bg);
   color: red;
   font-size: 2rem;
 }
