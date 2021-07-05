@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [hasGameToResume, setHasGameToResume] = useState(false);
   const [gameToResume, setGameToResume] = useState(null);
+  const [isLoadingGame, setIsLoadingGame] = useState(false);
   const { user, populateUser } = useUserContext();
   const { populateGame } = useGameContext();
   if (!user) return null;
@@ -45,6 +46,7 @@ const Home: React.FC = () => {
   };
 
   const handleSinglePlayerSetup = async () => {
+    setIsLoadingGame(true);
     try {
       await apiService
         .fetchGame()
@@ -57,6 +59,7 @@ const Home: React.FC = () => {
   };
 
   const handleResumeGame = async () => {
+    setIsLoadingGame(true);
     populateGame({ game: gameToResume });
     navigate('/game');
   };
@@ -64,31 +67,41 @@ const Home: React.FC = () => {
   return (
     <div className="container page__container">
       <Navbar auth />
-      <img src={backgroundMap} alt="hand drawn world" className="world__icon" />
 
-      <div className="container">
-        <button
-          type="button"
-          onClick={
-            !hasGameToResume ? handleSinglePlayerSetup : handleResumeGame
-          }
-          className="button__primary"
-        >
-          {hasGameToResume === false ? 'single player' : 'resume game'}
-        </button>
+      {isLoadingGame ? (
+        <div className="page__container container spinner">...</div>
+      ) : (
+        <>
+          <img
+            src={backgroundMap}
+            alt="hand drawn world"
+            className="world__icon"
+          />
+          <div className="container">
+            <button
+              type="button"
+              onClick={
+                !hasGameToResume ? handleSinglePlayerSetup : handleResumeGame
+              }
+              className="button__primary"
+            >
+              {hasGameToResume === false ? 'single player' : 'resume game'}
+            </button>
 
-        <button
-          type="button"
-          onClick={handleMultiplayerSetup}
-          className="button__primary"
-        >
-          multi player
-        </button>
-      </div>
+            <button
+              type="button"
+              onClick={handleMultiplayerSetup}
+              className="button__primary"
+            >
+              multi player
+            </button>
+          </div>
 
-      <Modal show={showModal} handleClose={() => setShowModal(false)}>
-        <InitMultiplayer />
-      </Modal>
+          <Modal show={showModal} handleClose={() => setShowModal(false)}>
+            <InitMultiplayer />
+          </Modal>
+        </>
+      )}
     </div>
   );
 };
