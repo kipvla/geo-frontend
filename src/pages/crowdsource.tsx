@@ -6,19 +6,24 @@ import apiService from '../services/apiService';
 
 const CrowdSource = () => {
   const inputEl = useRef(null);
-
+  const [error, setError] = useState('');
   const [photosToSend, setPhotosToSend] = useState([]);
 
   const imageHandler = async (arrayOfImages) => {
     const formattedImages = await formatImages(arrayOfImages);
     setPhotosToSend(formattedImages);
+    setError('');
   };
-  console.log(photosToSend);
 
   const submitPhotos = async (e) => {
     e.preventDefault();
     const response = await apiService.submitCrowdsourceImages(photosToSend);
-    console.log(response);
+    if (!response.ok) {
+      const body = await response.json();
+      setError(body.msg);
+    }
+    inputEl.current.clearPictures();
+    setPhotosToSend([]);
   };
 
   return (
@@ -31,11 +36,12 @@ const CrowdSource = () => {
           withIcon
           buttonText="Upload Images"
           onChange={(images) => imageHandler(images)}
-          imgExtension={['.jpg', '.gif', '.png', '.gif', '.heif']}
+          imgExtension={['.jpg']}
           maxFileSize={5242880}
-          label="Max size: 5mb, Accepted images: jpg|gif|png"
+          label="Max size: 5mb, Accepted images: jpg"
           withPreview
         />
+        { error && <p>{error}</p>}
         <button
           type="submit"
           disabled={photosToSend.length === 0}
