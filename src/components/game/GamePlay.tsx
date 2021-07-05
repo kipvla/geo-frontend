@@ -61,7 +61,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
   };
 
   return (
-    <div className="container page__container" style={{ flexDirection: 'row' }}>
+    <div className="container page__container game">
       <Navbar auth />
       <ProgressBar gameState={gameState} />
       <ImageCarousel sources={game.locations[game.currentTurn - 1].images} />
