@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import { navigate } from 'gatsby';
-import { useGameContext } from '../../lib/context/gameContext';
+
 import Navbar from '../presentational/Navbar';
+
 import useFetchStats from '../../lib/hooks/useFetchStats';
 
 const Globe = React.lazy(() => import('react-globe.gl'));
@@ -16,32 +15,19 @@ export interface GameSummaryProps {
 const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
   handleGameEnd,
 }: GameSummaryProps) => {
-  // TODO remove game context
-  const { game } = useGameContext();
-  const multiplayerStats = useFetchStats();
+  const { multiplayerStats, game } = useFetchStats();
   const [round, setRound] = useState(0);
 
-  console.log(multiplayerStats, '>>>>>>>>>>>>>>>>>>>>>>>>>');
+  const arcColors = ['salmon', 'green', 'lightblue', 'peru', 'thistle'];
 
-  const arcColors = ['salmon', 'green', 'lightblue'];
-  const multiPlayerArcsData = multiplayerStats.map((game, index) => ({
-    startLat: game.guesses[round].lat,
-    startLng: game.guesses[round].lng,
-    endLat: +game.locations[round].latitude,
-    endLng: +game.locations[round].longitude,
+  const multiPlayerArcsData = multiplayerStats.map((singleGame, index) => ({
+    startLat: singleGame.guesses[round].lat,
+    startLng: singleGame.guesses[round].lng,
+    endLat: +singleGame.locations[round].latitude,
+    endLng: +singleGame.locations[round].longitude,
     color: arcColors[index],
-    username: game.username,
+    username: singleGame.username,
   }));
-
-  const arcsData = game.guesses.map(({ lng, lat }, index) => ({
-    startLat: lat,
-    startLng: lng,
-    endLat: game.locations[index].lat,
-    endLng: game.locations[index].lng,
-    color: arcColors[index],
-  }));
-
-  console.log(multiPlayerArcsData, arcsData);
 
   return (
     <div>
@@ -58,30 +44,48 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
             showGraticules
             arcsData={multiPlayerArcsData}
             arcColor="color"
-            arcStroke={2}
+            arcStroke={1}
           />
         </React.Suspense>
       ) : null}
       <div className="summary__container__left">
-        <h1>MULTIPLAYERRRRRRRR</h1>
+        <div style={{ display: 'flex' }}>
+          <button type="button" onClick={() => setRound(0)}>
+            1
+          </button>
+          <button type="button" onClick={() => setRound(1)}>
+            2
+          </button>
+          <button type="button" onClick={() => setRound(2)}>
+            3
+          </button>
+        </div>
         <h3>
-          <strong>{`POINTS: ${game.currentScore}`}</strong>
+          <strong>{`My Points: ${game.currentScore}`}</strong>
         </h3>
-        {multiPlayerArcsData.map(
-          ({ startLat, startLng, endLat, endLng, username }, index) => (
-            <p key={username}>
+        {multiplayerStats.map((userGame, index) => (
+          <>
+            <div style={{ position: 'fixed', bottom: 0, right: 0 }}>
+              {!index ? <h1>{userGame.locations[round].title}</h1> : null}
+            </div>
+
+            <p key={userGame.username}>
               <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
-                {username}
+                {userGame.username}
               </div>
               <div>
-                guess: {startLat.toFixed(2)}, {startLng.toFixed(2)}
-              </div>
-              <div>
-                actual: {endLat.toFixed(2)}, {endLng.toFixed(2)}
+                {' '}
+                <p>
+                  <div>
+                    {userGame.guesses[round].distance}
+                    {' '}
+                    km away
+                  </div>
+                </p>
               </div>
             </p>
-          )
-        )}
+          </>
+        ))}
       </div>
       <div className="summary__container__right">
         <button
@@ -91,20 +95,6 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         >
           back to games
         </button>
-        {game.isMultiplayer && (
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setRound((prevRound) => {
-                if (prevRound < 2) return prevRound + 1;
-              });
-            }}
-            className="button__primary"
-          >
-            next round
-          </button>
-        )}
       </div>
     </div>
   );
