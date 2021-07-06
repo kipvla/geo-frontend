@@ -16,7 +16,6 @@ const GameSummary: React.FC<GameSummaryProps> = ({
   handleGameEnd,
 }: GameSummaryProps) => {
   const { game } = useGameContext();
-  // const [arcShowing, setArcShowing] = useState();
 
   const navToHighscores = () => {
     navigate('/multiplayerResults', {
@@ -57,16 +56,13 @@ const GameSummary: React.FC<GameSummaryProps> = ({
         <h3>
           <strong>{`POINTS: ${game.currentScore}`}</strong>
         </h3>
-        {arcsData.map(({ startLat, startLng, endLat, endLng }, index) => (
+        {game.guesses.map((guess, index) => (
           <p>
             <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
               round # {index + 1}
             </div>
             <div>
-              guess: {startLat.toFixed(2)}, {startLng.toFixed(2)}
-            </div>
-            <div>
-              actual: {endLat.toFixed(2)}, {endLng.toFixed(2)}
+              {guess.distance} km from {game.locations[index].title}
             </div>
           </p>
         ))}

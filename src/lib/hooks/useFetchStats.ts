@@ -4,31 +4,33 @@ import apiService from '../../services/apiService';
 import { useGameContext } from '../context/gameContext';
 
 export default function useFetchStats() {
-  const { multiplayerScoreId } = useGameContext();
+  const { game } = useGameContext();
 
   const [multiplayerStats, setMultiplayerStats] = useState([]);
 
   const getMultiplayerStats = async () => {
     try {
       const response = await apiService.fetchMultiplayerGamesByGameId(
-        multiplayerScoreId
+        game.multiplayerGameID
       );
       const body = await response.json();
       const allGames = body.results;
-      const formatedGamesPromises = allGames.map(async (game) => {
+      const formatedGamesPromises = allGames.map(async (gameFromAllGames) => {
         try {
-          const responseUser = await apiService.fetchUserById(game.userID);
+          const responseUser = await apiService.fetchUserById(
+            gameFromAllGames.userID
+          );
           const userBody = await responseUser.json();
           const { username } = userBody.user;
 
           return {
-            ...game,
-            updatedAt: moment(game.updatedAt).calendar(),
+            ...gameFromAllGames,
+            updatedAt: moment(gameFromAllGames.updatedAt).calendar(),
             username,
           };
         } catch (err) {
           console.log(err.message);
-          return game;
+          return gameFromAllGames;
         }
       });
       Promise.all(formatedGamesPromises).then((games) => {
@@ -48,5 +50,5 @@ export default function useFetchStats() {
     getMultiplayerStats();
   }, []);
 
-  return multiplayerStats;
+  return { multiplayerStats, game };
 }

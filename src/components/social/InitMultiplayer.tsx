@@ -7,7 +7,7 @@ import apiService from '../../services/apiService';
 
 const InitMultiplayer: React.FC = () => {
   const { user } = useUserContext();
-  const { game } = useGameContext();
+  const { game, populateMultiplayerScoreId } = useGameContext();
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState({
     value: '',
@@ -29,6 +29,8 @@ const InitMultiplayer: React.FC = () => {
     setSuccessMessage('');
   };
   const sendInvite = async () => {
+    // TODO this is only for testing
+    populateMultiplayerScoreId(game.multiplayerGameID);
     try {
       const response = await apiService.sendGameInvite(
         game.multiplayerGameID,
@@ -47,7 +49,11 @@ const InitMultiplayer: React.FC = () => {
 
   return (
     <div className="modal__focus">
-      <Select options={friends} onChange={handleSelect} />
+      <Select
+        options={friends}
+        onChange={handleSelect}
+        placeholder="select friends"
+      />
       <button
         type="button"
         className="button__primary"
@@ -61,7 +67,7 @@ const InitMultiplayer: React.FC = () => {
       {successMessage && (
         <>
           <p>{successMessage}</p>
-          <Link to="/game" className="link__button">
+          <Link to="/game" className="link__button button__primary">
             proceed to game
           </Link>
         </>
