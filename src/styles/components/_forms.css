@@ -18,6 +18,11 @@
   right: 0;
   top: 5rem;
 }
+
+.auth__parent__container input,
+button {
+  box-shadow: 0 0 3px grey;
+}
 .register {
   display: none;
 }

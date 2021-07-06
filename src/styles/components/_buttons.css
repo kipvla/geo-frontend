@@ -46,6 +46,12 @@ button:hover:not([disabled]) {
   color: red;
   font-size: 2rem;
 }
+.button__register {
+  display: flex;
+}
+.button__login {
+  display: flex;
+}
 
 .link__button {
   cursor: pointer;

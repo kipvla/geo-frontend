@@ -6,9 +6,9 @@ import Navbar from '../components/presentational/Navbar';
 
 const Globe = React.lazy(() => import('react-globe.gl'));
 const isBrowser = () => typeof window !== 'undefined';
+const login = document.querySelector('.login');
+const register = document.querySelector('.register');
 const handleClick = (e) => {
-  const login = document.querySelector('.login');
-  const register = document.querySelector('.register');
   if (e.target.name === 'login') {
     login.style.display = 'flex';
     register.style.display = 'none';
@@ -46,19 +46,28 @@ const Index = () => {
         </React.Suspense>
       ) : null}
       <div className="auth__parent__container">
-        <div style={{ display: 'flex' }} />
-        <div className="login">
+        <div className="login container">
           <Login />
+          <button
+            name="register"
+            className="button__register"
+            type="button"
+            onClick={handleClick}
+          >
+            Register
+          </button>
         </div>
-        <div className="register">
+        <div className="register container">
           <Register />
+          <button
+            name="login"
+            className="button__login"
+            type="button"
+            onClick={handleClick}
+          >
+            Login
+          </button>
         </div>
-        <button name="login" type="button" onClick={handleClick}>
-          Login
-        </button>
-        <button name="register" type="button" onClick={handleClick}>
-          Register
-        </button>
       </div>
     </div>
   );
