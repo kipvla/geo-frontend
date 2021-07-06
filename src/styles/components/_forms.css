@@ -1,7 +1,5 @@
 .auth__container button {
-  background: linear-gradient(#e7ddcb, #555);
-  background: #e7ddcb;
-  box-shadow: 0 0 30px black;
+  background: transparent;
 }
 
 /* .auth__container:after {
@@ -14,3 +12,12 @@
   position: absolute;
   z-index: -1;
 } */
+
+.auth__parent__container {
+  position: fixed;
+  right: 0;
+  top: 5rem;
+}
+.register {
+  display: none;
+}
