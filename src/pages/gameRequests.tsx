@@ -29,8 +29,9 @@ const GameRequests: React.FC = () => {
     try {
       const response = await apiService.declineGameInvite(gameID);
       if (response.ok) {
-        const body = await response.json();
-        populateUser(body.user);
+        const userData = await apiService.fetchUser();
+        const userBody = await userData.json();
+        populateUser(userBody.user);
       }
     } catch (e) {
       console.log(e);

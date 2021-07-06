@@ -15,6 +15,7 @@
 }
 .navbar__link {
   color: black;
+  display: flex;
   text-decoration: none;
   margin-left: 1rem;
   transition: color 100ms;
