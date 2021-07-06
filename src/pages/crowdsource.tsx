@@ -18,9 +18,6 @@ const CrowdSource = () => {
 
   const submitPhotos = async (e) => {
     e.preventDefault();
-    console.log('PHOTOS ', photosToSend.length);
-    console.log('FILES ', inputEl.current.state.files.length);
-    console.log(photosToSend);
     const response = await apiService.submitCrowdsourceImages(photosToSend);
     if (!response.ok) {
       const body = await response.json();
