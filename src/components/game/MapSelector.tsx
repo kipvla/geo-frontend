@@ -8,7 +8,6 @@ const MAPBOX_ACCESS_TOKEN = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
 const MapSelector: React.FC = (): ReactElement => {
   const { viewport, setViewport, pinCoordinates, setPinCoordinates } =
     useMapContext();
-  console.log(viewport);
 
   const dropMarker = ({ lngLat }): void => {
     const longitude = lngLat[0];

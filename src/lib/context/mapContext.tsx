@@ -12,7 +12,7 @@ interface MapContextInterface {
   mapDimensions: { width: string; height: string };
   setMapToLarge: () => void;
   setMapToSmall: () => void;
-  customViewport: (lng: number, lat: number) => void;
+  customViewport: (deltaLng: number, deltaLat: number) => void;
 }
 
 const defaultValue = {
@@ -57,7 +57,12 @@ export const MapProvider = ({ children }): any => {
     0, 0,
   ]);
 
-  const customViewport = (lng: number, lat: number) => {};
+  const customViewport = (deltaLng: number, deltaLat: number) => {
+    // guess north and delta is positive
+    // guess east and delta is positive
+    console.log(deltaLng);
+    console.log(deltaLat);
+  };
 
   const resetMap = () => {
     setViewport(initialMapSettings);
