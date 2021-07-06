@@ -46,6 +46,10 @@
   background: transparent;
 }
 
+.controller__diagonal {
+  transform: translate(-7px, 10px);
+}
+
 @media screen and (max-width: 768px) {
   .hamburger {
     display: block;

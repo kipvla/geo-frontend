@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           </Link>
           <Link to="/gameRequests" className="navbar__link">
             <IoLogoGameControllerB className="navbar__icon" />
-            <IoLogoGameControllerB className="navbar__icon" />
+            <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
           </Link>
           <Link to="/crowdsource" className="navbar__link">
             <MdAddAPhoto className="navbar__icon" />
