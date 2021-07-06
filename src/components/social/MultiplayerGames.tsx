@@ -20,17 +20,30 @@ const MultiplayerGames: React.FC = () => {
   return (
     <div className="container">
       {games && games.length ? (
-        <>
-          {games.map((game) => (
-            <div className="multiplayer__game__container">
-              <p>{game.score}</p>
-              <p>{game.lastPlayed}</p>
-              <button onClick={() => handleRouting(game)} type="button">
-                {game.active ? 'Play' : 'See Results'}
-              </button>
-            </div>
-          ))}
-        </>
+        <table className="multiplayer__table">
+          <thead>
+            <td>Score</td>
+            <td>Last played</td>
+            <td>Results</td>
+          </thead>
+          <tbody>
+            {games.map((game) => (
+              <tr>
+                <td>{game.score}</td>
+                <td>{game.lastPlayed}</td>
+                <td>
+                  <button
+                    onClick={() => handleRouting(game)}
+                    type="button"
+                    className="button__primary"
+                  >
+                    {game.active ? 'Play' : 'Results'}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <div>No Multiplayer games</div>
       )}
