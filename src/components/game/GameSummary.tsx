@@ -57,14 +57,14 @@ const GameSummary: React.FC<GameSummaryProps> = ({
           <strong>{`POINTS: ${game.currentScore}`}</strong>
         </h3>
         {game.guesses.map((guess, index) => (
-          <p>
+          <div key={index} style={{ margin: '1rem' }}>
             <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
               round # {index + 1}
             </div>
             <div>
               {guess.distance} km from {game.locations[index].title}
             </div>
-          </p>
+          </div>
         ))}
       </div>
       <div className="summary__container__right">

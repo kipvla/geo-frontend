@@ -73,7 +73,6 @@ export const GameProvider = ({ children }): any => {
 
   const populateMultiplayerScoreId = (multiplayerId: string) => {
     console.log(multiplayerId, 'from context');
-
     setMultiplayerScoreId(multiplayerId);
   };
 
@@ -88,10 +87,6 @@ export const GameProvider = ({ children }): any => {
     }));
 
     setGame({
-      ...data,
-      locations: formattedLocations,
-    });
-    console.log('GAME', {
       ...data,
       locations: formattedLocations,
     });
