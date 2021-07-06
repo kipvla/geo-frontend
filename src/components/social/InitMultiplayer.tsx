@@ -7,7 +7,7 @@ import apiService from '../../services/apiService';
 
 const InitMultiplayer: React.FC = () => {
   const { user } = useUserContext();
-  const { game } = useGameContext();
+  const { game, populateMultiplayerScoreId } = useGameContext();
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState({
     value: '',
@@ -29,6 +29,8 @@ const InitMultiplayer: React.FC = () => {
     setSuccessMessage('');
   };
   const sendInvite = async () => {
+    // TODO this is only for testing
+    populateMultiplayerScoreId(game.multiplayerGameID);
     try {
       const response = await apiService.sendGameInvite(
         game.multiplayerGameID,

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import Modal from '../components/presentational/Modal';
-import { GamePlay, GameSummary, GameScore } from '../components/game';
+import {
+  GamePlay,
+  GameSummary,
+  GameScore,
+  MultiplayerGameSummary,
+} from '../components/game';
 import { useMapContext, useGameContext } from '../lib/context';
 import distanceBetweenTwoPoints from '../lib/scoring/distance';
 import calculateScore from '../lib/scoring/score';
@@ -54,7 +59,13 @@ const Game: React.FC = () => {
       {game.currentTurn <= game.locations.length ? (
         <GamePlay gameState={game.currentTurn} submitGuess={makeAGuess} />
       ) : (
-        <GameSummary handleGameEnd={handleGameEnd} />
+        <>
+          {game.multiplayerGameID ? (
+            <MultiplayerGameSummary handleGameEnd={handleGameEnd} />
+          ) : (
+            <GameSummary handleGameEnd={handleGameEnd} />
+          )}
+        </>
       )}
       <Modal show={showScore}>
         <GameScore />
