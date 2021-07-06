@@ -12,6 +12,7 @@ interface MapContextInterface {
   mapDimensions: { width: string; height: string };
   setMapToLarge: () => void;
   setMapToSmall: () => void;
+  customViewport: (lng: number, lat: number) => void;
 }
 
 const defaultValue = {
@@ -24,6 +25,7 @@ const defaultValue = {
   mapDimensions: null,
   setMapToLarge: () => {},
   setMapToSmall: () => {},
+  customViewport: () => {},
 };
 
 const initialMapSettings = {
@@ -34,19 +36,28 @@ const initialMapSettings = {
   pitch: 0,
 };
 
+const smallMapDimensions = {
+  width: '10rem',
+  height: '10rem',
+};
+
+const largeMapDimensions = {
+  width: '52rem',
+  height: '30rem',
+};
+
 export const MapContext =
   React.createContext<MapContextInterface>(defaultValue);
 
 // eslint-disable-next-line react/prop-types
 export const MapProvider = ({ children }): any => {
   const [viewport, setViewport] = useState(initialMapSettings);
-  const [mapDimensions, setMapDimensions] = useState({
-    width: '10rem',
-    height: '10rem',
-  });
+  const [mapDimensions, setMapDimensions] = useState(smallMapDimensions);
   const [pinCoordinates, setPinCoordinates] = useState<[number, number]>([
     0, 0,
   ]);
+
+  const customViewport = (lng: number, lat: number) => {};
 
   const resetMap = () => {
     setViewport(initialMapSettings);
@@ -65,7 +76,7 @@ export const MapProvider = ({ children }): any => {
       bearing: 0,
       pitch: 0,
     });
-    setMapDimensions({ width: '52rem', height: '30rem' });
+    setMapDimensions(largeMapDimensions);
   };
 
   const setMapToSmall = () => {
@@ -76,7 +87,7 @@ export const MapProvider = ({ children }): any => {
       bearing: 0,
       pitch: 0,
     });
-    setMapDimensions({ width: '10rem', height: '10rem' });
+    setMapDimensions(smallMapDimensions);
   };
 
   return (
@@ -84,6 +95,7 @@ export const MapProvider = ({ children }): any => {
       value={{
         viewport,
         setViewport,
+        customViewport,
         pinCoordinates,
         setPinCoordinates,
         resetMap,
