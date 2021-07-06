@@ -61,14 +61,14 @@ const PendingRequests: React.FC = () => {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <button
                     type="button"
-                    className="button__primary"
+                    className="button__success"
                     onClick={() => addFriend(friendRequest)}
                   >
                     <HiUserAdd />
                   </button>
                   <button
                     type="button"
-                    className="button__primary"
+                    className="button__warning"
                     onClick={() => declineRequest(friendRequest)}
                   >
                     <GiCancel />
