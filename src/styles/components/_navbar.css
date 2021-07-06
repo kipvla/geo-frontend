@@ -10,6 +10,8 @@
   align-items: baseline;
   z-index: 500;
   font-size: 1.5rem;
+  /* background-color: rgb(100 100 100 / 0.3); */
+  border-bottom: 1px inset rgba(175, 164, 115, 0.6);
 }
 .navbar__link {
   color: black;
