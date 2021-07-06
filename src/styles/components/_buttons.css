@@ -22,6 +22,7 @@ button {
 .button__primary {
   background-color: #f7dba7;
   color: black;
+  box-shadow: 0 0 5px gray;
 }
 button:disabled {
   opacity: 0.3;
