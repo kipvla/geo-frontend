@@ -8,6 +8,7 @@ const CrowdSource = () => {
   const inputEl = useRef(null);
   const [error, setError] = useState('');
   const [photosToSend, setPhotosToSend] = useState([]);
+  console.log(inputEl);
 
   const imageHandler = async (arrayOfImages) => {
     const formattedImages = await formatImages(arrayOfImages);
@@ -17,19 +18,24 @@ const CrowdSource = () => {
 
   const submitPhotos = async (e) => {
     e.preventDefault();
+    console.log('PHOTOS ', photosToSend.length);
+    console.log('FILES ', inputEl.current.state.files.length);
+    console.log(photosToSend);
     const response = await apiService.submitCrowdsourceImages(photosToSend);
     if (!response.ok) {
       const body = await response.json();
       setError(body.msg);
     }
-    inputEl.current.clearPictures();
+    inputEl.current.state.pictures = [];
+    inputEl.current.state.files = [];
     setPhotosToSend([]);
+    console.log(inputEl);
   };
 
   return (
     <div className="page__container container">
       <Navbar auth />
-      <form onSubmit={submitPhotos} className="image-uploader container column">
+      <form onSubmit={submitPhotos} className="container">
         <ImageUploader
           style={{ backgroundColor: '#fbf3ea' }}
           ref={inputEl}
