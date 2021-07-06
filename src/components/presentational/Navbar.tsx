@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
-import { AiOutlineTrophy } from 'react-icons/ai';
+import { AiOutlineTrophy, AiFillHome } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdAddAPhoto } from 'react-icons/md';
+
 import { IoLogoGameControllerB } from 'react-icons/io';
 import Logout from '../auth/logout';
 
@@ -28,6 +29,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
       </button>
       {auth ? (
         <div className="links" onClick={toggleLinks}>
+          <Link to="/home" className="navbar__link">
+            <AiFillHome className="navbar__icon" />
+          </Link>
           <Link to="/gameRequests" className="navbar__link">
             <IoLogoGameControllerB className="navbar__icon" />
             <IoLogoGameControllerB className="navbar__icon" />
