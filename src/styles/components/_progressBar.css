@@ -9,7 +9,7 @@
 }
 
 .progress-bar {
-  height: 2rem;
+  /* height: 2rem; */
   border-radius: 20px;
 }
 
@@ -21,7 +21,9 @@
 }
 
 .desktop {
-  display: flex;
+  display: block;
+  margin-left: 0.8rem;
+  margin-top: 2rem;
 }
 
 .mobile {

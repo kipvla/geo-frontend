@@ -1,10 +1,10 @@
-.multiplayer__game__container {
+.multiplayer__table {
+  width: 360x;
+  border-collapse: collapse;
+  border: none;
+}
+
+.multiplayer__table > tbody > tr > td:last-of-type {
   display: flex;
-  width: 30%;
-  justify-content: space-between;
-  border: 1px solid black;
-  margin-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 10px;
+  justify-content: center;
 }
