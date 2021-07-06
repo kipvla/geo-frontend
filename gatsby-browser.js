@@ -5,7 +5,7 @@ import { GameProvider } from './src/lib/context/gameContext';
 import { UserProvider } from './src/lib/context/userContext';
 import './src/styles/index.css';
 import '@fontsource/darker-grotesque';
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import Layout from './src/components/presentational/Layout';
 
 // eslint-disable-next-line react/prop-types
