@@ -1,5 +1,7 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { WebMercatorViewport } from 'react-map-gl';
 import { MapSettings } from '../../interfaces/index';
 
 interface MapContextInterface {
@@ -12,7 +14,12 @@ interface MapContextInterface {
   mapDimensions: { width: string; height: string };
   setMapToLarge: () => void;
   setMapToSmall: () => void;
-  customViewport: (deltaLng: number, deltaLat: number) => void;
+  customViewport: (
+    lng: number,
+    trueLng: number,
+    lat: number,
+    trueLat: number
+  ) => void;
 }
 
 const defaultValue = {
@@ -57,11 +64,35 @@ export const MapProvider = ({ children }): any => {
     0, 0,
   ]);
 
-  const customViewport = (deltaLng: number, deltaLat: number) => {
-    // guess north and delta is positive
-    // guess east and delta is positive
-    console.log(deltaLng);
-    console.log(deltaLat);
+  const customViewport = (
+    lng: number,
+    trueLng: number,
+    lat: number,
+    trueLat: number
+  ) => {
+    const corners: [[number, number], [number, number]] = [
+      [Math.min(lng, trueLng), Math.min(lat, trueLat)],
+      [Math.max(lng, trueLng), Math.max(lat, trueLat)],
+    ];
+    const customView = new WebMercatorViewport({
+      width: 800,
+      height: 600,
+    }).fitBounds(corners, { padding: 200 });
+    let { longitude, latitude, zoom } = customView;
+
+    if (zoom < 1) {
+      zoom = 0;
+    } else {
+      zoom *= 0.8;
+    }
+
+    setViewport({
+      latitude,
+      longitude,
+      zoom,
+      bearing: 0,
+      pitch: 0,
+    });
   };
 
   const resetMap = () => {

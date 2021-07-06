@@ -30,9 +30,9 @@ const Game: React.FC = () => {
     const distance = distanceBetweenTwoPoints(lng, lat, trueLng, trueLat);
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
-    customViewport(lng - trueLng, lat - trueLat);
     resetMap();
     setMapToSmall();
+    customViewport(lng, trueLng, lat, trueLat);
     setShowScore(true);
 
     await apiService
