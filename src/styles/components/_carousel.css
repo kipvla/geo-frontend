@@ -1,12 +1,11 @@
 .carousel {
   display: flex;
-  flex: 8;
+  flex: 10;
   justify-content: space-between;
 }
 
 .slider {
   width: 40vw;
-  /* text-align: center; */
   overflow: hidden;
   flex: 9;
   display: flex;
@@ -34,26 +33,26 @@
   background: transparent;
 }
 .slides > div {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   flex-shrink: 0;
   width: 34rem;
   height: 34rem;
-  margin-right: 50px;
+  /* margin-right: 50px; */
   border-radius: 10px;
   background: #eee;
-  transform-origin: center center;
+  /* transform-origin: center center;
   transform: scale(1);
-  transition: transform 0.5s;
+  transition: transform 0.5s; */
   position: relative;
   background-position: center center;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 100px;
+  box-shadow: 0 0 7px grey;
+  margin: 1rem 4rem;
 }
 
 .thumbnails {
+  padding-top: 3rem;
+  padding-left: 1rem;
   flex: 8;
 }
 
@@ -71,7 +70,16 @@
   background-position: center center;
   background-size: cover;
   margin: 0.6rem 0.5rem;
+  transition: transform 200ms ease-in-out;
+  box-shadow: 0 0 7px grey;
 }
+
+.thumbnails > a:hover {
+  transform: scale(1.08);
+  transition: transform 200ms ease-in-out;
+  /* animation: jiggle 500ms ease-in-out; */
+}
+
 .slider > a:active {
   top: 1px;
 }

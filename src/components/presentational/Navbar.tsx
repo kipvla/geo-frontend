@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
 import { AiOutlineTrophy } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdAddAPhoto } from 'react-icons/md';
+import { IoLogoGameControllerB } from 'react-icons/io';
 import Logout from '../auth/logout';
 
 export interface NavbarProps {
@@ -27,10 +29,11 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
       {auth ? (
         <div className="links" onClick={toggleLinks}>
           <Link to="/gameRequests" className="navbar__link">
-            Game Requests
+            <IoLogoGameControllerB className="navbar__icon" />
+            <IoLogoGameControllerB className="navbar__icon" />
           </Link>
           <Link to="/crowdsource" className="navbar__link">
-            Crowd Source
+            <MdAddAPhoto className="navbar__icon" />
           </Link>
           <Link to="/social" className="navbar__link">
             <FaUserFriends className="navbar__icon" />

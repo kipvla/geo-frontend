@@ -16,7 +16,7 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
           className="progress-bar"
           style={{ height: `${((gameState - 1) * 100) / 3}%` }}
         />
-        <FiGlobe className="progress__globe" />
+        <FiGlobe className="progress__globe" viewBox="0 0 10 10" />
       </div>
     </div>
     <div className="container mobile">

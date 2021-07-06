@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/presentational/Navbar';
 import {
   FriendList,
@@ -39,6 +39,10 @@ const Social: React.FC = () => {
     });
     setSelectedComponent(componentsList[index]);
   };
+
+  useEffect(() => {
+    setSelectedComponent(<FriendList />);
+  }, []);
 
   return (
     <div className="page__container">
