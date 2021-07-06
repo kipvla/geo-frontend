@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import { useGameContext } from '../../lib/context/gameContext';
 import Navbar from '../presentational/Navbar';
@@ -19,17 +19,19 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
   // TODO remove game context
   const { game } = useGameContext();
   const multiplayerStats = useFetchStats();
-  // const [arcShowing, setArcShowing] = useState();
+  const [round, setRound] = useState(0);
 
-  console.log(multiplayerStats, '>>>>>>>>>');
-
-  const navToHighscores = () => {
-    navigate('/multiplayerResults', {
-      state: { gameID: game.multiplayerGameID },
-    });
-  };
+  console.log(multiplayerStats, '>>>>>>>>>>>>>>>>>>>>>>>>>');
 
   const arcColors = ['salmon', 'green', 'lightblue'];
+  const multiPlayerArcsData = multiplayerStats.map((game, index) => ({
+    startLat: game.guesses[round].lat,
+    startLng: game.guesses[round].lng,
+    endLat: +game.locations[round].latitude,
+    endLng: +game.locations[round].longitude,
+    color: arcColors[index],
+    username: game.username,
+  }));
 
   const arcsData = game.guesses.map(({ lng, lat }, index) => ({
     startLat: lat,
@@ -38,6 +40,8 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
     endLng: game.locations[index].lng,
     color: arcColors[index],
   }));
+
+  console.log(multiPlayerArcsData, arcsData);
 
   return (
     <div>
@@ -52,7 +56,7 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
             backgroundColor="#fbf3ea"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
-            arcsData={arcsData}
+            arcsData={multiPlayerArcsData}
             arcColor="color"
             arcStroke={2}
           />
@@ -63,19 +67,21 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         <h3>
           <strong>{`POINTS: ${game.currentScore}`}</strong>
         </h3>
-        {arcsData.map(({ startLat, startLng, endLat, endLng }, index) => (
-          <p>
-            <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
-              round # {index + 1}
-            </div>
-            <div>
-              guess: {startLat.toFixed(2)}, {startLng.toFixed(2)}
-            </div>
-            <div>
-              actual: {endLat.toFixed(2)}, {endLng.toFixed(2)}
-            </div>
-          </p>
-        ))}
+        {multiPlayerArcsData.map(
+          ({ startLat, startLng, endLat, endLng, username }, index) => (
+            <p key={username}>
+              <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
+                {username}
+              </div>
+              <div>
+                guess: {startLat.toFixed(2)}, {startLng.toFixed(2)}
+              </div>
+              <div>
+                actual: {endLat.toFixed(2)}, {endLng.toFixed(2)}
+              </div>
+            </p>
+          )
+        )}
       </div>
       <div className="summary__container__right">
         <button
@@ -88,10 +94,15 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         {game.isMultiplayer && (
           <button
             type="button"
-            onClick={navToHighscores}
+            onClick={(e) => {
+              e.preventDefault();
+              setRound((prevRound) => {
+                if (prevRound < 2) return prevRound + 1;
+              });
+            }}
             className="button__primary"
           >
-            see friend results
+            next round
           </button>
         )}
       </div>

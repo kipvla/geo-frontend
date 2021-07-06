@@ -5,13 +5,14 @@ import { useGameContext } from '../context/gameContext';
 
 export default function useFetchStats() {
   const { multiplayerScoreId } = useGameContext();
+  const { game } = useGameContext();
 
   const [multiplayerStats, setMultiplayerStats] = useState([]);
 
   const getMultiplayerStats = async () => {
     try {
       const response = await apiService.fetchMultiplayerGamesByGameId(
-        multiplayerScoreId
+        game.multiplayerGameID
       );
       const body = await response.json();
       const allGames = body.results;
