@@ -76,7 +76,7 @@
 
 .thumbnails > a:hover {
   transform: scale(1.08);
-  transition: transform 300ms ease-in-out;
+  transition: transform 200ms ease-in-out;
   /* animation: jiggle 500ms ease-in-out; */
 }
 
