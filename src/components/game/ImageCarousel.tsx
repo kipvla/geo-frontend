@@ -11,6 +11,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => (
       <div className="slides">
         {sources.map((source, ind) => (
           <div
+            key={ind}
             id={`slide-${ind + 1}`}
             style={{ backgroundImage: `url(${source})` }}
           >
@@ -31,6 +32,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ sources }) => (
     <div className="thumbnails">
       {sources.map((source, ind) => (
         <a
+          key={ind}
           href={`#slide-${ind + 1}`}
           style={{ backgroundImage: `url(${source})` }}
         >

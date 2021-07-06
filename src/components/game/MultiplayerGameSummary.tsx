@@ -65,7 +65,7 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         </h3>
         {multiplayerStats.map((userGame, index) => (
           <>
-            <div style={{ position: 'fixed', bottom: 0, right: 0 }}>
+            <div key={index} style={{ position: 'fixed', bottom: 0, right: 0 }}>
               {!index ? <h1>{userGame.locations[round].title}</h1> : null}
             </div>
 
@@ -74,7 +74,6 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
                 {userGame.username}
               </div>
               <div>
-                {' '}
                 <p>
                   <div>
                     {userGame.guesses[round].distance}
