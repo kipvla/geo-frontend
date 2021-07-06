@@ -18,8 +18,13 @@
   min-width: 400px;
   height: 400px;
   width: 400px;
+}
 
-  border-radius: 50%;
+.landing__form__container {
+  min-height: 300px;
+  min-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 
 .summary__container__left {
@@ -45,10 +50,6 @@
   padding: 1rem;
   border-radius: 0.2rem;
   background: rgba(158, 96, 96, 0.712);
-}
-
-.auth__container input {
-  box-shadow: 0 0 30px #555;
 }
 
 @media screen and (max-width: 768px) {

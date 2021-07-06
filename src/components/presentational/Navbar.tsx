@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Logout />
         </div>
       ) : (
-        <div className="links">
+        <div className="links links__unauth">
           <Link to="/login" className="navbar__link">
             Login
           </Link>
