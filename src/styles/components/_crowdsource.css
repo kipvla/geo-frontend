@@ -1,16 +1,24 @@
-.image-uploader {
+/* .image-uploader {
   margin-top: 30px;
   background-color: #fbf3ea;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 .fileContainer {
   background-color: #fbf3ea !important;
   box-shadow: none !important;
 }
 
+.fileContainer > * {
+  font-size: 1.3rem !important;
+}
+
 .deleteImage {
   /* Kip fix this please */
   background-color: black !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
 }

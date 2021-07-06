@@ -27,9 +27,9 @@ const CrowdSource = () => {
   };
 
   return (
-    <div className="container">
+    <div className="page__container container">
       <Navbar auth />
-      <form onSubmit={submitPhotos} className="image-uploader">
+      <form onSubmit={submitPhotos} className="image-uploader container column">
         <ImageUploader
           style={{ backgroundColor: '#fbf3ea' }}
           ref={inputEl}
@@ -41,7 +41,7 @@ const CrowdSource = () => {
           label="Max size: 5mb, Accepted images: jpg"
           withPreview
         />
-        { error && <p>{error}</p>}
+        {error && <p>{error}</p>}
         <button
           type="submit"
           disabled={photosToSend.length === 0}
