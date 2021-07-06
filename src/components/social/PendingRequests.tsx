@@ -33,30 +33,12 @@ const PendingRequests: React.FC = () => {
     }
   };
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100vw',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <div className="gameRequest__container container">
       <div>
         {user && user.friendRequests.length ? (
           <>
             {user.friendRequests.map((friendRequest: FriendDetails) => (
-              <div
-                key={friendRequest.id}
-                style={{
-                  width: '30vw',
-                  border: '1px solid black',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  borderRadius: '1rem',
-                }}
-              >
+              <div key={friendRequest.id} className="gameRequest__block">
                 <h2 style={{ marginLeft: '1rem' }}>{friendRequest.username}</h2>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <button
