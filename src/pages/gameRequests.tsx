@@ -53,6 +53,7 @@ const GameRequests: React.FC = () => {
       <div className="container column">
         {user.gameInvites.length > 0 ? (
           <>
+            <h2>game requests</h2>
             {user.gameInvites.map((gameRequest) => (
               <div key={gameRequest.gameID} className="gameRequest__block">
                 <h2 style={{ marginLeft: '1rem' }}>{gameRequest.from}</h2>
