@@ -26,8 +26,11 @@
 
 .map__pin {
   /* font-size: 2rem; */
-  color: rgb(172, 168, 172);
+  color: rgb(243, 12, 12);
   filter: drop-shadow(0 0 40px white);
+  box-shadow: 0 0 10px black;
+  border-radius: 50%;
+  border: 2px solid black;
 }
 
 .map__toggle {
