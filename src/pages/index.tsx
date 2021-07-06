@@ -10,11 +10,11 @@ const handleClick = (e) => {
   const login = document.querySelector('.login');
   const register = document.querySelector('.register');
   if (e.target.name === 'login') {
-    login.style.display = 'block';
+    login.style.display = 'flex';
     register.style.display = 'none';
   }
   if (e.target.name === 'register') {
-    register.style.display = 'block';
+    register.style.display = 'flex';
     login.style.display = 'none';
   }
 };
@@ -46,20 +46,19 @@ const Index = () => {
         </React.Suspense>
       ) : null}
       <div className="auth__parent__container">
-        <div style={{ display: 'flex' }}>
-          <button name="login" type="button" onClick={handleClick}>
-            Login
-          </button>
-          <button name="register" type="button" onClick={handleClick}>
-            Register
-          </button>
-        </div>
+        <div style={{ display: 'flex' }} />
         <div className="login">
           <Login />
         </div>
         <div className="register">
           <Register />
         </div>
+        <button name="login" type="button" onClick={handleClick}>
+          Login
+        </button>
+        <button name="register" type="button" onClick={handleClick}>
+          Register
+        </button>
       </div>
     </div>
   );
