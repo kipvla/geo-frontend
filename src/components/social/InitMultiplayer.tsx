@@ -47,7 +47,11 @@ const InitMultiplayer: React.FC = () => {
 
   return (
     <div className="modal__focus">
-      <Select options={friends} onChange={handleSelect} />
+      <Select
+        options={friends}
+        onChange={handleSelect}
+        placeholder="select friends"
+      />
       <button
         type="button"
         className="button__primary"
@@ -61,7 +65,7 @@ const InitMultiplayer: React.FC = () => {
       {successMessage && (
         <>
           <p>{successMessage}</p>
-          <Link to="/game" className="link__button">
+          <Link to="/game" className="link__button button__primary">
             proceed to game
           </Link>
         </>
