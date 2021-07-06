@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import { GrClose } from 'react-icons/gr';
 import { CgArrowsExpandLeft } from 'react-icons/cg';
-
 import ProgressBar from '../presentational/ProgressBar';
 import MapSelector from './MapSelector';
 import ImageCarousel from './ImageCarousel';
-
 import Navbar from '../presentational/Navbar';
-
-import { useMapContext } from '../../lib/context/mapContext';
-import { useGameContext } from '../../lib/context/gameContext';
+import { useMapContext, useGameContext } from '../../lib/context';
 
 export interface GamePlayProps {
   gameState: number;
@@ -18,35 +13,16 @@ export interface GamePlayProps {
 }
 
 const GamePlay: React.FC<GamePlayProps> = ({ gameState, submitGuess }) => {
-  const { pinCoordinates, setViewport } = useMapContext();
+  const { pinCoordinates, mapDimensions, setMapToLarge, setMapToSmall } =
+    useMapContext();
   const { game } = useGameContext();
-  const [mapDimensions, setMapDimensions] = useState({
-    width: '10rem',
-    height: '10rem',
-  });
   if (!game.locations.length) return null;
 
   const toggleMapSize = () => {
     if (mapDimensions.width === '52rem') {
-      setMapDimensions({ width: '10rem', height: '10rem' });
-      setViewport({
-        width: '100%',
-        height: '100%',
-        latitude: pinCoordinates[0],
-        longitude: pinCoordinates[1],
-        zoom: 2,
-        altitude: 1,
-      });
+      setMapToSmall();
     } else {
-      setMapDimensions({ width: '52rem', height: '30rem' });
-      setViewport({
-        width: '100%',
-        height: '100%',
-        latitude: pinCoordinates[0],
-        longitude: pinCoordinates[1],
-        zoom: 1,
-        altitude: 1,
-      });
+      setMapToLarge();
     }
   };
 

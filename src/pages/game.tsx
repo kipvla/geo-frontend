@@ -14,7 +14,7 @@ import apiService from '../services/apiService';
 
 const Game: React.FC = () => {
   const [showScore, setShowScore] = useState(false);
-  const { resetMap, pinCoordinates } = useMapContext();
+  const { resetMap, pinCoordinates, setMapToSmall } = useMapContext();
   const { addGuess, incrementTurn, game, resetGame } = useGameContext();
   if (!game) return null;
 
@@ -30,6 +30,7 @@ const Game: React.FC = () => {
     const score = calculateScore(distance);
     addGuess(lat, lng, distance, score);
     resetMap();
+    setMapToSmall();
     setShowScore(true);
 
     await apiService
@@ -43,9 +44,9 @@ const Game: React.FC = () => {
   };
 
   const startNextRound = () => {
-    setShowScore(false);
     incrementTurn();
     resetMap();
+    setShowScore(false);
   };
 
   const handleGameEnd = () => {
