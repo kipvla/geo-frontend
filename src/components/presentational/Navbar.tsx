@@ -4,9 +4,10 @@ import { FaUserFriends } from 'react-icons/fa';
 import { AiOutlineTrophy, AiFillHome } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdAddAPhoto } from 'react-icons/md';
-
 import { IoLogoGameControllerB } from 'react-icons/io';
+
 import Logout from '../auth/logout';
+import { useUserContext } from '../../lib/context';
 
 export interface NavbarProps {
   auth: boolean;
@@ -14,6 +15,8 @@ export interface NavbarProps {
 
 // eslint-disable-next-line max-len
 const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
+  const { user } = useUserContext();
+
   const toggleLinks = () => {
     const links = document.querySelector('.links');
     links.style.display = links.style.display ? '' : 'flex';
@@ -35,6 +38,26 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Link to="/gameRequests" className="navbar__link">
             <IoLogoGameControllerB className="navbar__icon" />
             <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
+            {user && user.gameInvites.length ? (
+              <div
+                style={{
+                  position: 'relative',
+                  right: '.9rem',
+                  top: '0.3rem',
+                  backgroundColor: 'black',
+                  color: 'white',
+                  height: '1rem',
+                  fontSize: '1rem',
+                  borderRadius: '0.1rem',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  alignContent: 'center',
+                  display: 'flex',
+                }}
+              >
+                <b>{user.gameInvites.length}</b>
+              </div>
+            ) : null}
           </Link>
           <Link to="/crowdsource" className="navbar__link">
             <MdAddAPhoto className="navbar__icon" />
