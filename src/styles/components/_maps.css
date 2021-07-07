@@ -6,6 +6,7 @@
   border: thick solid #32a1ce;
   box-shadow: 0 0 6px black;
   z-index: 10;
+  margin: 0.5rem;
 }
 
 .map__sm {
