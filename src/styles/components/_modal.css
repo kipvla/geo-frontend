@@ -28,9 +28,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .modal__focus {
+  /* .modal__focus {
     width: 95%;
-  }
+  } */
 }
 
 /* @media screen and (max-width: 768px) {
