@@ -2,3 +2,16 @@
 h3 {
   padding: 0.8rem;
 }
+
+.button__summary {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.button__summary:focus {
+  border-bottom: 1px solid black;
+}
+
+.user__arc {
+  margin: 0.5rem 0;
+}
