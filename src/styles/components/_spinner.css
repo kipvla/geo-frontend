@@ -6,10 +6,10 @@
   width: 38px;
 }
 
-.spinner > div > div {
+/* .spinner > div > div {
   animation: load 1.7s linear infinite;
   overflow: hidden;
-}
+} */
 
 @keyframes load {
   0% {
