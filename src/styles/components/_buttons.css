@@ -49,11 +49,14 @@ button:hover:not([disabled]) {
 .button__register {
   display: flex;
   padding: 0.4rem;
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.75rem;
   font-size: 1.35rem;
 }
 .button__login {
   display: flex;
+  padding: 0.4rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.35rem;
 }
 
 .link__button {
