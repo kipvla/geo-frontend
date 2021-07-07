@@ -27,7 +27,7 @@
   box-shadow: 0 0 5px #444;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .modal__focus {
     background-color: white;
     padding: 20px;
@@ -37,4 +37,4 @@
   .container.modal__focus div {
     width: 80vw !important;
   }
-}
+} */
