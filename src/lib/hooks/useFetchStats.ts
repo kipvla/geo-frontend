@@ -15,6 +15,7 @@ export default function useFetchStats() {
       );
       const body = await response.json();
       const allGames = body.results;
+
       const formatedGamesPromises = allGames.map(async (gameFromAllGames) => {
         try {
           const responseUser = await apiService.fetchUserById(
@@ -39,8 +40,6 @@ export default function useFetchStats() {
         );
         return setMultiplayerStats(sortedGames);
       });
-
-      console.log(multiplayerStats);
     } catch (err) {
       console.log(err.message);
     }

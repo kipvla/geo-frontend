@@ -72,7 +72,6 @@ export const GameProvider = ({ children }): any => {
   };
 
   const populateMultiplayerScoreId = (multiplayerId: string) => {
-    console.log(multiplayerId, 'from context');
     setMultiplayerScoreId(multiplayerId);
   };
 

@@ -11,7 +11,6 @@ export default function useFetchMultiplayerGameID(gameID: string) {
       .then((res) => res.json());
     setMultiplayerGames(allGames.results);
     // TODO played with
-    console.log(allGames.results[0]);
 
     populateGame(allGames.results[0]);
   };

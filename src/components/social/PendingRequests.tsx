@@ -8,14 +8,11 @@ import apiService from '../../services/apiService';
 const PendingRequests: React.FC = () => {
   const { user, populateUser } = useUserContext();
   const addFriend = async (friendRequest: FriendDetails) => {
-    console.log(friendRequest);
-
     const { id, username } = friendRequest;
     try {
       const response = await apiService.acceptFriendRequest(id, username);
       const body = await response.json();
       populateUser(body.user);
-      console.log(user, 'after add');
     } catch (err) {
       console.log(err.message);
     }

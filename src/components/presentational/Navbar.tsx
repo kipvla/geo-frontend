@@ -21,7 +21,6 @@ const Navbar: React.FC<NavbarProps> = ({
   const linksEl = useRef(null);
 
   const toggleLinks = () => {
-    console.log('links');
     linksEl.current.style.display =
       linksEl.current.style.display === 'flex' ? 'none' : 'flex';
   };
