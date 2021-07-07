@@ -34,8 +34,13 @@
 button {
   box-shadow: 0 0 3px grey;
 }
+
 .register {
   display: none;
+}
+
+.register .home__auth__container {
+  height: 325px;
 }
 
 .login {
