@@ -18,7 +18,6 @@ const MultiplayerGameSummary: React.FC = () => {
   const [round, setRound] = useState(0);
 
   const arcColors = ['salmon', 'green', 'lightblue', 'peru', 'thistle'];
-
   const multiPlayerArcsData = multiplayerStats.map((singleGame, index) => ({
     startLat: singleGame.guesses[round].lat,
     startLng: singleGame.guesses[round].lng,
@@ -27,7 +26,6 @@ const MultiplayerGameSummary: React.FC = () => {
     color: arcColors[index],
     username: singleGame.username,
   }));
-  console.log(multiPlayerArcsData);
 
   return (
     <div>
@@ -74,8 +72,8 @@ const MultiplayerGameSummary: React.FC = () => {
         </div>
         <h3>{game && <strong>{`My Points: ${game.currentScore}`}</strong>}</h3>
         {multiplayerStats.map((userGame, index) => (
-          <>
-            <div key={index} style={{ position: 'fixed', bottom: 0, right: 0 }}>
+          <div key={userGame.username}>
+            <div style={{ position: 'fixed', bottom: 0, right: 0 }}>
               {/* TODO fix margin */}
               {!index ? (
                 <h1 style={{ margin: '2rem' }}>
@@ -84,7 +82,7 @@ const MultiplayerGameSummary: React.FC = () => {
               ) : null}
             </div>
 
-            <p key={userGame.username}>
+            <p>
               <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
                 {userGame.username}
               </div>
@@ -99,7 +97,7 @@ const MultiplayerGameSummary: React.FC = () => {
                 </p>
               </div>
             </p>
-          </>
+          </div>
         ))}
       </div>
       {/* <div className="summary__container__right">

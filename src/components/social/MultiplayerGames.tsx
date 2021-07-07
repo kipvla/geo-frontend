@@ -11,6 +11,8 @@ const MultiplayerGames: React.FC = () => {
       populateGame({ game });
       navigate('/game');
     } else {
+      populateGame({ game });
+
       navigate('/multiplayerResults', {
         state: { gameID: game.multiplayerGameID },
       });

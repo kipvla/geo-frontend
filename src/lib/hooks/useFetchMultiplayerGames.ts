@@ -10,7 +10,6 @@ export default function useFetchMultiplayerGames() {
         .fetchAllMultiplayerGames()
         .then((res) => res.json());
       setMultiplayerGames(allGames.results);
-      console.log(allGames);
       // TODO played with
     } catch (error) {
       console.log(error);
