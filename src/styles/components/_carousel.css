@@ -93,3 +93,18 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .thumbnails {
+    display: none;
+  }
+
+  .slider {
+    width: 360px;
+  }
+
+  .slides > div {
+    width: 22rem;
+    height: 22rem;
+  }
+}
