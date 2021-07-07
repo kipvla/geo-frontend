@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 
 import Login from '../components/auth/Login';
 import Register from '../components/auth/Register';
@@ -7,24 +7,20 @@ import Spinner from '../components/presentational/Spinner';
 
 const Globe = React.lazy(() => import('react-globe.gl'));
 const isBrowser = () => typeof window !== 'undefined';
-const login = document.querySelector('.login');
-const register = document.querySelector('.register');
-const handleClick = (e) => {
-  if (e.target.name === 'login') {
-    login.style.display = 'flex';
-    register.style.display = 'none';
-  }
-  if (e.target.name === 'register') {
-    register.style.display = 'flex';
-    login.style.display = 'none';
-  }
-};
 
 const Index = () => {
-  const [isGlobeShowing, setIsGlobeShowing] = useState(true);
-  const handleGlobeClick = ({ lat, lng }, event) => {
-    console.log(event, lat, lng);
-    setIsGlobeShowing(!isGlobeShowing);
+  const loginEl = useRef<HTMLDivElement>(null);
+  const registerEl = useRef<HTMLDivElement>(null);
+
+  const handleClick = (e) => {
+    if (e.target.name === 'login') {
+      loginEl.current.style.display = 'flex';
+      registerEl.current.style.display = 'none';
+    }
+    if (e.target.name === 'register') {
+      registerEl.current.style.display = 'flex';
+      loginEl.current.style.display = 'none';
+    }
   };
 
   return (
@@ -34,16 +30,14 @@ const Index = () => {
       {isBrowser() ? (
         <React.Suspense fallback={<Spinner />}>
           <Globe
-            showGlobe={isGlobeShowing}
             backgroundColor="#fbf3ea"
             globeImageUrl="/images/earthlights4k.jpg"
             showGraticules
-            onGlobeClick={handleGlobeClick}
           />
         </React.Suspense>
       ) : null}
       <div className="auth__parent__container">
-        <div className="login container">
+        <div className="login container" ref={loginEl}>
           <Login />
           <button
             name="register"
@@ -54,7 +48,7 @@ const Index = () => {
             Register
           </button>
         </div>
-        <div className="register container">
+        <div className="register container" ref={registerEl}>
           <Register />
           <button
             name="login"
