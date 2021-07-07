@@ -20,7 +20,7 @@ const Register: React.FC = () => {
       if (response.ok) {
         const body = await response.json();
         localStorage.setItem('accessToken', body.token);
-        navigate('/login');
+        navigate('/home');
         setCredentials(emptyCredentials);
       } else {
         const body = await response.json();
