@@ -61,6 +61,7 @@ const Login: React.FC = () => {
             <input
               name="email"
               type="email"
+              autoComplete="off"
               value={credentials.email}
               onChange={handleChange}
               placeholder="email"
