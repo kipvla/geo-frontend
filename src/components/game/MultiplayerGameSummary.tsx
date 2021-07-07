@@ -8,15 +8,12 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 
 const isBrowser = () => typeof window !== 'undefined';
 
-export interface GameSummaryProps {
-  handleGameEnd: () => void;
-  isMultiplayerResults: boolean;
-}
+// export interface GameSummaryProps {
+//   handleGameEnd: () => void;
+//   isMultiplayerResults: boolean;
+// }
 
-const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
-  handleGameEnd,
-  isMultiplayerResults,
-}: GameSummaryProps) => {
+const MultiplayerGameSummary: React.FC = () => {
   const { multiplayerStats, game } = useFetchStats();
   const [round, setRound] = useState(0);
 
@@ -105,17 +102,17 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
           </>
         ))}
       </div>
-      <div className="summary__container__right">
+      {/* <div className="summary__container__right">
         {!isMultiplayerResults ? (
-          <button
-            type="button"
-            className="button__primary"
-            onClick={handleGameEnd}
-          >
-            back to games
-          </button>
+          // <button
+          //   type="button"
+          //   className="button__primary"
+          //   onClick={handleGameEnd}
+          // >
+          //   back to games
+          // </button>
         ) : null}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -21,7 +21,9 @@ const Navbar: React.FC<NavbarProps> = ({
   const linksEl = useRef(null);
 
   const toggleLinks = () => {
-    linksEl.current.style.display = linksEl.current.style.display ? '' : 'flex';
+    console.log('links');
+    linksEl.current.style.display =
+      linksEl.current.style.display === 'flex' ? 'none' : 'flex';
   };
 
   return (
@@ -58,7 +60,11 @@ const Navbar: React.FC<NavbarProps> = ({
           <Logout />
         </div>
       ) : (
-        <div className="links links__unauth" ref={linksEl}>
+        <div
+          className="links links__unauth"
+          ref={linksEl}
+          onClick={toggleLinks}
+        >
           <Link to="/login" className="navbar__link">
             Login
           </Link>

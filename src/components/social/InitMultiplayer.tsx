@@ -48,7 +48,7 @@ const InitMultiplayer: React.FC = () => {
   };
 
   return (
-    <div className="modal__focus">
+    <div className="container modal__focus">
       <Select
         options={friends}
         onChange={handleSelect}
