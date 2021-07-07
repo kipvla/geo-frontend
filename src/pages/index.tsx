@@ -32,7 +32,7 @@ const Index = () => {
           <Globe
             backgroundColor="#fbf3ea"
             globeImageUrl="/images/earthlights4k.jpg"
-            showGraticules
+            // showGraticules
           />
         </React.Suspense>
       ) : null}

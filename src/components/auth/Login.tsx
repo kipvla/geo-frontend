@@ -44,6 +44,16 @@ const Login: React.FC = () => {
   return (
     <div className="home__auth__container">
       <div className="container landing__form__container">
+        {error ? (
+          <p className="container error__container">{error}</p>
+        ) : (
+          <p
+            className="container error__container"
+            style={{ visibility: 'hidden' }}
+          >
+            {}
+          </p>
+        )}
         {isAuthenticating ? (
           <div>Authenticating...</div>
         ) : (
@@ -72,16 +82,6 @@ const Login: React.FC = () => {
           </form>
         )}
       </div>
-      {error ? (
-        <p className="container error__container">{error}</p>
-      ) : (
-        <p
-          className="container error__container"
-          style={{ visibility: 'hidden' }}
-        >
-          {}
-        </p>
-      )}
     </div>
   );
 };

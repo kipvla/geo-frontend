@@ -22,3 +22,13 @@
   align-items: center;
   padding-bottom: 0.5rem;
 }
+
+.uploadPicturesWrapper > div {
+  flex-wrap: nowrap !important;
+  width: 70vw !important;
+  overflow: scroll !important;
+}
+
+.uploadPictureContainer {
+  width: 10rem !important;
+}
