@@ -77,7 +77,7 @@ export const GameProvider = ({ children }): any => {
   };
 
   const populateGame = (gameData: any) => {
-    const data = gameData.game;
+    const data = gameData.game || gameData;
 
     const formattedLocations = data.locations.map((loc) => ({
       images: loc.images,
