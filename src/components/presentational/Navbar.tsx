@@ -10,7 +10,7 @@ import Logout from '../auth/logout';
 
 export interface NavbarProps {
   auth: boolean;
-  notifications: number;
+  notifications?: number;
 }
 
 // eslint-disable-next-line max-len

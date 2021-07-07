@@ -72,9 +72,7 @@ const MultiplayerGameSummary: React.FC = () => {
             3
           </button>
         </div>
-        <h3>
-          <strong>{`My Points: ${game.currentScore}`}</strong>
-        </h3>
+        <h3>{game && <strong>{`My Points: ${game.currentScore}`}</strong>}</h3>
         {multiplayerStats.map((userGame, index) => (
           <>
             <div key={index} style={{ position: 'fixed', bottom: 0, right: 0 }}>
