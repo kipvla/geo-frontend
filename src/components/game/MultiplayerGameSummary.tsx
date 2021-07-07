@@ -75,9 +75,7 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
             3
           </button>
         </div>
-        <h3>
-          <strong>{`My Points: ${game.currentScore}`}</strong>
-        </h3>
+        <h3>{game && <strong>{`My Points: ${game.currentScore}`}</strong>}</h3>
         {multiplayerStats.map((userGame, index) => (
           <>
             <div key={index} style={{ position: 'fixed', bottom: 0, right: 0 }}>
@@ -96,11 +94,7 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
               <div>
                 {/* TODO for three users */}
                 <p className="user__arc">
-                  <div>
-                    {userGame.guesses[round].distance}
-                    {' '}
-                    km away
-                  </div>
+                  <div>{userGame.guesses[round].distance} km away</div>
                 </p>
               </div>
             </p>
