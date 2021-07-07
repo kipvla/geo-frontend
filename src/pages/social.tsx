@@ -6,6 +6,7 @@ import {
   PendingRequests,
   MultiPlayerGames,
 } from '../components/social';
+import { useUserContext } from '../lib/context';
 
 const tabBarNames = [
   { label: 'friends', selected: true },
@@ -25,7 +26,7 @@ const Social: React.FC = () => {
   const [tabBarsState, setTabBarsState] =
     useState<{ label: string; selected: boolean }[]>(tabBarNames);
   const [selectedComponent, setSelectedComponent] = useState(<FriendList />);
-
+  const { user } = useUserContext();
   const handleTab = (index: number) => {
     setTabBarsState((prevState) => {
       const copyState = [...prevState];
@@ -46,7 +47,7 @@ const Social: React.FC = () => {
 
   return (
     <div className="page__container">
-      <Navbar auth />
+      <Navbar auth notifications={user?.gameInvites.length} />
       <div className="social__tab__component__container">
         <div className="tab__container">
           {tabBarsState.map((tabName, index) => (

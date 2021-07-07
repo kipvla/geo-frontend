@@ -49,7 +49,7 @@ const GameSummary: React.FC = () => {
       <div className="summary__container__left">
         <p>
           <h3>
-            <strong>{`POINTS: ${game.currentScore}`}</strong>
+            <strong>{`POINTS: ${game?.currentScore}`}</strong>
           </h3>
         </p>
         {game.guesses.map((guess, index) => (
