@@ -66,7 +66,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="container page__container">
-      <Navbar auth />
+      <Navbar auth notifications={user?.gameInvites.length} />
 
       {isLoadingGame ? (
         <div className="page__container container spinner">...</div>

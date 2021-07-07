@@ -7,16 +7,18 @@ import { MdAddAPhoto } from 'react-icons/md';
 import { IoLogoGameControllerB } from 'react-icons/io';
 
 import Logout from '../auth/logout';
-import { useUserContext } from '../../lib/context';
 
 export interface NavbarProps {
   auth: boolean;
+  notifications: number;
 }
 
 // eslint-disable-next-line max-len
-const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = ({
+  auth,
+  notifications,
+}: NavbarProps) => {
   const linksEl = useRef(null);
-  const { user } = useUserContext();
 
   const toggleLinks = () => {
     linksEl.current.style.display = linksEl.current.style.display ? '' : 'flex';
@@ -38,9 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Link to="/gameRequests" className="navbar__link">
             <IoLogoGameControllerB className="navbar__icon" />
             <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
-            {user && user.gameInvites.length ? (
+            {notifications ? (
               <div className="notification__flag">
-                <b>{user.gameInvites.length}</b>
+                <b>{notifications}</b>
               </div>
             ) : null}
           </Link>
