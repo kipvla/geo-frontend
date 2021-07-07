@@ -50,8 +50,9 @@
 .controller__diagonal {
   transform: translate(-7px, 10px);
 }
+
 .links__unauth {
-  display: flex;
+  display: none;
 }
 
 .notification__flag {
