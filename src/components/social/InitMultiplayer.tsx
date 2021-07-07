@@ -53,6 +53,7 @@ const InitMultiplayer: React.FC = () => {
         options={friends}
         onChange={handleSelect}
         placeholder="select friends"
+        className="multi__select"
       />
       <button
         type="button"
