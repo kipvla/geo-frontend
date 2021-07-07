@@ -55,3 +55,17 @@
 .map__arrows {
   padding: 0.3rem;
 }
+
+@media screen and (max-width: 768px) {
+  .map__sm {
+    width: 13rem;
+    height: 8rem;
+    transition: all 300ms;
+  }
+
+  .map__md {
+    width: 22rem;
+    height: 26rem;
+    transition: all 300ms;
+  }
+}
