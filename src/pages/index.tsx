@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Login from '../components/auth/Login';
 import Register from '../components/auth/Register';
 import Navbar from '../components/presentational/Navbar';
+import Spinner from '../components/presentational/Spinner';
 
 const Globe = React.lazy(() => import('react-globe.gl'));
 const isBrowser = () => typeof window !== 'undefined';
@@ -31,11 +32,7 @@ const Index = () => {
       <Navbar auth={false} />
 
       {isBrowser() ? (
-        <React.Suspense
-          fallback={
-            <div className="page__container container spinner">...</div>
-          }
-        >
+        <React.Suspense fallback={<Spinner />}>
           <Globe
             showGlobe={isGlobeShowing}
             backgroundColor="#fbf3ea"
