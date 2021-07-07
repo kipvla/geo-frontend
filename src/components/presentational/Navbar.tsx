@@ -39,24 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
             <IoLogoGameControllerB className="navbar__icon" />
             <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
             {user && user.gameInvites.length ? (
-              <div
-                style={{
-                  position: 'relative',
-                  right: '1rem',
-                  top: '0.4rem',
-                  backgroundColor: 'black',
-                  color: 'white',
-                  height: '.9rem',
-                  width: '.9rem',
-                  fontSize: '.7rem',
-                  borderRadius: '0.1rem',
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  alignContent: 'center',
-                  display: 'flex',
-                }}
-              >
+              <div className="notification__flag">
                 <b>{user.gameInvites.length}</b>
               </div>
             ) : null}
