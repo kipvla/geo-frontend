@@ -52,7 +52,7 @@
 .error__container {
   height: 3rem;
   padding: 1rem;
-  border-radius: 0.2rem;
+  color: white;
   background: rgba(158, 96, 96, 0.712);
 }
 

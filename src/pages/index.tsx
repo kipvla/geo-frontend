@@ -39,20 +39,23 @@ const Index = () => {
       <div className="auth__parent__container">
         <div className="login container" ref={loginEl}>
           <Login />
-          <button
-            name="register"
-            className="button__register"
-            type="button"
-            onClick={handleClick}
-          >
-            Register
-          </button>
+          <div style={{ display: 'flex' }}>
+            new here?
+            <button
+              name="register"
+              className="button__register landing__toggle__button"
+              type="button"
+              onClick={handleClick}
+            >
+              Register
+            </button>
+          </div>
         </div>
         <div className="register container" ref={registerEl}>
           <Register />
           <button
             name="login"
-            className="button__login"
+            className="button__login landing__toggle__button"
             type="button"
             onClick={handleClick}
           >

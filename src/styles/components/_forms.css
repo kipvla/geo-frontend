@@ -19,12 +19,27 @@
   top: 5rem;
 }
 
+.landing__toggle__button {
+  background: none;
+  height: 2rem;
+  /* width: auto; */
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+  color: darkblue;
+}
+
 .auth__parent__container input,
 button {
   box-shadow: 0 0 3px grey;
 }
 .register {
   display: none;
+}
+
+.login {
+  height: 350px;
 }
 
 @media screen and (max-width: 768px) {
