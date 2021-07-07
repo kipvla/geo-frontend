@@ -47,13 +47,13 @@
   background-position: center center;
   background-size: cover;
   box-shadow: 0 0 7px grey;
-  margin: 1rem 4rem;
+  margin: 1rem 6rem;
 }
 
 .thumbnails {
   padding-top: 3rem;
   padding-left: 1rem;
-  flex: 4;
+  flex: 6;
 }
 
 .thumbnails > a {
