@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { navigate } from 'gatsby';
@@ -9,7 +9,7 @@ import apiService from '../services/apiService';
 const GameRequests: React.FC = () => {
   const { user, populateUser } = useUserContext();
   const { populateGame } = useGameContext();
-
+  const [notifications, setNotifications] = useState(user?.gameInvites.length);
   if (!user) return null;
 
   const acceptRequest = async (gameID: string) => {
@@ -18,6 +18,7 @@ const GameRequests: React.FC = () => {
       if (response.ok) {
         const body = await response.json();
         populateGame(body);
+        setNotifications(user?.gameInvites.length - 1);
         navigate('/game');
       }
     } catch (e) {
@@ -32,6 +33,7 @@ const GameRequests: React.FC = () => {
         const userData = await apiService.fetchUser();
         const userBody = await userData.json();
         populateUser(userBody.user);
+        setNotifications(user?.gameInvites.length - 1);
       }
     } catch (e) {
       console.log(e);
@@ -54,9 +56,9 @@ const GameRequests: React.FC = () => {
 
   return (
     <div className="gameRequest__container container column">
-      <Navbar auth />
+      <Navbar auth notifications={notifications} />
       <div className="container column">
-        {user.gameInvites.length > 0 ? (
+        {user?.gameInvites.length > 0 ? (
           <>
             <h2>game requests</h2>
             {user.gameInvites.map((gameRequest) => (

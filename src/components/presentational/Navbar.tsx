@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
 import { AiOutlineTrophy, AiFillHome } from 'react-icons/ai';
@@ -7,19 +7,21 @@ import { MdAddAPhoto } from 'react-icons/md';
 import { IoLogoGameControllerB } from 'react-icons/io';
 
 import Logout from '../auth/logout';
-import { useUserContext } from '../../lib/context';
 
 export interface NavbarProps {
   auth: boolean;
+  notifications: number;
 }
 
 // eslint-disable-next-line max-len
-const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
-  const { user } = useUserContext();
+const Navbar: React.FC<NavbarProps> = ({
+  auth,
+  notifications,
+}: NavbarProps) => {
+  const linksEl = useRef(null);
 
   const toggleLinks = () => {
-    const links = document.querySelector('.links');
-    links.style.display = links.style.display ? '' : 'flex';
+    linksEl.current.style.display = linksEl.current.style.display ? '' : 'flex';
   };
 
   return (
@@ -31,33 +33,16 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
         <GiHamburgerMenu />
       </button>
       {auth ? (
-        <div className="links" onClick={toggleLinks}>
+        <div className="links" ref={linksEl} onClick={toggleLinks}>
           <Link to="/home" className="navbar__link">
             <AiFillHome className="navbar__icon" />
           </Link>
           <Link to="/gameRequests" className="navbar__link">
             <IoLogoGameControllerB className="navbar__icon" />
             <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
-            {user && user.gameInvites.length ? (
-              <div
-                style={{
-                  position: 'relative',
-                  right: '1rem',
-                  top: '0.4rem',
-                  backgroundColor: 'black',
-                  color: 'white',
-                  height: '.9rem',
-                  width: '.9rem',
-                  fontSize: '.7rem',
-                  borderRadius: '0.1rem',
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  alignContent: 'center',
-                  display: 'flex',
-                }}
-              >
-                <b>{user.gameInvites.length}</b>
+            {notifications ? (
+              <div className="notification__flag">
+                <b>{notifications}</b>
               </div>
             ) : null}
           </Link>
@@ -73,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Logout />
         </div>
       ) : (
-        <div className="links links__unauth">
+        <div className="links links__unauth" ref={linksEl}>
           <Link to="/login" className="navbar__link">
             Login
           </Link>

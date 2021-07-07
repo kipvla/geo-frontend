@@ -6,6 +6,7 @@
   border: thick solid #32a1ce;
   box-shadow: 0 0 6px black;
   z-index: 10;
+  margin: 0.5rem;
 }
 
 .map__sm {
@@ -54,4 +55,18 @@
 }
 .map__arrows {
   padding: 0.3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .map__sm {
+    width: 13rem;
+    height: 8rem;
+    transition: all 300ms;
+  }
+
+  .map__md {
+    width: 22rem;
+    height: 26rem;
+    transition: all 300ms;
+  }
 }

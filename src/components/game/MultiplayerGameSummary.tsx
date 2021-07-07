@@ -10,10 +10,12 @@ const isBrowser = () => typeof window !== 'undefined';
 
 export interface GameSummaryProps {
   handleGameEnd: () => void;
+  isMultiplayerResults: boolean;
 }
 
 const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
   handleGameEnd,
+  isMultiplayerResults,
 }: GameSummaryProps) => {
   const { multiplayerStats, game } = useFetchStats();
   const [round, setRound] = useState(0);
@@ -28,6 +30,7 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
     color: arcColors[index],
     username: singleGame.username,
   }));
+  console.log(multiPlayerArcsData);
 
   return (
     <div>
@@ -50,13 +53,25 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
       ) : null}
       <div className="summary__container__left">
         <div style={{ display: 'flex' }}>
-          <button type="button" onClick={() => setRound(0)}>
+          <button
+            type="button"
+            className="button__summary"
+            onClick={() => setRound(0)}
+          >
             1
           </button>
-          <button type="button" onClick={() => setRound(1)}>
+          <button
+            type="button"
+            className="button__summary"
+            onClick={() => setRound(1)}
+          >
             2
           </button>
-          <button type="button" onClick={() => setRound(2)}>
+          <button
+            type="button"
+            className="button__summary"
+            onClick={() => setRound(2)}
+          >
             3
           </button>
         </div>
@@ -66,7 +81,12 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         {multiplayerStats.map((userGame, index) => (
           <>
             <div key={index} style={{ position: 'fixed', bottom: 0, right: 0 }}>
-              {!index ? <h1>{userGame.locations[round].title}</h1> : null}
+              {/* TODO fix margin */}
+              {!index ? (
+                <h1 style={{ margin: '2rem' }}>
+                  {userGame.locations[round].title}
+                </h1>
+              ) : null}
             </div>
 
             <p key={userGame.username}>
@@ -74,7 +94,8 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
                 {userGame.username}
               </div>
               <div>
-                <p>
+                {/* TODO for three users */}
+                <p className="user__arc">
                   <div>
                     {userGame.guesses[round].distance}
                     {' '}
@@ -87,13 +108,15 @@ const MultiplayerGameSummary: React.FC<GameSummaryProps> = ({
         ))}
       </div>
       <div className="summary__container__right">
-        <button
-          type="button"
-          className="button__primary"
-          onClick={handleGameEnd}
-        >
-          back to games
-        </button>
+        {!isMultiplayerResults ? (
+          <button
+            type="button"
+            className="button__primary"
+            onClick={handleGameEnd}
+          >
+            back to games
+          </button>
+        ) : null}
       </div>
     </div>
   );
