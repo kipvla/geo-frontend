@@ -41,7 +41,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="home__auth__container">
       <div className="container landing__form__container">
         <form onSubmit={handleSubmit} className="container auth__container">
           <input

@@ -8,13 +8,7 @@ const Globe = React.lazy(() => import('react-globe.gl'));
 
 const isBrowser = () => typeof window !== 'undefined';
 
-export interface GameSummaryProps {
-  handleGameEnd: () => void;
-}
-
-const GameSummary: React.FC<GameSummaryProps> = ({
-  handleGameEnd,
-}: GameSummaryProps) => {
+const GameSummary: React.FC = () => {
   const { game } = useGameContext();
 
   const navToHighscores = () => {
@@ -48,14 +42,16 @@ const GameSummary: React.FC<GameSummaryProps> = ({
             showGraticules
             arcsData={arcsData}
             arcColor="color"
-            arcStroke={2}
+            arcStroke={1.4}
           />
         </React.Suspense>
       ) : null}
       <div className="summary__container__left">
-        <h3>
-          <strong>{`POINTS: ${game.currentScore}`}</strong>
-        </h3>
+        <p>
+          <h3>
+            <strong>{`POINTS: ${game.currentScore}`}</strong>
+          </h3>
+        </p>
         {game.guesses.map((guess, index) => (
           <div key={index} style={{ margin: '1rem' }}>
             <div style={{ borderBottom: `solid ${arcColors[index]}` }}>
@@ -68,13 +64,6 @@ const GameSummary: React.FC<GameSummaryProps> = ({
         ))}
       </div>
       <div className="summary__container__right">
-        <button
-          type="button"
-          className="button__primary"
-          onClick={handleGameEnd}
-        >
-          back to games
-        </button>
         {game.isMultiplayer && (
           <button
             type="button"

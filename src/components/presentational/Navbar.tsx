@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import { FaUserFriends } from 'react-icons/fa';
 import { AiOutlineTrophy, AiFillHome } from 'react-icons/ai';
@@ -15,11 +15,11 @@ export interface NavbarProps {
 
 // eslint-disable-next-line max-len
 const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
+  const linksEl = useRef(null);
   const { user } = useUserContext();
 
   const toggleLinks = () => {
-    const links = document.querySelector('.links');
-    links.style.display = links.style.display ? '' : 'flex';
+    linksEl.current.style.display = linksEl.current.style.display ? '' : 'flex';
   };
 
   return (
@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
         <GiHamburgerMenu />
       </button>
       {auth ? (
-        <div className="links" onClick={toggleLinks}>
+        <div className="links" ref={linksEl} onClick={toggleLinks}>
           <Link to="/home" className="navbar__link">
             <AiFillHome className="navbar__icon" />
           </Link>
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ auth }: NavbarProps) => {
           <Logout />
         </div>
       ) : (
-        <div className="links links__unauth">
+        <div className="links links__unauth" ref={linksEl}>
           <Link to="/login" className="navbar__link">
             Login
           </Link>
