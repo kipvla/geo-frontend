@@ -14,10 +14,14 @@
 }
 
 .form__container {
-  min-height: 400px;
+  min-height: 300px;
   min-width: 400px;
-  height: 400px;
+  height: 300px;
   width: 400px;
+}
+
+.home__auth__container {
+  height: 400px;
 }
 
 .landing__form__container {

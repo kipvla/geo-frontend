@@ -42,7 +42,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="home__auth__container">
       <div className="container landing__form__container">
         {isAuthenticating ? (
           <div>Authenticating...</div>

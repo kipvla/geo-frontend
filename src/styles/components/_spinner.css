@@ -1,3 +1,39 @@
 .spinner {
   font-size: 5rem;
 }
+
+.spinner > div {
+  width: 38px;
+}
+
+.spinner > div > div {
+  animation: load 1.7s linear infinite;
+  overflow: hidden;
+}
+
+@keyframes load {
+  0% {
+    width: 0px;
+  }
+  24% {
+    width: 0px;
+  }
+  25% {
+    width: 10px;
+  }
+  49% {
+    width: 10px;
+  }
+  50% {
+    width: 23px;
+  }
+  74% {
+    width: 23px;
+  }
+  75% {
+    width: 38px;
+  }
+  100% {
+    width: 38px;
+  }
+}
