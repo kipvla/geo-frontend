@@ -1,54 +1,58 @@
+# nomad
+
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+  <img src="./static/images/nomadlogo.png" />
 </p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
 
-## 🚀 Quick start
+nomad (sic) is a responsive web-based game allowing users to explore the world through guessing the exact location of crowdsourced photos. Users are able to upload images, from which coordinates are parsed, and these images become part of a game that users can play globally. It's clean design includes a 3D globe on which color-coded arcs represent the difference between the user's guess and the correct location. nomad (sic) supports multiplayer mode, and creating a network of friends on the app.
 
-1.  **Create a Gatsby site.**
+## Screenshots
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+<p align="center">
+  <img src="./static/images/mobileglobelanding.png" />
+  <img src="./static/images/gameplay.png" />
+</p>
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Getting started
 
-2.  **Start developing.**
+Except for the regular suspects; git, Node, npm, you need these things to work on nomad.
 
-    Navigate into your new site’s directory and start it up.
+**Recommended!**
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- [nomad backend](https://github.com/kipvla/geo-backend)
 
-3.  **Open the code and start customizing!**
+## Installation
 
-    Your site is now running at http://localhost:8000!
+1. Clone this repo and enter!
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+   ```bash
+   git clone https://github.com/kipvla/geo-frontend.git
+   cd geo-frontend
+   ```
 
-4.  **Learn more**
+2. Install dependencies.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+   ```bash
+   npm install
+   ```
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+3. Run `npm start` to start the development environment locally.
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+4. The app will run on localhost:8000, as per usual with Gatsby apps.
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+<!-- TODO -->
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+5. Database...
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Tech Stack
 
-## 🚀 Quick start (Gatsby Cloud)
+- [Gatsby](https://www.gatsbyjs.com/)
+- [React](https://reactjs.org/)
+- [mapbox](https://www.mapbox.com/)
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+## Developers
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+- Charley Carriero - [GitHub](https://github.com/charcarr) - [LinkedIn](https://www.linkedin.com/in/charleycarriero/)
+- Ujwal Kandukuri - [GitHub](https://github.com/ujwalka) - [LinkedIn](https://www.linkedin.com/in/ujwalkan/)
+- Kip Riecken - [GitHub](https://github.com/kipvla) - [LinkedIn](https://www.linkedin.com/in/kipriecken/)
+- Santiago Vásquez Yacamán - [GitHub](https://github.com/sancar22) - [LinkedIn](https://www.linkedin.com/in/santiagovasquezyaca/)
