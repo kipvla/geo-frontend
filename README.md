@@ -9,13 +9,13 @@ nomad (sic) is a responsive web-based game allowing users to explore the world t
 ## Screenshots
 
 <p align="center">
-  <img src="./static/images/mobileglobelanding.png" />
+  <img src="./static/images/mobileglobelanding.PNG" />
   <img src="./static/images/gameplay.png" />
 </p>
 
 ## Getting started
 
-Except for the regular suspects; git, Node, npm, you need these things to work on nomad.
+Git, Node, npm...
 
 **Recommended!**
 
@@ -41,8 +41,7 @@ Except for the regular suspects; git, Node, npm, you need these things to work o
 4. The app will run on localhost:8000, as per usual with Gatsby apps.
 
 <!-- TODO -->
-
-5. Database...
+<!-- Database info -->
 
 ## Tech Stack
 
