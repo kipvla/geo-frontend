@@ -9,7 +9,7 @@ nomad (sic) is a responsive web-based game allowing users to explore the world t
 ## Screenshots
 
 <p align="center">
-  <img src="./static/images/mobileglobelanding.PNG" />
+  <img src="./static/images/nomadglobemobile.png" />
   <img src="./static/images/gameplay.png" />
 </p>
 
