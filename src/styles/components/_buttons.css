@@ -15,14 +15,9 @@ button {
   text-transform: lowercase;
   transition: transform 200ms;
 }
-/* button:active {
-  transform: scale(1.1);
-  transition: transform 100ms;
-} */
 .button__primary {
   background-color: #f7dba7;
   color: black;
-  box-shadow: 0 0 5px gray;
 }
 button:disabled {
   opacity: 0.3;
@@ -30,7 +25,13 @@ button:disabled {
 }
 button:hover:not([disabled]) {
   transform: scale(1.05);
-  transition: transform 100ms;
+  transition: transform 100ms, box-shadow 100ms;
+  box-shadow: 0 0 5px gray;
+}
+button:active {
+  transform: scale(1);
+  transition: transform 100ms, box-shadow 100ms;
+  box-shadow: none;
 }
 /* .button__modal__close {
   align-self: flex-end;
@@ -49,14 +50,25 @@ button:hover:not([disabled]) {
 .button__register {
   display: flex;
   padding: 0.4rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.55rem;
   font-size: 1.35rem;
 }
+
+.button__register:hover {
+  transform: scale(1);
+  box-shadow: none;
+}
+
 .button__login {
   display: flex;
   padding: 0.4rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.55rem;
   font-size: 1.35rem;
+}
+
+.button__login:hover {
+  transform: scale(1);
+  box-shadow: none;
 }
 
 .link__button {
@@ -75,10 +87,10 @@ button:hover:not([disabled]) {
   color: black;
   transition: transform 200ms;
 }
-.link__button:active {
+/* .link__button:active {
   transform: scale(1.1);
   transition: transform 100ms;
-}
+} */
 
 .link__button:hover {
   transform: scale(1.05);

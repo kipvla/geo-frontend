@@ -6,13 +6,23 @@
   padding: 1rem;
 }
 
-.page__container {
-  padding-top: 4rem;
-  width: 100vw;
-  height: calc(100vh - 4rem);
-  display: flex;
+/* .container--wide {
+
 }
 
+.container--narrow {
+
+} */
+
+/* Move to body */
+.page__container {
+  padding-top: 4rem;
+  min-height: calc(100vh - 4rem);
+  /* width: 100vw; */
+  /* display: flex; */
+}
+
+/* Move to components/_form */
 .form__container {
   min-height: 300px;
   min-width: 400px;
@@ -63,3 +73,9 @@
     padding-top: 4rem;
   }
 }
+
+/* <div class="posts">
+  <div class="posts-single">
+    <h1 class="posts-single__title">Blog Post</h1>
+  </div>
+</div> */
