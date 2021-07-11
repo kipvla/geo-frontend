@@ -1,34 +1,40 @@
-/* .image-uploader {
-  margin-top: 30px;
+div.fileContainer {
   background-color: #fbf3ea;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-.fileContainer {
-  background-color: #fbf3ea !important;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
-.fileContainer > * {
-  font-size: 1.3rem !important;
+div.fileContainer p {
+  font-size: 1.3rem;
+}
+div.fileContainer div.errorsContainer {
+  font-size: 1.3rem;
 }
 
-.deleteImage {
-  /* Kip fix this please */
-  background-color: black !important;
+div.fileContainer button.chooseFileButton {
+  font-size: 1.3rem;
+}
+
+div.fileContainer p,
+div.errorsContainer,
+button.chooseFileButton {
+  font-size: 1.3rem;
+}
+
+div.uploadPictureContainer .deleteImage {
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 0.5rem;
 }
 
-.uploadPicturesWrapper > div {
+/* TODO */
+div.uploadPicturesWrapper > div {
   flex-wrap: nowrap !important;
   width: 70vw !important;
   overflow: scroll !important;
 }
 
-.uploadPictureContainer {
-  width: 10rem !important;
+div.fileContainer .uploadPictureContainer {
+  width: 10rem;
 }

@@ -38,7 +38,7 @@ const GameSummary: React.FC = () => {
         >
           <Globe
             backgroundColor="#fbf3ea"
-            globeImageUrl="/images/earthlights4k.jpg"
+            globeImageUrl="/images/5_night_8k.jpeg"
             showGraticules
             arcsData={arcsData}
             arcColor="color"

@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/presentational/Navbar';
-import {
-  FriendList,
-  AddFriend,
-  PendingRequests,
-  MultiPlayerGames,
-} from '../components/social';
+import { FriendList, AddFriend, PendingRequests } from '../components/social';
 import { useUserContext } from '../lib/context';
 
 const tabBarNames = [
   { label: 'friends', selected: true },
-  { label: 'send request', selected: false },
-  { label: 'pending request', selected: false },
-  { label: 'multiplayer games', selected: false },
+  { label: 'add friend', selected: false },
+  { label: 'pending requests', selected: false },
 ];
 
-const componentsList = [
-  <FriendList />,
-  <AddFriend />,
-  <PendingRequests />,
-  <MultiPlayerGames />,
-];
+const componentsList = [<FriendList />, <AddFriend />, <PendingRequests />];
 
 const Social: React.FC = () => {
   const [tabBarsState, setTabBarsState] =
@@ -43,6 +32,11 @@ const Social: React.FC = () => {
 
   useEffect(() => {
     setSelectedComponent(<FriendList />);
+    setTabBarsState([
+      { label: 'friends', selected: true },
+      { label: 'add friend', selected: false },
+      { label: 'pending requests', selected: false },
+    ]);
   }, []);
 
   return (

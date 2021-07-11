@@ -41,49 +41,51 @@ const Login: React.FC = () => {
     setError('');
   };
 
+  if (isAuthenticating) {
+    return <div className="container">Authenticating...</div>;
+  }
+
   return (
-    <div className="home__auth__container">
-      <div className="container landing__form__container">
-        {error ? (
-          <p className="container error__container">{error}</p>
-        ) : (
-          <p
-            className="container error__container"
-            style={{ visibility: 'hidden' }}
-          >
-            {}
-          </p>
-        )}
-        {isAuthenticating ? (
-          <div>Authenticating...</div>
-        ) : (
-          <form onSubmit={handleSubmit} className="container auth__container">
-            <input
-              name="email"
-              type="email"
-              autoComplete="off"
-              value={credentials.email}
-              onChange={handleChange}
-              placeholder="email"
-            />
-            <input
-              name="password"
-              type="password"
-              value={credentials.password}
-              onChange={handleChange}
-              placeholder="password"
-            />
-            <button
-              type="submit"
-              disabled={!(credentials.email && credentials.password)}
-              className="button__primary"
-            >
-              log in
-            </button>
-          </form>
-        )}
+    <form onSubmit={handleSubmit} className="form container form--landing">
+      {error && (
+        <div className="form__error">
+          <p className="form__error container error__container">{error}</p>
+        </div>
+        // <FormError error={error} />
+      )}
+
+      <div className="form-item">
+        <input
+          name="email"
+          type="email"
+          className="form-item__input"
+          value={credentials.email}
+          onChange={handleChange}
+          placeholder="email"
+        />
       </div>
-    </div>
+      <div className="form-input">
+        <input
+          name="password"
+          type="password"
+          className="form-item__input form-item__input--password"
+          value={credentials.password}
+          onChange={handleChange}
+          placeholder="password"
+        />
+      </div>
+      <div className="form-actions">
+        <div className="form-actions__submit">
+          <button
+            type="submit"
+            disabled={!(credentials.email && credentials.password)}
+            className="button__primary"
+          >
+            log in
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 

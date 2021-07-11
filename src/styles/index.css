@@ -1,6 +1,7 @@
 /* BASE */
 @import './base/_reset.css';
 @import './base/_typography.css';
+@import './base/_body.css';
 
 /* LAYOUT */
 @import './layout/_containers.css';
@@ -27,6 +28,7 @@
 /* CONFIG */
 @import './config/_colors.css';
 
+/* move to /vendors/_mapbox.css */
 .mapboxgl-canvas {
   position: absolute;
   top: 0;

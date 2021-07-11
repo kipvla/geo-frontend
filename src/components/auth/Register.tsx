@@ -41,38 +41,52 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="home__auth__container">
-      <div className="container landing__form__container">
-        <form onSubmit={handleSubmit} className="container auth__container">
-          <input
-            name="email"
-            type="email"
-            value={credentials.email}
-            onChange={handleChange}
-            placeholder="email"
-            style={{ height: '36px' }}
-          />
-          <input
-            name="username"
-            type="text"
-            value={credentials.username}
-            onChange={handleChange}
-            placeholder="username"
-          />
-          <input
-            name="password"
-            type="password"
-            value={credentials.password}
-            onChange={handleChange}
-            placeholder="password"
-          />
-          <input
-            name="passwordRepeat"
-            type="password"
-            value={credentials.passwordRepeat}
-            onChange={handleChange}
-            placeholder="verify password"
-          />
+    <form onSubmit={handleSubmit} className="form container form--landing">
+      {error && (
+        <div className="form__error">
+          <p className="form__error container error__container">{error}</p>
+        </div>
+        // <FormError error={error} />
+      )}
+      <div className="form-item">
+        <input
+          name="email"
+          type="email"
+          className="form-item__input"
+          value={credentials.email}
+          onChange={handleChange}
+          placeholder="email"
+        />
+      </div>
+      <div className="form-item">
+        <input
+          name="username"
+          type="text"
+          value={credentials.username}
+          onChange={handleChange}
+          placeholder="username"
+        />
+      </div>
+      <div className="form-item">
+        <input
+          name="password"
+          type="password"
+          value={credentials.password}
+          onChange={handleChange}
+          placeholder="password"
+        />
+      </div>
+      <div className="form-item">
+        <input
+          name="passwordRepeat"
+          type="password"
+          value={credentials.passwordRepeat}
+          onChange={handleChange}
+          placeholder="verify password"
+        />
+      </div>
+      <div className="form-actions">
+        <div className="form-actions__submit">
           <button
             type="submit"
             disabled={
@@ -87,19 +101,9 @@ const Register: React.FC = () => {
           >
             register
           </button>
-        </form>
+        </div>
       </div>
-      {error ? (
-        <p className="container error__container">{error}</p>
-      ) : (
-        <p
-          className="container error__container"
-          style={{ visibility: 'hidden' }}
-        >
-          {}
-        </p>
-      )}
-    </div>
+    </form>
   );
 };
 

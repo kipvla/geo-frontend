@@ -1,16 +1,5 @@
-.auth__container button {
+/* .auth__container button {
   background: transparent;
-}
-
-/* .auth__container:after {
-  content: ' ';
-  display: block;
-  background: rgb(38, 172, 105);
-  height: 220px;
-  width: 220px;
-  transform: rotate(60deg);
-  position: absolute;
-  z-index: -1;
 } */
 
 .auth__parent__container {
@@ -30,6 +19,28 @@
   color: darkblue;
 }
 
+.landing__toggle__button:hover:not([disabled]) {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+.form {
+}
+
+.form--landing {
+  padding-top: 3rem;
+}
+
+.form__error {
+  position: absolute;
+  top: 0;
+  width: 95%;
+}
+
+.form-item {
+  height: 4rem;
+}
+
 .auth__parent__container input,
 button {
   box-shadow: 0 0 3px grey;
@@ -45,6 +56,7 @@ button {
 
 .login {
   height: 350px;
+  min-width: 300px;
 }
 
 @media screen and (max-width: 768px) {

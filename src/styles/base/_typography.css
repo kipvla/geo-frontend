@@ -4,6 +4,14 @@ body {
   text-transform: lowercase;
 }
 
+/* .text { 
+  color: #ececec;
+}
+
+.text--alt {
+  color: darkgrey;
+}
+
 .text__light {
   color: lightblue;
 }
@@ -11,3 +19,27 @@ body {
 .text__error {
   color: pink;
 }
+
+
+.button {
+  height: 40px;
+  width: 100%;
+
+  border-radius: 3px;
+  background-color: blue;
+  color: white;
+}
+
+.button--primary {
+  background-color: lightblue;
+}
+
+.button--secondary { 
+}
+
+.button--destructive {
+  background-color: red;
+  color: white;
+}
+
+<button class="button button--destructive">delete</button> */
