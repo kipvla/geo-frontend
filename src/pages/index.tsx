@@ -31,8 +31,9 @@ const Index = () => {
         <React.Suspense fallback={<Spinner />}>
           <Globe
             backgroundColor="#fbf3ea"
-            globeImageUrl="/images/earthlights4k.jpg"
-            // showGraticules
+            globeImageUrl="/images/5_night_8k.jpeg"
+            // atmosphereColor="rgb(36,47,74)"
+            // atmosphereAltitude={0.2}
           />
         </React.Suspense>
       ) : null}
