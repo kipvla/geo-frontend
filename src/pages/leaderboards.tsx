@@ -18,7 +18,7 @@ const Leaderboards: React.FC = () => {
   }, []);
 
   return (
-    <div className="page__container container">
+    <div className="page__container container page--leaderboards">
       <Navbar auth />
       <table className="leaderboards">
         <tr>
@@ -38,7 +38,7 @@ const Leaderboards: React.FC = () => {
                 </td>
                 <td>{user.userTotalGameCounter}</td>
                 <td>{user.currentScore}</td>
-                <td>{user.scoreGameRatio.toFixed(2)}</td>
+                <td>{user.scoreGameRatio.toFixed()}</td>
                 <td>{user.exp}</td>
                 <td>{user.currentLevel}</td>
               </tr>
