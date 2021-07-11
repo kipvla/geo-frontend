@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { navigate } from 'gatsby';
-import Navbar from '../components/presentational/Navbar';
-import { useGameContext, useUserContext } from '../lib/context';
-import apiService from '../services/apiService';
+import Navbar from '../presentational/Navbar';
+import { useGameContext, useUserContext } from '../../lib/context';
+import apiService from '../../services/apiService';
 
 const GameRequests: React.FC = () => {
   const { user, populateUser } = useUserContext();

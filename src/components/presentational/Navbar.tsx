@@ -36,10 +36,13 @@ const Navbar: React.FC<NavbarProps> = ({
       {auth ? (
         <div className="links" ref={linksEl} onClick={toggleLinks}>
           <Link to="/home" className="navbar__link">
-            <AiFillHome className="navbar__icon" />
+            <AiFillHome className="navbar__icon" title="home" />
           </Link>
-          <Link to="/gameRequests" className="navbar__link">
-            <IoLogoGameControllerB className="navbar__icon" />
+          <Link to="/multiplayer" className="navbar__link">
+            <IoLogoGameControllerB
+              className="navbar__icon"
+              title="multiplayer"
+            />
             <IoLogoGameControllerB className="navbar__icon controller__diagonal" />
             {notifications ? (
               <div className="notification__flag">
@@ -48,13 +51,13 @@ const Navbar: React.FC<NavbarProps> = ({
             ) : null}
           </Link>
           <Link to="/crowdsource" className="navbar__link">
-            <MdAddAPhoto className="navbar__icon" />
+            <MdAddAPhoto className="navbar__icon" title="add photo" />
           </Link>
           <Link to="/social" className="navbar__link">
-            <FaUserFriends className="navbar__icon" />
+            <FaUserFriends className="navbar__icon" title="social" />
           </Link>
           <Link to="/leaderboards" className="navbar__link">
-            <AiOutlineTrophy className="navbar__icon" />
+            <AiOutlineTrophy className="navbar__icon" title="leaderboard" />
           </Link>
           <Logout />
         </div>

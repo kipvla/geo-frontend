@@ -4,3 +4,4 @@ export { default as PendingRequests } from './PendingRequests';
 export { default as InitMultiplayer } from './InitMultiplayer';
 export { default as MultiPlayerGames } from './MultiplayerGames';
 export { default as MultiPlayerScores } from './MultiPlayerScores';
+export { default as GameRequests } from './GameRequests';

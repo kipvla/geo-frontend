@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/presentational/Navbar';
-import { FriendList, AddFriend, PendingRequests } from '../components/social';
+import { MultiPlayerGames, GameRequests } from '../components/social';
+import MultiplayerGames from '../components/social/MultiplayerGames';
 import { useUserContext } from '../lib/context';
 
 const tabBarNames = [
-  { label: 'friends', selected: true },
-  { label: 'add friend', selected: false },
-  { label: 'pending requests', selected: false },
+  { label: 'multiplayer games', selected: true },
+  { label: 'game requests', selected: false },
 ];
 
-const componentsList = [<FriendList />, <AddFriend />, <PendingRequests />];
+const componentsList = [<MultiPlayerGames />, <GameRequests />];
 
-const Social: React.FC = () => {
+const Multiplayer: React.FC = () => {
   const [tabBarsState, setTabBarsState] =
     useState<{ label: string; selected: boolean }[]>(tabBarNames);
-  const [selectedComponent, setSelectedComponent] = useState(<FriendList />);
+  const [selectedComponent, setSelectedComponent] = useState(
+    <MultiplayerGames />
+  );
   const { user } = useUserContext();
   const handleTab = (index: number) => {
     setTabBarsState((prevState) => {
@@ -31,11 +33,10 @@ const Social: React.FC = () => {
   };
 
   useEffect(() => {
-    setSelectedComponent(<FriendList />);
+    setSelectedComponent(<MultiplayerGames />);
     setTabBarsState([
-      { label: 'friends', selected: true },
-      { label: 'add friend', selected: false },
-      { label: 'pending requests', selected: false },
+      { label: 'multiplayer games', selected: true },
+      { label: 'game requests', selected: false },
     ]);
   }, []);
 
@@ -60,4 +61,4 @@ const Social: React.FC = () => {
   );
 };
 
-export default Social;
+export default Multiplayer;
